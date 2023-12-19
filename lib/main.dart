@@ -18,8 +18,9 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       child: MaterialApp(
         title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
         theme: AppTheme.appThemeData,
-        home: const LandingPage(),
+        home: LandingPage(),
       ),
     );
   }
