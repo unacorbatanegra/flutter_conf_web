@@ -43,8 +43,6 @@ class CustomNavigationBar extends StatelessWidget {
                 SizedBox(width: 60),
                 _NavBarItem('About'),
                 SizedBox(width: 60),
-                _NavBarItem('Contact'),
-                SizedBox(width: 60),
                 _NavBarItem('Speakers'),
                 SizedBox(width: 60),
                 _NavBarItem('Agenda'),
