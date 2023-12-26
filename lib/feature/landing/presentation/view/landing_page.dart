@@ -6,6 +6,7 @@ import 'package:flutter_conf_web/feature/landing/presentation/widget/navigation_
 import 'package:flutter_conf_web/feature/landing/presentation/widget/speaker_card.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LandingPage extends StatelessWidget {
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -13,6 +14,7 @@ class LandingPage extends StatelessWidget {
   final homeKey = GlobalKey();
   final aboutKey = GlobalKey();
   final speakersKey = GlobalKey();
+  final sponsorsKey = GlobalKey();
 
   LandingPage({super.key});
 
@@ -35,6 +37,13 @@ class LandingPage extends StatelessWidget {
     );
   }
 
+  Future<void> launchUrlSocialMedia(String link) async {
+    final url = Uri.parse(link);
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -53,6 +62,9 @@ class LandingPage extends StatelessWidget {
         onScrollToSpeakers: () {
           scrollToKey(speakersKey);
         },
+        onScollToSponsors: () {
+          scrollToKey(sponsorsKey);
+        },
       ),
       body: Column(
         children: [
@@ -66,6 +78,9 @@ class LandingPage extends StatelessWidget {
             },
             onScrollToSpeakers: () {
               scrollToKey(speakersKey);
+            },
+            onScollToSponsors: () {
+              scrollToKey(sponsorsKey);
             },
           ),
           Expanded(
@@ -83,6 +98,7 @@ class LandingPage extends StatelessWidget {
                 const SizedBox(height: 50),
                 Text(
                   l10n.speakers,
+                  key: speakersKey,
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -91,7 +107,6 @@ class LandingPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 50),
                 SizedBox(
-                  key: speakersKey,
                   height: 500,
                   child: GridView.count(
                     crossAxisCount: 1,
@@ -113,6 +128,117 @@ class LandingPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 50),
+                Text(
+                  l10n.sponsors,
+                  key: sponsorsKey,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 50),
+                SizedBox(
+                  height: 200,
+                  child: GridView.count(
+                    crossAxisCount: 1,
+                    shrinkWrap: true,
+                    mainAxisSpacing: 20,
+                    scrollDirection: Axis.horizontal,
+                    children: List.generate(
+                      5,
+                      (index) {
+                        return const FlutterLogo();
+                      },
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 50),
+              ],
+            ),
+          ),
+          Container(
+            color: Colors.black,
+            height: 50,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: l10n.madeWith,
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      const TextSpan(
+                        text: ' 💙 ',
+                        style: TextStyle(
+                          color: Colors.red,
+                        ),
+                      ),
+                      TextSpan(
+                        text: l10n.by,
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      const TextSpan(
+                        text: ' Flutter Conf Paraguay',
+                        style: TextStyle(
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 10),
+                IconButton(
+                  onPressed: () {
+                    launchUrlSocialMedia(
+                        'https://github.com/unacorbatanegra/flutter_conf_web');
+                  },
+                  icon: Assets.icons.github.image(
+                    width: 20,
+                    height: 20,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(width: 10),
+                IconButton(
+                  onPressed: () {
+                    launchUrlSocialMedia('https://twitter.com/flutter_py');
+                  },
+                  icon: Assets.icons.twitter.image(
+                    width: 20,
+                    height: 20,
+                    color: Colors.white,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    launchUrlSocialMedia(
+                        'https://www.linkedin.com/company/flutter-conf-paraguay-2024/');
+                  },
+                  icon: Assets.icons.linkedin.image(
+                    width: 20,
+                    height: 20,
+                    color: Colors.white,
+                  ),
+                ),
+                // Add instagram
+                IconButton(
+                  onPressed: () {
+                    launchUrlSocialMedia(
+                        'https://www.instagram.com/flutterconfpy/');
+                  },
+                  icon: Assets.icons.instagram.image(
+                    width: 20,
+                    height: 20,
+                    color: Colors.white,
+                  ),
+                ),
               ],
             ),
           ),
