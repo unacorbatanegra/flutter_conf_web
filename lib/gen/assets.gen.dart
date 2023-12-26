@@ -35,11 +35,14 @@ class $AssetsAnimationGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/banner1.svg
+  SvgGenImage get banner1 => const SvgGenImage('assets/images/banner1.svg');
+
   /// File path: assets/images/logo.svg
   SvgGenImage get logo => const SvgGenImage('assets/images/logo.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [logo];
+  List<SvgGenImage> get values => [banner1, logo];
 }
 
 class Assets {
