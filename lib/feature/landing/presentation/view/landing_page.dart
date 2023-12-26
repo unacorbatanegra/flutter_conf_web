@@ -69,7 +69,7 @@ class LandingPage extends StatelessWidget {
             child: ListView(
               controller: scrollController,
               children: [
-                Assets.images.banner1.svg(
+                Assets.images.bannerPrincipal.svg(
                   key: homeKey,
                   width: size.width,
                 ),
