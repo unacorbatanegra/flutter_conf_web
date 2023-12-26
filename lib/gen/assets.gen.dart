@@ -49,14 +49,19 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/banner1.svg
-  SvgGenImage get banner1 => const SvgGenImage('assets/images/banner1.svg');
+  /// File path: assets/images/banner_con_gdg.svg
+  SvgGenImage get bannerConGdg =>
+      const SvgGenImage('assets/images/banner_con_gdg.svg');
+
+  /// File path: assets/images/banner_principal.svg
+  SvgGenImage get bannerPrincipal =>
+      const SvgGenImage('assets/images/banner_principal.svg');
 
   /// File path: assets/images/logo.svg
   SvgGenImage get logo => const SvgGenImage('assets/images/logo.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [banner1, logo];
+  List<SvgGenImage> get values => [bannerConGdg, bannerPrincipal, logo];
 }
 
 class Assets {
