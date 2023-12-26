@@ -15,7 +15,7 @@ class AboutView extends StatelessWidget {
     final aboutUsText =
         'Flutter Conf Paraguay ${l10n.about_flutter_conf_paraguay}';
 
-    return Container(
+    return SizedBox(
       height: 300,
       child: size.width > 800
           ? Row(
