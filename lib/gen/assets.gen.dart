@@ -32,6 +32,20 @@ class $AssetsAnimationGen {
       [bubbleAnimation, loadingFlutterLogo, workingInProgressAnimation];
 }
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/linkedin.png
+  AssetGenImage get linkedin =>
+      const AssetGenImage('assets/icons/linkedin.png');
+
+  /// File path: assets/icons/twitter.png
+  AssetGenImage get twitter => const AssetGenImage('assets/icons/twitter.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [linkedin, twitter];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -49,6 +63,7 @@ class Assets {
   Assets._();
 
   static const $AssetsAnimationGen animation = $AssetsAnimationGen();
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
