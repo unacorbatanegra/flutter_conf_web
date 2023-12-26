@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/feature/landing/models/speaker_model.dart';
+import 'package:flutter_conf_web/gen/assets.gen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SpeakerCard extends StatelessWidget {
   final SpeakerModel speaker;
@@ -9,38 +11,30 @@ class SpeakerCard extends StatelessWidget {
     required this.speaker,
   });
 
+  Future<void> _launchUrl(String link) async {
+    final url = Uri.parse(link);
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 150,
+    return Card(
       margin: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-      ),
       child: Column(
         children: [
-          Container(
-            width: 150,
-            height: 150,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(8),
-                topRight: Radius.circular(8),
-              ),
-            ),
-            child: Image.network(
-              speaker.imagePath,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return const Center(
-                  child: Icon(
-                    Icons.error,
-                    color: Colors.red,
-                  ),
-                );
-              },
-            ),
+          Image.network(
+            speaker.imagePath,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) {
+              return const Center(
+                child: Icon(
+                  Icons.error,
+                  color: Colors.red,
+                ),
+              );
+            },
           ),
           Expanded(
             child: Padding(
@@ -68,21 +62,36 @@ class SpeakerCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  const Spacer(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.link,
-                          color: Colors.blue,
+                        tooltip: 'Twitter',
+                        onPressed: () {
+                          try {
+                            _launchUrl(speaker.twitterUrl);
+                          } catch (e) {
+                            debugPrint(e.toString());
+                          }
+                        },
+                        icon: Assets.icons.twitter.image(
+                          width: 20,
+                          height: 20,
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.link,
-                          color: Colors.blue,
+                        tooltip: 'Linkedin',
+                        onPressed: () {
+                          try {
+                            _launchUrl(speaker.linkedinUrl);
+                          } catch (e) {
+                            debugPrint(e.toString());
+                          }
+                        },
+                        icon: Assets.icons.linkedin.image(
+                          width: 20,
+                          height: 20,
                         ),
                       ),
                     ],
