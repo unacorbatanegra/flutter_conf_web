@@ -89,19 +89,24 @@ class LandingPage extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
+                const SizedBox(height: 50),
                 SizedBox(
                   key: speakersKey,
-                  height: 400,
+                  height: 500,
                   child: GridView.count(
                     crossAxisCount: 1,
                     shrinkWrap: true,
+                    mainAxisSpacing: 20,
                     scrollDirection: Axis.horizontal,
                     children: List.generate(
                       speakers.length,
                       (index) {
                         final speaker = speakers[index];
-                        return SpeakerCard(
-                          speaker: speaker,
+                        return SizedBox(
+                          width: 300,
+                          child: SpeakerCard(
+                            speaker: speaker,
+                          ),
                         );
                       },
                     ),
