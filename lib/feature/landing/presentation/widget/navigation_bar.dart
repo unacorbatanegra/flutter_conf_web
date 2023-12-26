@@ -71,13 +71,16 @@ class _NavBarItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: _onTap,
-      child: Text(
-        _title,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 18,
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: TextButton(
+        onPressed: _onTap,
+        child: Text(
+          _title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+          ),
         ),
       ),
     );
