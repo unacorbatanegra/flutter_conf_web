@@ -27,3 +27,54 @@ class SpeakerModel extends Equatable {
         twitterUrl,
       ];
 }
+
+const List<SpeakerModel> speakers = [
+  SpeakerModel(
+    imagePath: 'https://xsgames.co/randomusers/assets/avatars/male/46.jpg',
+    name: 'Speaker 1',
+    profession: 'Flutter Developer',
+    talkTitle: 'Flutter Conf 2021',
+    linkedinUrl: 'https://www.linkedin.com/',
+    twitterUrl: 'https://twitter.com/',
+  ),
+  SpeakerModel(
+    imagePath: 'https://xsgames.co/randomusers/assets/avatars/male/46.jpg',
+    name: 'Speaker 2',
+    profession: 'Flutter Developer',
+    talkTitle: 'Flutter Conf 2021',
+    linkedinUrl: 'https://www.linkedin.com/',
+    twitterUrl: 'https://twitter.com/',
+  ),
+  SpeakerModel(
+    imagePath: 'https://xsgames.co/randomusers/assets/avatars/male/46.jpg',
+    name: 'Speaker 3',
+    profession: 'Flutter Developer',
+    talkTitle: 'Flutter Conf 2021',
+    linkedinUrl: 'https://www.linkedin.com/',
+    twitterUrl: 'https://twitter.com/',
+  ),
+  SpeakerModel(
+    imagePath: 'https://xsgames.co/randomusers/assets/avatars/male/46.jpg',
+    name: 'Speaker 4',
+    profession: 'Flutter Developer',
+    talkTitle: 'Flutter Conf 2021',
+    linkedinUrl: 'https://www.linkedin.com/',
+    twitterUrl: 'https://twitter.com/',
+  ),
+  SpeakerModel(
+    imagePath: 'https://xsgames.co/randomusers/assets/avatars/male/46.jpg',
+    name: 'Speaker 5',
+    profession: 'Flutter Developer',
+    talkTitle: 'Flutter Conf 2021',
+    linkedinUrl: 'https://www.linkedin.com/',
+    twitterUrl: 'https://twitter.com/',
+  ),
+  SpeakerModel(
+    imagePath: 'https://xsgames.co/randomusers/assets/avatars/male/46.jpg',
+    name: 'Speaker 6',
+    profession: 'Flutter Developer',
+    talkTitle: 'Flutter Conf 2021',
+    linkedinUrl: 'https://www.linkedin.com/',
+    twitterUrl: 'https://twitter.com/',
+  ),
+];
