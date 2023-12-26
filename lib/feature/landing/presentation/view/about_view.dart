@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
+import 'package:flutter_conf_web/l10n/l10n.dart';
 
 class AboutView extends StatelessWidget {
   const AboutView({super.key});
@@ -7,11 +8,12 @@ class AboutView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final l10n = context.l10n;
 
-    const aboutUsLabel = 'Sobre Flutter Conf Paraguay';
+    final aboutUsLabel = '${l10n.about} Flutter Conf Paraguay';
 
-    const aboutUsText =
-        'Flutter Conf Paraguay es una conferencia de tecnología que se realiza en Paraguay, con el objetivo de compartir conocimientos y experiencias sobre Flutter, el framework de Google para crear aplicaciones multiplataforma.';
+    final aboutUsText =
+        'Flutter Conf Paraguay ${l10n.about_flutter_conf_paraguay}';
 
     return Container(
       height: 300,
@@ -19,18 +21,18 @@ class AboutView extends StatelessWidget {
           ? Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Expanded(
+                Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         aboutUsLabel,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       Text(

@@ -2,5 +2,15 @@
   "helloWorld": "Hello World!",
   "@helloWorld": {
     "description": "The conventional newborn programmer greeting"
-  }
+  },
+  "home": "Home",
+  "about_us": "About us",
+  "speakers": "Speakers",
+  "@speakers": {
+    "description": "Speakers text"
+  },
+  "sponsors": "Sponsors",
+  "team": "Team",
+  "about": "About",
+  "about_flutter_conf_paraguay":"is a technology conference held in Paraguay, with the goal of sharing knowledge and experiences about Flutter, Google's framework for creating cross-platform applications."
 }

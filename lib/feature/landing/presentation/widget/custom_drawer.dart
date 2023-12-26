@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_conf_web/l10n/l10n.dart';
 
 class CustomDrawer extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey;
@@ -20,15 +21,17 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Drawer(
       child: Container(
         color: Colors.blue[900],
         child: ListView(
           children: [
             ListTile(
-              title: const Text(
-                'Home',
-                style: TextStyle(
+              title: Text(
+                l10n.home,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                 ),
@@ -39,9 +42,9 @@ class CustomDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              title: const Text(
-                'About',
-                style: TextStyle(
+              title: Text(
+                l10n.about_us,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                 ),
@@ -52,9 +55,9 @@ class CustomDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              title: const Text(
-                'Speakers',
-                style: TextStyle(
+              title: Text(
+                l10n.speakers,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                 ),
@@ -65,9 +68,9 @@ class CustomDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              title: const Text(
-                'Sponsors',
-                style: TextStyle(
+              title: Text(
+                l10n.sponsors,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                 ),
@@ -77,9 +80,9 @@ class CustomDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              title: const Text(
-                'Team',
-                style: TextStyle(
+              title: Text(
+                l10n.team,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                 ),

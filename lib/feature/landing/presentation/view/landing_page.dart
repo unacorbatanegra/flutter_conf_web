@@ -5,6 +5,7 @@ import 'package:flutter_conf_web/feature/landing/presentation/widget/custom_draw
 import 'package:flutter_conf_web/feature/landing/presentation/widget/navigation_bar.dart';
 import 'package:flutter_conf_web/feature/landing/presentation/widget/speaker_card.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
+import 'package:flutter_conf_web/l10n/l10n.dart';
 
 class LandingPage extends StatelessWidget {
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -37,6 +38,8 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final l10n = context.l10n;
+
     return Scaffold(
       key: scaffoldKey,
       endDrawer: CustomDrawer(
@@ -78,9 +81,9 @@ class LandingPage extends StatelessWidget {
                   key: aboutKey,
                 ),
                 const SizedBox(height: 50),
-                const Text(
-                  'Speakers',
-                  style: TextStyle(
+                Text(
+                  l10n.speakers,
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),

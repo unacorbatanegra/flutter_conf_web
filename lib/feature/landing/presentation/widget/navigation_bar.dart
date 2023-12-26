@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
+import 'package:flutter_conf_web/l10n/l10n.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey;
@@ -21,6 +22,7 @@ class CustomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     final size = MediaQuery.of(context).size;
     const breakpoint = 1400;
 
@@ -50,33 +52,33 @@ class CustomNavigationBar extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 _NavBarItem(
-                  'Home',
+                  l10n.home,
                   onTap: () {
                     _onScrollToHome();
                   },
                 ),
                 const SizedBox(width: 60),
                 _NavBarItem(
-                  'About',
+                  l10n.about_us,
                   onTap: () {
                     _onScrollToAbout();
                   },
                 ),
                 const SizedBox(width: 60),
                 _NavBarItem(
-                  'Speakers',
+                  l10n.speakers,
                   onTap: () {
                     _onScrollToSpeakers();
                   },
                 ),
                 const SizedBox(width: 60),
                 _NavBarItem(
-                  'Sponsors',
+                  l10n.sponsors,
                   onTap: () {},
                 ),
                 const SizedBox(width: 60),
                 _NavBarItem(
-                  'Team',
+                  l10n.team,
                   onTap: () {},
                 ),
               ],
