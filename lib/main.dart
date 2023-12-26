@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_conf_web/core/themes/themes.dart';
+import 'package:flutter_conf_web/core/themes/colors.dart';
 import 'package:flutter_conf_web/feature/landing/presentation/view/landing_page.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,9 +20,25 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       child: MaterialApp(
         title: 'Flutter Demo',
-        theme: AppTheme.appThemeData,
-        home: const LandingPage(),
+        debugShowCheckedModeBanner: false,
+        theme: _buildTheme(Brightness.light),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: const [
+          Locale('en'),
+          Locale('es'),
+        ],
+        home: LandingPage(),
       ),
+    );
+  }
+
+  ThemeData _buildTheme(brightness) {
+    var baseTheme = ThemeData(brightness: brightness);
+
+    return baseTheme.copyWith(
+      textTheme: GoogleFonts.latoTextTheme(baseTheme.textTheme),
+      colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
+      useMaterial3: true,
     );
   }
 }

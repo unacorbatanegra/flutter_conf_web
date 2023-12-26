@@ -25,7 +25,7 @@ class LeyendsWidget extends StatelessWidget {
               color: Colors.white,
               fontSize: 15.sp,
               fontWeight: FontWeight.w300,
-              textStyle: TextStyle(overflow: TextOverflow.ellipsis)),
+              textStyle: const TextStyle(overflow: TextOverflow.ellipsis)),
         ),
         RotateAnimatedText(
           'Making coffee...',
