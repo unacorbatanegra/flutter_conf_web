@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_conf_web/gen/assets.gen.dart';
 
 class AboutView extends StatelessWidget {
   const AboutView({super.key});
@@ -7,16 +8,23 @@ class AboutView extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return SizedBox(
+    const aboutUsLabel = 'Sobre Flutter Conf Paraguay';
+
+    const aboutUsText =
+        'Flutter Conf Paraguay es una conferencia de tecnología que se realiza en Paraguay, con el objetivo de compartir conocimientos y experiencias sobre Flutter, el framework de Google para crear aplicaciones multiplataforma.';
+
+    return Container(
       height: 300,
       child: size.width > 800
-          ? const Row(
+          ? Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded(
+                const Expanded(
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Sobre Nosotros',
+                        aboutUsLabel,
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
@@ -26,40 +34,30 @@ class AboutView extends StatelessWidget {
                         height: 16,
                       ),
                       Text(
-                        'Flutter Conf Paraguay es una conferencia de tecnología que se realiza en Paraguay, con el objetivo de compartir conocimientos y experiencias sobre Flutter, el framework de Google para crear aplicaciones multiplataforma.',
+                        aboutUsText,
                       ),
                     ],
                   ),
                 ),
                 Expanded(
-                  child: Column(
-                    children: [
-                      FlutterLogo(
-                        size: 100,
-                      ),
-                    ],
+                  child: Assets.images.bannerConGdg.svg(
+                    width: size.width,
+                    height: 300,
                   ),
                 ),
               ],
             )
-          : const Column(
+          : Column(
               children: [
-                Column(
-                  children: [
-                    Text(
-                      'Sobre Nosotros',
-                    ),
-                    Text(
-                      'Flutter Conf Paraguay es una conferencia de tecnología que se realiza en Paraguay, con el objetivo de compartir conocimientos y experiencias sobre Flutter, el framework de Google para crear aplicaciones multiplataforma.',
-                    ),
-                  ],
+                Text(
+                  aboutUsLabel,
                 ),
-                Column(
-                  children: [
-                    FlutterLogo(
-                      size: 100,
-                    ),
-                  ],
+                Text(
+                  aboutUsText,
+                ),
+                const SizedBox(height: 16),
+                Assets.images.bannerConGdg.svg(
+                  width: size.width,
                 ),
               ],
             ),
