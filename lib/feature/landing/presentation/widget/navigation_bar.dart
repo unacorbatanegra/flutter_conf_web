@@ -3,11 +3,21 @@ import 'package:flutter_conf_web/gen/assets.gen.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey;
+  final VoidCallback _onScrollToHome;
+  final VoidCallback _onScrollToAbout;
+  final VoidCallback _onScrollToSpeakers;
 
   const CustomNavigationBar({
-    super.key,
+    Key? key,
     required GlobalKey<ScaffoldState> scaffoldKey,
-  }) : _scaffoldKey = scaffoldKey;
+    required VoidCallback onScrollToHome,
+    required VoidCallback onScrollToAbout,
+    required VoidCallback onScrollToSpeakers,
+  })  : _scaffoldKey = scaffoldKey,
+        _onScrollToHome = onScrollToHome,
+        _onScrollToAbout = onScrollToAbout,
+        _onScrollToSpeakers = onScrollToSpeakers,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,22 +46,39 @@ class CustomNavigationBar extends StatelessWidget {
               },
             ),
           if (size.width > breakpoint)
-            const Row(
+            Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                _NavBarItem('Home'),
-                SizedBox(width: 60),
-                _NavBarItem('About'),
-                SizedBox(width: 60),
-                _NavBarItem('Speakers'),
-                SizedBox(width: 60),
-                _NavBarItem('Agenda'),
-                SizedBox(width: 60),
-                _NavBarItem('Contact'),
-                SizedBox(width: 60),
-                _NavBarItem('Sponsors'),
-                SizedBox(width: 60),
-                _NavBarItem('Team'),
+                _NavBarItem(
+                  'Home',
+                  onTap: () {
+                    _onScrollToHome();
+                  },
+                ),
+                const SizedBox(width: 60),
+                _NavBarItem(
+                  'About',
+                  onTap: () {
+                    _onScrollToAbout();
+                  },
+                ),
+                const SizedBox(width: 60),
+                _NavBarItem(
+                  'Speakers',
+                  onTap: () {
+                    _onScrollToSpeakers();
+                  },
+                ),
+                const SizedBox(width: 60),
+                _NavBarItem(
+                  'Sponsors',
+                  onTap: () {},
+                ),
+                const SizedBox(width: 60),
+                _NavBarItem(
+                  'Team',
+                  onTap: () {},
+                ),
               ],
             )
         ],
