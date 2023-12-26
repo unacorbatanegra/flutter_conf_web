@@ -35,6 +35,13 @@ class $AssetsAnimationGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/github.png
+  AssetGenImage get github => const AssetGenImage('assets/icons/github.png');
+
+  /// File path: assets/icons/instagram.png
+  AssetGenImage get instagram =>
+      const AssetGenImage('assets/icons/instagram.png');
+
   /// File path: assets/icons/linkedin.png
   AssetGenImage get linkedin =>
       const AssetGenImage('assets/icons/linkedin.png');
@@ -43,7 +50,7 @@ class $AssetsIconsGen {
   AssetGenImage get twitter => const AssetGenImage('assets/icons/twitter.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [linkedin, twitter];
+  List<AssetGenImage> get values => [github, instagram, linkedin, twitter];
 }
 
 class $AssetsImagesGen {
