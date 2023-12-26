@@ -21,25 +21,38 @@ class SpeakerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(8),
-      child: Column(
-        children: [
-          Image.network(
-            speaker.imagePath,
-            fit: BoxFit.cover,
-            errorBuilder: (context, error, stackTrace) {
-              return const Center(
-                child: Icon(
-                  Icons.error,
-                  color: Colors.red,
-                ),
-              );
-            },
+      elevation: 5,
+      clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.blue[900]!,
+              Colors.blue[800]!,
+            ],
           ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: Image.network(speaker.imagePath, fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                return Assets.images.logo.svg(
+                  fit: BoxFit.cover,
+                );
+              }),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     speaker.name,
@@ -55,6 +68,7 @@ class SpeakerCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  SizedBox(height: 8),
                   Text(
                     speaker.talkTitle,
                     style: const TextStyle(
@@ -62,7 +76,6 @@ class SpeakerCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const Spacer(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -99,8 +112,8 @@ class SpeakerCard extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
