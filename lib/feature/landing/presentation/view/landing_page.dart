@@ -8,27 +8,75 @@ import 'package:flutter_conf_web/gen/assets.gen.dart';
 
 class LandingPage extends StatelessWidget {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final scrollController = ScrollController();
+  final homeKey = GlobalKey();
+  final aboutKey = GlobalKey();
+  final speakersKey = GlobalKey();
+
   LandingPage({super.key});
+
+  void scrollToKey(GlobalKey key) {
+    final RenderBox? renderBox =
+        key.currentContext?.findRenderObject() as RenderBox?;
+    final position = renderBox?.localToGlobal(Offset.zero);
+    scrollController.animateTo(
+      position?.dy ?? 0,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  void scrollToTop() {
+    scrollController.animateTo(
+      0,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       key: scaffoldKey,
-      endDrawer: const CustomDrawer(),
+      endDrawer: CustomDrawer(
+        scaffoldKey: scaffoldKey,
+        onScrollToHome: () {
+          scrollToTop();
+        },
+        onScrollToAbout: () {
+          scrollToKey(aboutKey);
+        },
+        onScrollToSpeakers: () {
+          scrollToKey(speakersKey);
+        },
+      ),
       body: Column(
         children: [
           CustomNavigationBar(
             scaffoldKey: scaffoldKey,
+            onScrollToHome: () {
+              scrollToTop();
+            },
+            onScrollToAbout: () {
+              scrollToKey(aboutKey);
+            },
+            onScrollToSpeakers: () {
+              scrollToKey(speakersKey);
+            },
           ),
           Expanded(
             child: ListView(
+              controller: scrollController,
               children: [
                 Assets.images.banner1.svg(
+                  key: homeKey,
                   width: size.width,
                 ),
                 const SizedBox(height: 50),
-                const AboutView(),
+                AboutView(
+                  key: aboutKey,
+                ),
                 const SizedBox(height: 50),
                 const Text(
                   'Speakers',
@@ -39,6 +87,7 @@ class LandingPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(
+                  key: speakersKey,
                   height: 400,
                   child: GridView.count(
                     crossAxisCount: 1,
