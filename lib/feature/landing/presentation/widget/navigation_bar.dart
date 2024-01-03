@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_conf_web/feature/landing/presentation/view/team_view.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
 
@@ -84,7 +85,13 @@ class CustomNavigationBar extends StatelessWidget {
                 const SizedBox(width: 60),
                 _NavBarItem(
                   l10n.team,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const TeamView(),
+                      ),
+                    );
+                  },
                 ),
               ],
             )
