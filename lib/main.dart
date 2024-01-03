@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       child: MaterialApp.router(
         routerConfig: _router,
-        title: 'Flutter Demo',
+        title: 'FlutterConf Paraguay',
         debugShowCheckedModeBanner: false,
         theme: _buildTheme(Brightness.light),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
