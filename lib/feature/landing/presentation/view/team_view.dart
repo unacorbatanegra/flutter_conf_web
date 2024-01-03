@@ -45,13 +45,13 @@ class TeamView extends StatelessWidget {
                     fontSize: 24,
                   ),
                 ),
-                const IconButton(
-                  icon: Icon(
-                    Icons.search,
-                    color: Colors.transparent,
-                  ),
-                  onPressed: null,
-                ),
+                if (size.width > breakpointSmallScreen)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Assets.images.dash.image(),
+                  )
+                else
+                  const SizedBox.shrink(),
               ],
             ),
           ),
