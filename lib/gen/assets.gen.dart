@@ -68,13 +68,16 @@ class $AssetsImagesGen {
   SvgGenImage get bannerPrincipal =>
       const SvgGenImage('assets/images/banner_principal.svg');
 
+  /// File path: assets/images/dash.png
+  AssetGenImage get dash => const AssetGenImage('assets/images/dash.png');
+
   /// File path: assets/images/logo.svg
   SvgGenImage get logo => const SvgGenImage('assets/images/logo.svg');
 
   $AssetsImagesSpeakersGen get speakers => const $AssetsImagesSpeakersGen();
 
   /// List of all assets
-  List<SvgGenImage> get values => [bannerConGdg, bannerPrincipal, logo];
+  List<dynamic> get values => [bannerConGdg, bannerPrincipal, dash, logo];
 }
 
 class $AssetsImagesSpeakersGen {
