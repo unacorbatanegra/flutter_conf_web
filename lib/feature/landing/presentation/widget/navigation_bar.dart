@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey;
@@ -75,16 +76,18 @@ class CustomNavigationBar extends StatelessWidget {
                   },
                 ),
                 const SizedBox(width: 60),
-                _NavBarItem(
-                  l10n.sponsors,
-                  onTap: () {
-                    _onScollToSponsors();
-                  },
-                ),
-                const SizedBox(width: 60),
+                // _NavBarItem(
+                //   l10n.sponsors,
+                //   onTap: () {
+                //     _onScollToSponsors();
+                //   },
+                // ),
+                // const SizedBox(width: 60),
                 _NavBarItem(
                   l10n.team,
-                  onTap: () {},
+                  onTap: () {
+                    context.push('/team');
+                  },
                 ),
               ],
             )

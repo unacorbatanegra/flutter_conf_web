@@ -49,8 +49,12 @@ class $AssetsIconsGen {
   /// File path: assets/icons/twitter.png
   AssetGenImage get twitter => const AssetGenImage('assets/icons/twitter.png');
 
+  /// File path: assets/icons/youtube.png
+  AssetGenImage get youtube => const AssetGenImage('assets/icons/youtube.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [github, instagram, linkedin, twitter];
+  List<AssetGenImage> get values =>
+      [github, instagram, linkedin, twitter, youtube];
 }
 
 class $AssetsImagesGen {
@@ -60,15 +64,89 @@ class $AssetsImagesGen {
   SvgGenImage get bannerConGdg =>
       const SvgGenImage('assets/images/banner_con_gdg.svg');
 
+  /// File path: assets/images/banner_dash_logo.png
+  AssetGenImage get bannerDashLogo =>
+      const AssetGenImage('assets/images/banner_dash_logo.png');
+
   /// File path: assets/images/banner_principal.svg
   SvgGenImage get bannerPrincipal =>
       const SvgGenImage('assets/images/banner_principal.svg');
 
+  /// File path: assets/images/dash.png
+  AssetGenImage get dash => const AssetGenImage('assets/images/dash.png');
+
+  /// File path: assets/images/dash_logo.png
+  AssetGenImage get dashLogo =>
+      const AssetGenImage('assets/images/dash_logo.png');
+
   /// File path: assets/images/logo.svg
   SvgGenImage get logo => const SvgGenImage('assets/images/logo.svg');
 
+  $AssetsImagesSpeakersGen get speakers => const $AssetsImagesSpeakersGen();
+  $AssetsImagesTeamGen get team => const $AssetsImagesTeamGen();
+
   /// List of all assets
-  List<SvgGenImage> get values => [bannerConGdg, bannerPrincipal, logo];
+  List<dynamic> get values =>
+      [bannerConGdg, bannerDashLogo, bannerPrincipal, dash, dashLogo, logo];
+}
+
+class $AssetsImagesSpeakersGen {
+  const $AssetsImagesSpeakersGen();
+
+  /// File path: assets/images/speakers/speaker_1.png
+  AssetGenImage get speaker1 =>
+      const AssetGenImage('assets/images/speakers/speaker_1.png');
+
+  /// File path: assets/images/speakers/speaker_2.jpg
+  AssetGenImage get speaker2 =>
+      const AssetGenImage('assets/images/speakers/speaker_2.jpg');
+
+  /// File path: assets/images/speakers/speaker_3.jpg
+  AssetGenImage get speaker3 =>
+      const AssetGenImage('assets/images/speakers/speaker_3.jpg');
+
+  /// File path: assets/images/speakers/speaker_4.jpg
+  AssetGenImage get speaker4 =>
+      const AssetGenImage('assets/images/speakers/speaker_4.jpg');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [speaker1, speaker2, speaker3, speaker4];
+}
+
+class $AssetsImagesTeamGen {
+  const $AssetsImagesTeamGen();
+
+  /// File path: assets/images/team/team_1.jpeg
+  AssetGenImage get team1 =>
+      const AssetGenImage('assets/images/team/team_1.jpeg');
+
+  /// File path: assets/images/team/team_2.png
+  AssetGenImage get team2 =>
+      const AssetGenImage('assets/images/team/team_2.png');
+
+  /// File path: assets/images/team/team_3.jpg
+  AssetGenImage get team3 =>
+      const AssetGenImage('assets/images/team/team_3.jpg');
+
+  /// File path: assets/images/team/team_4.jpeg
+  AssetGenImage get team4 =>
+      const AssetGenImage('assets/images/team/team_4.jpeg');
+
+  /// File path: assets/images/team/team_5.jpeg
+  AssetGenImage get team5 =>
+      const AssetGenImage('assets/images/team/team_5.jpeg');
+
+  /// File path: assets/images/team/team_6.jpeg
+  AssetGenImage get team6 =>
+      const AssetGenImage('assets/images/team/team_6.jpeg');
+
+  /// File path: assets/images/team/team_7.jpg
+  AssetGenImage get team7 =>
+      const AssetGenImage('assets/images/team/team_7.jpg');
+
+  /// List of all assets
+  List<AssetGenImage> get values =>
+      [team1, team2, team3, team4, team5, team6, team7];
 }
 
 class Assets {

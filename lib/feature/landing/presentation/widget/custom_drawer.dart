@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomDrawer extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey;
@@ -31,6 +33,15 @@ class CustomDrawer extends StatelessWidget {
         color: Colors.blue[900],
         child: ListView(
           children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Assets.images.dashLogo.image(
+                fit: BoxFit.contain,
+              ),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
             ListTile(
               title: Text(
                 l10n.home,
@@ -44,6 +55,7 @@ class CustomDrawer extends StatelessWidget {
                 _onScrollToHome();
               },
             ),
+            const Divider(),
             ListTile(
               title: Text(
                 l10n.about_us,
@@ -57,6 +69,7 @@ class CustomDrawer extends StatelessWidget {
                 _onScrollToAbout();
               },
             ),
+            const Divider(),
             ListTile(
               title: Text(
                 l10n.speakers,
@@ -70,19 +83,20 @@ class CustomDrawer extends StatelessWidget {
                 _onScrollToSpeakers();
               },
             ),
-            ListTile(
-              title: Text(
-                l10n.sponsors,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
-              ),
-              onTap: () {
-                _scaffoldKey.currentState?.closeEndDrawer();
-                _onScollToSponsors();
-              },
-            ),
+            const Divider(),
+            // ListTile(
+            //   title: Text(
+            //     l10n.sponsors,
+            //     style: const TextStyle(
+            //       color: Colors.white,
+            //       fontSize: 18,
+            //     ),
+            //   ),
+            //   onTap: () {
+            //     _scaffoldKey.currentState?.closeEndDrawer();
+            //     _onScollToSponsors();
+            //   },
+            // ),
             ListTile(
               title: Text(
                 l10n.team,
@@ -93,6 +107,7 @@ class CustomDrawer extends StatelessWidget {
               ),
               onTap: () {
                 _scaffoldKey.currentState?.closeEndDrawer();
+                context.push('/team');
               },
             ),
           ],

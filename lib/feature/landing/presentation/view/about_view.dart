@@ -15,7 +15,11 @@ class AboutView extends StatelessWidget {
     final aboutUsText =
         'Flutter Conf Paraguay ${l10n.about_flutter_conf_paraguay}';
 
-    return SizedBox(
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 32,
+      ),
       height: 300,
       child: size.width > 800
           ? Row(
@@ -42,7 +46,7 @@ class AboutView extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: Assets.images.bannerConGdg.svg(
+                  child: Assets.images.dash.image(
                     width: size.width,
                     height: 300,
                   ),
@@ -51,15 +55,27 @@ class AboutView extends StatelessWidget {
             )
           : Column(
               children: [
+                Expanded(
+                  child: Assets.images.dash.image(
+                    width: size.width,
+                    height: 300,
+                  ),
+                ),
+                const SizedBox(height: 16),
                 Text(
                   aboutUsLabel,
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 16,
                 ),
                 Text(
                   aboutUsText,
-                ),
-                const SizedBox(height: 16),
-                Assets.images.bannerConGdg.svg(
-                  width: size.width,
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),
