@@ -70,19 +70,19 @@ class CustomDrawer extends StatelessWidget {
                 _onScrollToSpeakers();
               },
             ),
-            ListTile(
-              title: Text(
-                l10n.sponsors,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
-              ),
-              onTap: () {
-                _scaffoldKey.currentState?.closeEndDrawer();
-                _onScollToSponsors();
-              },
-            ),
+            // ListTile(
+            //   title: Text(
+            //     l10n.sponsors,
+            //     style: const TextStyle(
+            //       color: Colors.white,
+            //       fontSize: 18,
+            //     ),
+            //   ),
+            //   onTap: () {
+            //     _scaffoldKey.currentState?.closeEndDrawer();
+            //     _onScollToSponsors();
+            //   },
+            // ),
             ListTile(
               title: Text(
                 l10n.team,

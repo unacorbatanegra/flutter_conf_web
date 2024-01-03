@@ -56,7 +56,7 @@ class LandingPage extends StatelessWidget {
           scrollToKey(speakersKey);
         },
         onScollToSponsors: () {
-          scrollToKey(sponsorsKey);
+          // scrollToKey(sponsorsKey);
         },
       ),
       body: Column(
@@ -73,7 +73,7 @@ class LandingPage extends StatelessWidget {
               scrollToKey(speakersKey);
             },
             onScollToSponsors: () {
-              scrollToKey(sponsorsKey);
+              // scrollToKey(sponsorsKey);
             },
           ),
           Expanded(
@@ -118,32 +118,32 @@ class LandingPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 50),
-                Text(
-                  l10n.sponsors,
-                  key: sponsorsKey,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 50),
-                SizedBox(
-                  height: 200,
-                  child: GridView.count(
-                    crossAxisCount: 1,
-                    shrinkWrap: true,
-                    mainAxisSpacing: 20,
-                    scrollDirection: Axis.horizontal,
-                    children: List.generate(
-                      5,
-                      (index) {
-                        return const FlutterLogo();
-                      },
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 50),
+                // Text(
+                //   l10n.sponsors,
+                //   key: sponsorsKey,
+                //   style: const TextStyle(
+                //     fontSize: 20,
+                //     fontWeight: FontWeight.bold,
+                //   ),
+                //   textAlign: TextAlign.center,
+                // ),
+                // const SizedBox(height: 50),
+                // SizedBox(
+                //   height: 200,
+                //   child: GridView.count(
+                //     crossAxisCount: 1,
+                //     shrinkWrap: true,
+                //     mainAxisSpacing: 20,
+                //     scrollDirection: Axis.horizontal,
+                //     children: List.generate(
+                //       5,
+                //       (index) {
+                //         return const FlutterLogo();
+                //       },
+                //     ),
+                //   ),
+                // ),
+                // const SizedBox(height: 50),
               ],
             ),
           ),
