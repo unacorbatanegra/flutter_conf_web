@@ -127,8 +127,12 @@ class $AssetsImagesTeamGen {
   AssetGenImage get team5 =>
       const AssetGenImage('assets/images/team/team_5.jpeg');
 
+  /// File path: assets/images/team/team_6.jpeg
+  AssetGenImage get team6 =>
+      const AssetGenImage('assets/images/team/team_6.jpeg');
+
   /// List of all assets
-  List<AssetGenImage> get values => [team1, team2, team3, team4, team5];
+  List<AssetGenImage> get values => [team1, team2, team3, team4, team5, team6];
 }
 
 class Assets {
