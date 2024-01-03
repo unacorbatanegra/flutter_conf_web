@@ -171,69 +171,66 @@ class OverlayTeamCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         color: Colors.black.withOpacity(0.5),
-        child: Align(
-          alignment: Alignment.bottomCenter,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                team.name,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              team.name,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
               ),
-              Text(
-                team.role,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
+            ),
+            Text(
+              team.role,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18,
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (team.twitterUrl != null)
-                    IconButton(
-                      icon: Assets.icons.twitter.image(
-                        color: Colors.white,
-                        width: 20,
-                        height: 20,
-                      ),
-                      onPressed: () {
-                        launchUrlSocialMedia(team.twitterUrl!);
-                      },
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (team.twitterUrl != null)
+                  IconButton(
+                    icon: Assets.icons.twitter.image(
+                      color: Colors.white,
+                      width: 20,
+                      height: 20,
                     ),
-                  if (team.linkedinUrl != null)
-                    IconButton(
-                      icon: Assets.icons.linkedin.image(
-                        color: Colors.white,
-                        width: 20,
-                        height: 20,
-                      ),
-                      onPressed: () {
-                        launchUrlSocialMedia(team.linkedinUrl!);
-                      },
+                    onPressed: () {
+                      launchUrlSocialMedia(team.twitterUrl!);
+                    },
+                  ),
+                if (team.linkedinUrl != null)
+                  IconButton(
+                    icon: Assets.icons.linkedin.image(
+                      color: Colors.white,
+                      width: 20,
+                      height: 20,
                     ),
-                  if (team.githubUrl != null)
-                    IconButton(
-                      icon: Assets.icons.github.image(
-                        color: Colors.white,
-                        width: 20,
-                        height: 20,
-                      ),
-                      onPressed: () {
-                        launchUrlSocialMedia(team.githubUrl!);
-                      },
+                    onPressed: () {
+                      launchUrlSocialMedia(team.linkedinUrl!);
+                    },
+                  ),
+                if (team.githubUrl != null)
+                  IconButton(
+                    icon: Assets.icons.github.image(
+                      color: Colors.white,
+                      width: 20,
+                      height: 20,
                     ),
-                ],
-              ),
-            ],
-          ),
+                    onPressed: () {
+                      launchUrlSocialMedia(team.githubUrl!);
+                    },
+                  ),
+              ],
+            ),
+          ],
         ));
   }
 }
