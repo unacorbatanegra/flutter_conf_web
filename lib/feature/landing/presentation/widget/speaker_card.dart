@@ -27,7 +27,6 @@ class SpeakerCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: Container(
-        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -42,12 +41,16 @@ class SpeakerCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
-              child: Image.network(speaker.imagePath, fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                return Assets.images.logo.svg(
-                  fit: BoxFit.cover,
-                );
-              }),
+              child: Image.asset(
+                speaker.imagePath,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Icon(
+                    Icons.error,
+                    color: Colors.white,
+                  );
+                },
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -59,14 +62,19 @@ class SpeakerCard extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
+                    textAlign: TextAlign.center,
                   ),
+                  const SizedBox(height: 8),
                   Text(
                     speaker.profession,
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
+                    textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 8),
                   Text(
@@ -74,39 +82,46 @@ class SpeakerCard extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
+                    textAlign: TextAlign.center,
                   ),
+                  const SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      IconButton(
-                        tooltip: 'Twitter',
-                        onPressed: () {
-                          try {
-                            _launchUrl(speaker.twitterUrl);
-                          } catch (e) {
-                            debugPrint(e.toString());
-                          }
-                        },
-                        icon: Assets.icons.twitter.image(
-                          width: 20,
-                          height: 20,
+                      if (speaker.twitterUrl != null)
+                        IconButton(
+                          tooltip: 'Twitter',
+                          onPressed: () {
+                            try {
+                              _launchUrl(speaker.twitterUrl!);
+                            } catch (e) {
+                              debugPrint(e.toString());
+                            }
+                          },
+                          icon: Assets.icons.twitter.image(
+                            width: 20,
+                            height: 20,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                      IconButton(
-                        tooltip: 'Linkedin',
-                        onPressed: () {
-                          try {
-                            _launchUrl(speaker.linkedinUrl);
-                          } catch (e) {
-                            debugPrint(e.toString());
-                          }
-                        },
-                        icon: Assets.icons.linkedin.image(
-                          width: 20,
-                          height: 20,
+                      if (speaker.linkedinUrl != null)
+                        IconButton(
+                          tooltip: 'Linkedin',
+                          onPressed: () {
+                            try {
+                              _launchUrl(speaker.linkedinUrl!);
+                            } catch (e) {
+                              debugPrint(e.toString());
+                            }
+                          },
+                          icon: Assets.icons.linkedin.image(
+                            width: 20,
+                            height: 20,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
                     ],
                   ),
                 ],
