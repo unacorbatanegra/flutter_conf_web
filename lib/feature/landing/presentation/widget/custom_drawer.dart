@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_conf_web/feature/landing/presentation/view/team_view.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -93,6 +94,11 @@ class CustomDrawer extends StatelessWidget {
               ),
               onTap: () {
                 _scaffoldKey.currentState?.closeEndDrawer();
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const TeamView(),
+                  ),
+                );
               },
             ),
           ],
