@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/feature/landing/presentation/view/team_view.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey;
@@ -86,11 +87,7 @@ class CustomNavigationBar extends StatelessWidget {
                 _NavBarItem(
                   l10n.team,
                   onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (_) => const TeamView(),
-                      ),
-                    );
+                    context.push('/team');
                   },
                 ),
               ],
