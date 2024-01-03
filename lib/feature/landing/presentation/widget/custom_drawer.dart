@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/feature/landing/presentation/view/team_view.dart';
+import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -32,6 +33,15 @@ class CustomDrawer extends StatelessWidget {
         color: Colors.blue[900],
         child: ListView(
           children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Assets.images.dashLogo.image(
+                fit: BoxFit.contain,
+              ),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
             ListTile(
               title: Text(
                 l10n.home,
@@ -45,6 +55,7 @@ class CustomDrawer extends StatelessWidget {
                 _onScrollToHome();
               },
             ),
+            const Divider(),
             ListTile(
               title: Text(
                 l10n.about_us,
@@ -58,6 +69,7 @@ class CustomDrawer extends StatelessWidget {
                 _onScrollToAbout();
               },
             ),
+            const Divider(),
             ListTile(
               title: Text(
                 l10n.speakers,
@@ -71,6 +83,7 @@ class CustomDrawer extends StatelessWidget {
                 _onScrollToSpeakers();
               },
             ),
+            const Divider(),
             // ListTile(
             //   title: Text(
             //     l10n.sponsors,
