@@ -122,6 +122,22 @@ class SpeakerCard extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
+                      if (speaker.youtubeUrl != null)
+                        IconButton(
+                          tooltip: 'Youtube',
+                          onPressed: () {
+                            try {
+                              _launchUrl(speaker.youtubeUrl!);
+                            } catch (e) {
+                              debugPrint(e.toString());
+                            }
+                          },
+                          icon: Assets.icons.youtube.image(
+                            width: 20,
+                            height: 20,
+                            color: Colors.white,
+                          ),
+                        ),
                     ],
                   ),
                 ],

@@ -7,6 +7,7 @@ class SpeakerModel extends Equatable {
   final String talkTitle;
   final String? linkedinUrl;
   final String? twitterUrl;
+  final String? youtubeUrl;
 
   const SpeakerModel({
     required this.imagePath,
@@ -15,6 +16,7 @@ class SpeakerModel extends Equatable {
     required this.talkTitle,
     required this.linkedinUrl,
     required this.twitterUrl,
+    required this.youtubeUrl,
   });
 
   @override
@@ -25,6 +27,7 @@ class SpeakerModel extends Equatable {
         talkTitle,
         linkedinUrl,
         twitterUrl,
+        youtubeUrl,
       ];
 }
 
@@ -37,6 +40,7 @@ const List<SpeakerModel> speakers = [
         'Por qué uso Flutter en lugar de nativo?, Flutter, un mundo lleno de animaciones',
     linkedinUrl: 'https://www.linkedin.com/in/diegoveloper/',
     twitterUrl: 'https://twitter.com/diegoveloper',
+    youtubeUrl: 'https://www.youtube.com/diegoveloper',
   ),
   SpeakerModel(
     imagePath: 'assets/images/speakers/speaker_2.jpg',
@@ -46,6 +50,7 @@ const List<SpeakerModel> speakers = [
         'Game Development with Flutter, Hardware hacking with Flutter,  IA Generation with Flutter',
     linkedinUrl: null,
     twitterUrl: null,
+    youtubeUrl: null,
   ),
   SpeakerModel(
     imagePath: 'assets/images/speakers/speaker_3.jpg',
@@ -55,6 +60,7 @@ const List<SpeakerModel> speakers = [
         "Me encantaría compartir con la comunidad un 'roadmap' que he ideado para guiar a juniors a convertirse en semi-seniors o seniors en menos de 1 año.",
     linkedinUrl: 'https://www.linkedin.com/in/kalitodev',
     twitterUrl: null,
+    youtubeUrl: null,
   ),
   SpeakerModel(
     imagePath: 'assets/images/speakers/speaker_4.jpg',
@@ -64,5 +70,6 @@ const List<SpeakerModel> speakers = [
         'Remotamente posible. Cómo llegué a Very Good Ventures desde Misiones - Paraguay',
     linkedinUrl: 'https://www.linkedin.com/in/maria-teresa-samudio/',
     twitterUrl: null,
+    youtubeUrl: null,
   ),
 ];
