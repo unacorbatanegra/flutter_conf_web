@@ -55,25 +55,27 @@ class AboutView extends StatelessWidget {
             )
           : Column(
               children: [
+                Expanded(
+                  child: Assets.images.dash.image(
+                    width: size.width,
+                    height: 300,
+                  ),
+                ),
+                const SizedBox(height: 16),
                 Text(
                   aboutUsLabel,
                   style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
+                  textAlign: TextAlign.center,
                 ),
                 const SizedBox(
                   height: 16,
                 ),
                 Text(
                   aboutUsText,
-                ),
-                const SizedBox(height: 16),
-                Expanded(
-                  child: Assets.images.dash.image(
-                    width: size.width,
-                    height: 300,
-                  ),
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),
