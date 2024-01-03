@@ -69,20 +69,20 @@ class CustomNavigationBar extends StatelessWidget {
                   },
                 ),
                 const SizedBox(width: 60),
-                // _NavBarItem(
-                //   l10n.speakers,
-                //   onTap: () {
-                //     _onScrollToSpeakers();
-                //   },
-                // ),
-                // const SizedBox(width: 60),
                 _NavBarItem(
-                  l10n.sponsors,
+                  l10n.speakers,
                   onTap: () {
-                    _onScollToSponsors();
+                    _onScrollToSpeakers();
                   },
                 ),
                 const SizedBox(width: 60),
+                // _NavBarItem(
+                //   l10n.sponsors,
+                //   onTap: () {
+                //     _onScollToSponsors();
+                //   },
+                // ),
+                // const SizedBox(width: 60),
                 _NavBarItem(
                   l10n.team,
                   onTap: () {
