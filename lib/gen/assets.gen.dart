@@ -64,12 +64,20 @@ class $AssetsImagesGen {
   SvgGenImage get bannerConGdg =>
       const SvgGenImage('assets/images/banner_con_gdg.svg');
 
+  /// File path: assets/images/banner_dash_logo.png
+  AssetGenImage get bannerDashLogo =>
+      const AssetGenImage('assets/images/banner_dash_logo.png');
+
   /// File path: assets/images/banner_principal.svg
   SvgGenImage get bannerPrincipal =>
       const SvgGenImage('assets/images/banner_principal.svg');
 
   /// File path: assets/images/dash.png
   AssetGenImage get dash => const AssetGenImage('assets/images/dash.png');
+
+  /// File path: assets/images/dash_logo.png
+  AssetGenImage get dashLogo =>
+      const AssetGenImage('assets/images/dash_logo.png');
 
   /// File path: assets/images/logo.svg
   SvgGenImage get logo => const SvgGenImage('assets/images/logo.svg');
@@ -78,7 +86,8 @@ class $AssetsImagesGen {
   $AssetsImagesTeamGen get team => const $AssetsImagesTeamGen();
 
   /// List of all assets
-  List<dynamic> get values => [bannerConGdg, bannerPrincipal, dash, logo];
+  List<dynamic> get values =>
+      [bannerConGdg, bannerDashLogo, bannerPrincipal, dash, dashLogo, logo];
 }
 
 class $AssetsImagesSpeakersGen {
