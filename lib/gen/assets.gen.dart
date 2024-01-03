@@ -49,8 +49,12 @@ class $AssetsIconsGen {
   /// File path: assets/icons/twitter.png
   AssetGenImage get twitter => const AssetGenImage('assets/icons/twitter.png');
 
+  /// File path: assets/icons/youtube.png
+  AssetGenImage get youtube => const AssetGenImage('assets/icons/youtube.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [github, instagram, linkedin, twitter];
+  List<AssetGenImage> get values =>
+      [github, instagram, linkedin, twitter, youtube];
 }
 
 class $AssetsImagesGen {
@@ -67,8 +71,33 @@ class $AssetsImagesGen {
   /// File path: assets/images/logo.svg
   SvgGenImage get logo => const SvgGenImage('assets/images/logo.svg');
 
+  $AssetsImagesSpeakersGen get speakers => const $AssetsImagesSpeakersGen();
+
   /// List of all assets
   List<SvgGenImage> get values => [bannerConGdg, bannerPrincipal, logo];
+}
+
+class $AssetsImagesSpeakersGen {
+  const $AssetsImagesSpeakersGen();
+
+  /// File path: assets/images/speakers/speaker_1.png
+  AssetGenImage get speaker1 =>
+      const AssetGenImage('assets/images/speakers/speaker_1.png');
+
+  /// File path: assets/images/speakers/speaker_2.jpg
+  AssetGenImage get speaker2 =>
+      const AssetGenImage('assets/images/speakers/speaker_2.jpg');
+
+  /// File path: assets/images/speakers/speaker_3.jpg
+  AssetGenImage get speaker3 =>
+      const AssetGenImage('assets/images/speakers/speaker_3.jpg');
+
+  /// File path: assets/images/speakers/speaker_4.jpg
+  AssetGenImage get speaker4 =>
+      const AssetGenImage('assets/images/speakers/speaker_4.jpg');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [speaker1, speaker2, speaker3, speaker4];
 }
 
 class Assets {
