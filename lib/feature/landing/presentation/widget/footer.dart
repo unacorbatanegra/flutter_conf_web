@@ -78,6 +78,7 @@ class _FooterDesktop extends StatelessWidget {
         ),
         const SizedBox(width: 10),
         IconButton(
+          tooltip: 'Github',
           onPressed: () {
             launchUrlSocialMedia(
                 'https://github.com/unacorbatanegra/flutter_conf_web');
@@ -90,6 +91,7 @@ class _FooterDesktop extends StatelessWidget {
         ),
         const SizedBox(width: 10),
         IconButton(
+          tooltip: 'Twitter',
           onPressed: () {
             launchUrlSocialMedia('https://twitter.com/flutter_py');
           },
@@ -100,6 +102,7 @@ class _FooterDesktop extends StatelessWidget {
           ),
         ),
         IconButton(
+          tooltip: 'Linkedin',
           onPressed: () {
             launchUrlSocialMedia(
                 'https://www.linkedin.com/company/flutter-conf-paraguay-2024/');
@@ -112,6 +115,7 @@ class _FooterDesktop extends StatelessWidget {
         ),
         // Add instagram
         IconButton(
+          tooltip: 'Instagram',
           onPressed: () {
             launchUrlSocialMedia('https://www.instagram.com/flutterconfpy/');
           },
@@ -142,6 +146,7 @@ class _FooterMobile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
+              tooltip: 'Github',
               onPressed: () {
                 launchUrlSocialMedia(
                     'https://github.com/unacorbatanegra/flutter_conf_web');
@@ -153,6 +158,7 @@ class _FooterMobile extends StatelessWidget {
               ),
             ),
             IconButton(
+              tooltip: 'Twitter',
               onPressed: () {
                 launchUrlSocialMedia('https://twitter.com/flutter_py');
               },
@@ -163,6 +169,7 @@ class _FooterMobile extends StatelessWidget {
               ),
             ),
             IconButton(
+              tooltip: 'Linkedin',
               onPressed: () {
                 launchUrlSocialMedia(
                     'https://www.linkedin.com/company/flutter-conf-paraguay-2024/');
@@ -175,6 +182,7 @@ class _FooterMobile extends StatelessWidget {
             ),
             // Add instagram
             IconButton(
+              tooltip: 'Instagram',
               onPressed: () {
                 launchUrlSocialMedia(
                     'https://www.instagram.com/flutterconfpy/');
