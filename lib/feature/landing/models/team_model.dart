@@ -77,4 +77,12 @@ const team = [
     linkedinUrl: "https://www.linkedin.com/in/doriham-russo-340a40242/",
     githubUrl: null,
   ),
+  Team(
+    name: 'Matias Casco',
+    role: 'Flutter Developer',
+    image: 'assets/images/team/team_7.jpg',
+    twitterUrl: "https://twitter.com/LuisFerBenitez",
+    linkedinUrl: null,
+    githubUrl: null,
+  ),
 ];
