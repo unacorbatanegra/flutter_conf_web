@@ -69,4 +69,12 @@ const team = [
     linkedinUrl: null,
     githubUrl: null,
   ),
+  Team(
+    name: 'Doriham Russo',
+    role: 'Flutter Developer',
+    image: 'assets/images/team/team_6.jpeg',
+    twitterUrl: "https://twitter.com/dorihamR",
+    linkedinUrl: "https://www.linkedin.com/in/doriham-russo-340a40242/",
+    githubUrl: null,
+  ),
 ];
