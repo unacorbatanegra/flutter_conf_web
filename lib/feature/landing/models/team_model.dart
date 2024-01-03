@@ -35,7 +35,7 @@ const team = [
     image: 'assets/images/team/team_1.jpeg',
     twitterUrl: "https://twitter.com/MiguelBelotto00",
     linkedinUrl: null,
-    githubUrl: null,
+    githubUrl: "https://github.com/MiguelBelotto00",
   ),
   Team(
     name: 'Jose Martinez',
@@ -43,7 +43,7 @@ const team = [
     image: 'assets/images/team/team_2.png',
     twitterUrl: "https://twitter.com/JoseMLegal1",
     linkedinUrl: null,
-    githubUrl: null,
+    githubUrl: "https://github.com/josemlegal",
   ),
   Team(
     name: 'María Teresa Samudio González',
@@ -59,14 +59,15 @@ const team = [
     image: 'assets/images/team/team_4.jpeg',
     twitterUrl: "https://twitter.com/unacorbatanegra",
     linkedinUrl: null,
-    githubUrl: null,
+    githubUrl: "https://github.com/unacorbatanegra",
   ),
   Team(
     name: 'Matias Ramirez',
     role: 'Flutter Developer',
     image: 'assets/images/team/team_5.jpeg',
     twitterUrl: "https://twitter.com/RamirezMatias03",
-    linkedinUrl: null,
+    linkedinUrl:
+        "https://www.linkedin.com/in/matias-sebastian-ramirez-brizuela-75b62a199/",
     githubUrl: null,
   ),
   Team(
