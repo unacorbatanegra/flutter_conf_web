@@ -58,6 +58,7 @@ flutter:
     - assets/animation/
     - assets/images/
     - assets/images/speakers/
+    - assets/images/team/
     - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see

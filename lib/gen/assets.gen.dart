@@ -75,6 +75,7 @@ class $AssetsImagesGen {
   SvgGenImage get logo => const SvgGenImage('assets/images/logo.svg');
 
   $AssetsImagesSpeakersGen get speakers => const $AssetsImagesSpeakersGen();
+  $AssetsImagesTeamGen get team => const $AssetsImagesTeamGen();
 
   /// List of all assets
   List<dynamic> get values => [bannerConGdg, bannerPrincipal, dash, logo];
@@ -101,6 +102,33 @@ class $AssetsImagesSpeakersGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [speaker1, speaker2, speaker3, speaker4];
+}
+
+class $AssetsImagesTeamGen {
+  const $AssetsImagesTeamGen();
+
+  /// File path: assets/images/team/team_1.jpeg
+  AssetGenImage get team1 =>
+      const AssetGenImage('assets/images/team/team_1.jpeg');
+
+  /// File path: assets/images/team/team_2.png
+  AssetGenImage get team2 =>
+      const AssetGenImage('assets/images/team/team_2.png');
+
+  /// File path: assets/images/team/team_3.jpg
+  AssetGenImage get team3 =>
+      const AssetGenImage('assets/images/team/team_3.jpg');
+
+  /// File path: assets/images/team/team_4.jpeg
+  AssetGenImage get team4 =>
+      const AssetGenImage('assets/images/team/team_4.jpeg');
+
+  /// File path: assets/images/team/team_5.jpeg
+  AssetGenImage get team5 =>
+      const AssetGenImage('assets/images/team/team_5.jpeg');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [team1, team2, team3, team4, team5];
 }
 
 class Assets {
