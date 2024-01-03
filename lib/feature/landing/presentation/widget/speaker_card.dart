@@ -90,7 +90,7 @@ class SpeakerCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      if (speaker.twitterUrl != null)
+                      if (speaker.twitterUrl != null) ...[
                         IconButton(
                           tooltip: 'Twitter',
                           onPressed: () {
@@ -106,7 +106,10 @@ class SpeakerCard extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
-                      if (speaker.linkedinUrl != null)
+                      ] else
+                        // Any transparent widget to keep the layout
+                        const _FakeIcon(),
+                      if (speaker.linkedinUrl != null) ...[
                         IconButton(
                           tooltip: 'Linkedin',
                           onPressed: () {
@@ -122,7 +125,9 @@ class SpeakerCard extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
-                      if (speaker.youtubeUrl != null)
+                      ] else
+                        const _FakeIcon(),
+                      if (speaker.youtubeUrl != null) ...[
                         IconButton(
                           tooltip: 'Youtube',
                           onPressed: () {
@@ -137,7 +142,9 @@ class SpeakerCard extends StatelessWidget {
                             height: 20,
                             color: Colors.white,
                           ),
-                        ),
+                        )
+                      ] else
+                        const _FakeIcon()
                     ],
                   ),
                 ],
@@ -145,6 +152,22 @@ class SpeakerCard extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _FakeIcon extends StatelessWidget {
+  const _FakeIcon({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const IconButton(
+      onPressed: null,
+      icon: Icon(
+        Icons.info,
+        color: Colors.transparent,
+        size: 20,
       ),
     );
   }
