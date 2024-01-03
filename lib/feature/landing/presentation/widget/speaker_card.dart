@@ -45,7 +45,7 @@ class SpeakerCard extends StatelessWidget {
                 speaker.imagePath,
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) {
-                  return Icon(
+                  return const Icon(
                     Icons.error,
                     color: Colors.white,
                   );
@@ -107,7 +107,6 @@ class SpeakerCard extends StatelessWidget {
                           ),
                         ),
                       ] else
-                        // Any transparent widget to keep the layout
                         const _FakeIcon(),
                       if (speaker.linkedinUrl != null) ...[
                         IconButton(
@@ -158,7 +157,7 @@ class SpeakerCard extends StatelessWidget {
 }
 
 class _FakeIcon extends StatelessWidget {
-  const _FakeIcon({super.key});
+  const _FakeIcon();
 
   @override
   Widget build(BuildContext context) {
