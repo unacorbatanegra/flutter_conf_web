@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/feature/landing/models/speaker_model.dart';
 import 'package:flutter_conf_web/feature/landing/presentation/view/about_view.dart';
 import 'package:flutter_conf_web/feature/landing/presentation/widget/custom_drawer.dart';
+import 'package:flutter_conf_web/feature/landing/presentation/widget/footer.dart';
 import 'package:flutter_conf_web/feature/landing/presentation/widget/navigation_bar.dart';
 import 'package:flutter_conf_web/feature/landing/presentation/widget/speaker_card.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class LandingPage extends StatelessWidget {
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -35,13 +35,6 @@ class LandingPage extends StatelessWidget {
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
     );
-  }
-
-  Future<void> launchUrlSocialMedia(String link) async {
-    final url = Uri.parse(link);
-    if (!await launchUrl(url)) {
-      throw Exception('Could not launch $url');
-    }
   }
 
   @override
@@ -157,91 +150,7 @@ class LandingPage extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            color: Colors.black,
-            height: 50,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: l10n.madeWith,
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      const TextSpan(
-                        text: ' 💙 ',
-                        style: TextStyle(
-                          color: Colors.red,
-                        ),
-                      ),
-                      TextSpan(
-                        text: l10n.by,
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      const TextSpan(
-                        text: ' Flutter Conf Paraguay',
-                        style: TextStyle(
-                          color: Colors.blue,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(width: 10),
-                IconButton(
-                  onPressed: () {
-                    launchUrlSocialMedia(
-                        'https://github.com/unacorbatanegra/flutter_conf_web');
-                  },
-                  icon: Assets.icons.github.image(
-                    width: 20,
-                    height: 20,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(width: 10),
-                IconButton(
-                  onPressed: () {
-                    launchUrlSocialMedia('https://twitter.com/flutter_py');
-                  },
-                  icon: Assets.icons.twitter.image(
-                    width: 20,
-                    height: 20,
-                    color: Colors.white,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    launchUrlSocialMedia(
-                        'https://www.linkedin.com/company/flutter-conf-paraguay-2024/');
-                  },
-                  icon: Assets.icons.linkedin.image(
-                    width: 20,
-                    height: 20,
-                    color: Colors.white,
-                  ),
-                ),
-                // Add instagram
-                IconButton(
-                  onPressed: () {
-                    launchUrlSocialMedia(
-                        'https://www.instagram.com/flutterconfpy/');
-                  },
-                  icon: Assets.icons.instagram.image(
-                    width: 20,
-                    height: 20,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
-          ),
+          const Footer(),
         ],
       ),
     );
