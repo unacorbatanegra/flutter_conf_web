@@ -74,13 +74,11 @@ class _TeamViewState extends State<TeamView> {
                           e.image,
                           fit: BoxFit.cover,
                         ),
-                        if (_isHover[team.indexOf(e)])
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: OverlayTeamCard(
-                              team: e,
-                              launchUrlSocialMedia: launchUrlSocialMedia,
-                            ),
+                        if (_isHover[team.indexOf(e)] ||
+                            size.width < breakpointSmallScreen)
+                          OverlayTeamCard(
+                            team: e,
+                            launchUrlSocialMedia: launchUrlSocialMedia,
                           ),
                       ],
                     ),
@@ -137,11 +135,13 @@ class TeamNavigationBar extends StatelessWidget {
               context.pop();
             },
           ),
-          const Text(
-            'Flutter Conf Paraguay Team 2024',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
+          const Flexible(
+            child: Text(
+              'Flutter Conf Paraguay Team 2024',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
             ),
           ),
           if (size.width > breakpointSmallScreen)
@@ -171,66 +171,69 @@ class OverlayTeamCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         color: Colors.black.withOpacity(0.5),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              team.name,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                team.name,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            Text(
-              team.role,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 18,
+              Text(
+                team.role,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                if (team.twitterUrl != null)
-                  IconButton(
-                    icon: Assets.icons.twitter.image(
-                      color: Colors.white,
-                      width: 20,
-                      height: 20,
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (team.twitterUrl != null)
+                    IconButton(
+                      icon: Assets.icons.twitter.image(
+                        color: Colors.white,
+                        width: 20,
+                        height: 20,
+                      ),
+                      onPressed: () {
+                        launchUrlSocialMedia(team.twitterUrl!);
+                      },
                     ),
-                    onPressed: () {
-                      launchUrlSocialMedia(team.twitterUrl!);
-                    },
-                  ),
-                if (team.linkedinUrl != null)
-                  IconButton(
-                    icon: Assets.icons.linkedin.image(
-                      color: Colors.white,
-                      width: 20,
-                      height: 20,
+                  if (team.linkedinUrl != null)
+                    IconButton(
+                      icon: Assets.icons.linkedin.image(
+                        color: Colors.white,
+                        width: 20,
+                        height: 20,
+                      ),
+                      onPressed: () {
+                        launchUrlSocialMedia(team.linkedinUrl!);
+                      },
                     ),
-                    onPressed: () {
-                      launchUrlSocialMedia(team.linkedinUrl!);
-                    },
-                  ),
-                if (team.githubUrl != null)
-                  IconButton(
-                    icon: Assets.icons.github.image(
-                      color: Colors.white,
-                      width: 20,
-                      height: 20,
+                  if (team.githubUrl != null)
+                    IconButton(
+                      icon: Assets.icons.github.image(
+                        color: Colors.white,
+                        width: 20,
+                        height: 20,
+                      ),
+                      onPressed: () {
+                        launchUrlSocialMedia(team.githubUrl!);
+                      },
                     ),
-                    onPressed: () {
-                      launchUrlSocialMedia(team.githubUrl!);
-                    },
-                  ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ));
   }
 }
