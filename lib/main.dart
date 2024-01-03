@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_conf_web/core/router/router.dart';
 import 'package:flutter_conf_web/core/themes/colors.dart';
 import 'package:flutter_conf_web/feature/landing/presentation/view/landing_page.dart';
 import 'package:flutter_conf_web/feature/landing/presentation/view/team_view.dart';
