@@ -110,11 +110,8 @@ class LandingPage extends StatelessWidget {
                       speakers.length,
                       (index) {
                         final speaker = speakers[index];
-                        return SizedBox(
-                          width: 300,
-                          child: SpeakerCard(
-                            speaker: speaker,
-                          ),
+                        return SpeakerCard(
+                          speaker: speaker,
                         );
                       },
                     ),
