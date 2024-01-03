@@ -15,6 +15,10 @@ class TeamView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    const breakpointSmallScreen = 600;
+    const breakpointMediumScreen = 1000;
+
     return Scaffold(
       body: Column(
         children: [
@@ -56,7 +60,11 @@ class TeamView extends StatelessWidget {
           ),
           Expanded(
             child: GridView.count(
-              crossAxisCount: 4,
+              crossAxisCount: _getResponsiveCrossAxisCount(
+                size,
+                breakpointSmallScreen,
+                breakpointMediumScreen,
+              ),
               children: team.map((e) {
                 return Column(
                   children: [
@@ -65,7 +73,6 @@ class TeamView extends StatelessWidget {
                         borderRadius: BorderRadius.circular(100),
                         child: Image.asset(
                           e.image,
-                          fit: BoxFit.cover,
                         ),
                       ),
                     ),
@@ -123,5 +130,19 @@ class TeamView extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  int _getResponsiveCrossAxisCount(
+    Size size,
+    int breakpointSmallScreen,
+    int breakPointMediumScreen,
+  ) {
+    if (size.width < breakpointSmallScreen) {
+      return 1;
+    } else if (size.width < breakPointMediumScreen) {
+      return 2;
+    } else {
+      return 4;
+    }
   }
 }
