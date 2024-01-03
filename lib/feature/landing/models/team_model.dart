@@ -55,7 +55,7 @@ const team = [
   ),
   Team(
     name: 'Nicolas Lopez',
-    role: 'Flutter Developer',
+    role: 'Google Search Expert',
     image: 'assets/images/team/team_4.jpeg',
     twitterUrl: "https://twitter.com/unacorbatanegra",
     linkedinUrl: null,
