@@ -78,11 +78,11 @@ const List<SpeakerModel> speakers = [
     countryEmoji: '🇵🇪',
   ),
   SpeakerModel(
-    imagePath: 'assets/images/speakers/speaker_5.jpg',
+    imagePath: 'assets/images/speakers/speaker_5.jpeg',
     name: 'David Nuñez',
     profession: 'Senior Mobile Developer',
     talkTitle:
-        'Understanding Constraints: Entender cómo funcionan los constraints es algo muy importante, ya que nos permite evitar problemas de overflow, nos permite crear estructuras y pantallas complejas, y poder controlar diseños responsive en su totalidad.',
+        'FlutterFire and beyond - Veremos cómo funciona Firebase para Flutter en algunos aspectos más avanzados, algunos servicios no tan comunes como RemoteConfig, Crashlytics, DynamicLinks y otros',
     linkedinUrl: null,
     twitterUrl: null,
     youtubeUrl: null,
