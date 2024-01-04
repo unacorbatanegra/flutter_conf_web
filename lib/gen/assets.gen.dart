@@ -19,6 +19,18 @@ class $AssetsAnimationGen {
   LottieGenImage get bubbleAnimation =>
       const LottieGenImage('assets/animation/bubble_animation.json');
 
+  /// File path: assets/animation/bubbles_sides.json
+  LottieGenImage get bubblesSides =>
+      const LottieGenImage('assets/animation/bubbles_sides.json');
+
+  /// File path: assets/animation/flag_stripes.json
+  LottieGenImage get flagStripes =>
+      const LottieGenImage('assets/animation/flag_stripes.json');
+
+  /// File path: assets/animation/flutter_heartbeat.json
+  LottieGenImage get flutterHeartbeat =>
+      const LottieGenImage('assets/animation/flutter_heartbeat.json');
+
   /// File path: assets/animation/loading_flutter_logo.json
   LottieGenImage get loadingFlutterLogo =>
       const LottieGenImage('assets/animation/loading_flutter_logo.json');
@@ -28,8 +40,14 @@ class $AssetsAnimationGen {
       'assets/animation/working_in_progress_animation.json');
 
   /// List of all assets
-  List<LottieGenImage> get values =>
-      [bubbleAnimation, loadingFlutterLogo, workingInProgressAnimation];
+  List<LottieGenImage> get values => [
+        bubbleAnimation,
+        bubblesSides,
+        flagStripes,
+        flutterHeartbeat,
+        loadingFlutterLogo,
+        workingInProgressAnimation
+      ];
 }
 
 class $AssetsIconsGen {
@@ -79,6 +97,10 @@ class $AssetsImagesGen {
   AssetGenImage get dashLogo =>
       const AssetGenImage('assets/images/dash_logo.png');
 
+  /// File path: assets/images/flutter_paraguay_logo.svg
+  SvgGenImage get flutterParaguayLogo =>
+      const SvgGenImage('assets/images/flutter_paraguay_logo.svg');
+
   /// File path: assets/images/logo.svg
   SvgGenImage get logo => const SvgGenImage('assets/images/logo.svg');
 
@@ -86,8 +108,15 @@ class $AssetsImagesGen {
   $AssetsImagesTeamGen get team => const $AssetsImagesTeamGen();
 
   /// List of all assets
-  List<dynamic> get values =>
-      [bannerConGdg, bannerDashLogo, bannerPrincipal, dash, dashLogo, logo];
+  List<dynamic> get values => [
+        bannerConGdg,
+        bannerDashLogo,
+        bannerPrincipal,
+        dash,
+        dashLogo,
+        flutterParaguayLogo,
+        logo
+      ];
 }
 
 class $AssetsImagesSpeakersGen {
