@@ -89,7 +89,7 @@ const team = [
   Team(
     name: 'Leonardo Paredes',
     role: 'Product Designer | UX/UI',
-    image: 'assets/images/team/team_8.jepg',
+    image: 'assets/images/team/team_8.jpeg',
     twitterUrl: null,
     linkedinUrl: "https://www.linkedin.com/in/leo-paredest/",
     githubUrl: null,
