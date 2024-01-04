@@ -8,6 +8,7 @@ class SpeakerModel extends Equatable {
   final String? linkedinUrl;
   final String? twitterUrl;
   final String? youtubeUrl;
+  final String countryEmoji;
 
   const SpeakerModel({
     required this.imagePath,
@@ -17,6 +18,7 @@ class SpeakerModel extends Equatable {
     required this.linkedinUrl,
     required this.twitterUrl,
     required this.youtubeUrl,
+    required this.countryEmoji,
   });
 
   @override
@@ -28,6 +30,7 @@ class SpeakerModel extends Equatable {
         linkedinUrl,
         twitterUrl,
         youtubeUrl,
+        countryEmoji,
       ];
 }
 
@@ -35,37 +38,43 @@ const List<SpeakerModel> speakers = [
   SpeakerModel(
     imagePath: 'assets/images/speakers/speaker_1.png',
     name: 'Diego Velasquez',
-    profession: 'Diegoveloper',
-    talkTitle: 'Flutter en lugar de nativo',
+    profession: 'Software Engineer | Google Developer Expert',
+    talkTitle:
+        '¿Por qué uso Flutter en lugar de nativo? Tomando decisiones que impactan el negocio',
     linkedinUrl: 'https://www.linkedin.com/in/diegoveloper/',
     twitterUrl: 'https://twitter.com/diegoveloper',
     youtubeUrl: 'https://www.youtube.com/diegoveloper',
+    countryEmoji: '🇵🇪',
   ),
   SpeakerModel(
     imagePath: 'assets/images/speakers/speaker_2.jpg',
     name: 'Hansy Schmitt',
-    profession: 'Full Stack Developer - Athenaworks',
-    talkTitle: 'Game Development with Flutter',
+    profession: 'Senior Mobile/Backend Developer',
+    talkTitle: 'Game Development Desde Cero: Mi primer videojuego con Flutter',
     linkedinUrl: null,
     twitterUrl: null,
     youtubeUrl: null,
+    countryEmoji: '🇵🇪',
   ),
   SpeakerModel(
     imagePath: 'assets/images/speakers/speaker_3.jpg',
-    name: 'Carlos Vargas',
-    profession: 'Flutter Senior Developer - Banco Basa',
-    talkTitle: "Roadmap de Flutter. De junior a senior",
+    name: 'Carlitos Vargas',
+    profession: 'Senior Flutter Developer | Banco Basa',
+    talkTitle:
+        "Del Inicio al Éxito: El roadmap para convertirte de Junior a Senior con Flutter",
     linkedinUrl: 'https://www.linkedin.com/in/kalitodev',
     twitterUrl: null,
     youtubeUrl: null,
+    countryEmoji: '🇵🇾',
   ),
   SpeakerModel(
     imagePath: 'assets/images/speakers/speaker_4.jpg',
     name: 'María Teresa Samudio González',
     profession: 'Software Engineer - Very Good Ventures',
-    talkTitle: 'Cómo llegué a Very Good Ventures desde Misiones - Paraguay',
+    talkTitle: 'Rumbo a lo Very Good - Trabajando remoto desde Paraguay',
     linkedinUrl: 'https://www.linkedin.com/in/maria-teresa-samudio/',
     twitterUrl: null,
     youtubeUrl: null,
+    countryEmoji: '🇵🇾',
   ),
 ];
