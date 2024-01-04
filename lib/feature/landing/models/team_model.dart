@@ -55,7 +55,7 @@ const team = [
   ),
   Team(
     name: 'Nicolas Lopez',
-    role: 'Flutter Developer',
+    role: 'Software Engineer',
     image: 'assets/images/team/team_4.jpeg',
     twitterUrl: "https://twitter.com/unacorbatanegra",
     linkedinUrl: null,
@@ -63,7 +63,7 @@ const team = [
   ),
   Team(
     name: 'Matias Ramirez',
-    role: 'Flutter Developer',
+    role: 'Software Developer',
     image: 'assets/images/team/team_5.jpeg',
     twitterUrl: "https://twitter.com/RamirezMatias03",
     linkedinUrl:
@@ -80,7 +80,7 @@ const team = [
   ),
   Team(
     name: 'Matias Casco',
-    role: 'Flutter Developer',
+    role: 'Software Developer',
     image: 'assets/images/team/team_7.jpg',
     twitterUrl: null,
     linkedinUrl: "https://www.linkedin.com/in/matias-casco-lobos-b3b491177/",
@@ -88,7 +88,7 @@ const team = [
   ),
   Team(
     name: 'Leonardo Paredes',
-    role: 'Product Designer | UX/UI',
+    role: 'Product Designer',
     image: 'assets/images/team/team_8.jpeg',
     twitterUrl: null,
     linkedinUrl: "https://www.linkedin.com/in/leo-paredest/",
