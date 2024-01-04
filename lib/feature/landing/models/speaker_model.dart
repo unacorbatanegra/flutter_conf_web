@@ -36,6 +36,27 @@ class SpeakerModel extends Equatable {
 
 const List<SpeakerModel> speakers = [
   SpeakerModel(
+    imagePath: 'assets/images/speakers/speaker_3.jpg',
+    name: 'Carlitos Vargas',
+    profession: 'Senior Flutter Developer | Banco Basa',
+    talkTitle:
+        "Del Inicio al Éxito: El roadmap para convertirte de Junior a Senior con Flutter",
+    linkedinUrl: 'https://www.linkedin.com/in/kalitodev',
+    twitterUrl: null,
+    youtubeUrl: null,
+    countryEmoji: '🇵🇾',
+  ),
+  SpeakerModel(
+    imagePath: 'assets/images/speakers/speaker_4.jpg',
+    name: 'María Teresa Samudio González',
+    profession: 'Software Engineer | Very Good Ventures',
+    talkTitle: 'Rumbo a lo Very Good: Trabajando remoto desde Paraguay',
+    linkedinUrl: 'https://www.linkedin.com/in/maria-teresa-samudio/',
+    twitterUrl: null,
+    youtubeUrl: null,
+    countryEmoji: '🇵🇾',
+  ),
+  SpeakerModel(
     imagePath: 'assets/images/speakers/speaker_1.png',
     name: 'Diego Velasquez',
     profession: 'Software Engineer | Google Developer Expert',
@@ -57,24 +78,14 @@ const List<SpeakerModel> speakers = [
     countryEmoji: '🇵🇪',
   ),
   SpeakerModel(
-    imagePath: 'assets/images/speakers/speaker_3.jpg',
-    name: 'Carlitos Vargas',
-    profession: 'Senior Flutter Developer | Banco Basa',
+    imagePath: 'assets/images/speakers/speaker_5.jpg',
+    name: 'David Nuñez',
+    profession: 'Senior Mobile Developer',
     talkTitle:
-        "Del Inicio al Éxito: El roadmap para convertirte de Junior a Senior con Flutter",
-    linkedinUrl: 'https://www.linkedin.com/in/kalitodev',
+        'Understanding Constraints: Entender cómo funcionan los constraints es algo muy importante, ya que nos permite evitar problemas de overflow, nos permite crear estructuras y pantallas complejas, y poder controlar diseños responsive en su totalidad.',
+    linkedinUrl: null,
     twitterUrl: null,
     youtubeUrl: null,
-    countryEmoji: '🇵🇾',
-  ),
-  SpeakerModel(
-    imagePath: 'assets/images/speakers/speaker_4.jpg',
-    name: 'María Teresa Samudio González',
-    profession: 'Software Engineer - Very Good Ventures',
-    talkTitle: 'Rumbo a lo Very Good - Trabajando remoto desde Paraguay',
-    linkedinUrl: 'https://www.linkedin.com/in/maria-teresa-samudio/',
-    twitterUrl: null,
-    youtubeUrl: null,
-    countryEmoji: '🇵🇾',
+    countryEmoji: '🇵🇪',
   ),
 ];
