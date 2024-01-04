@@ -83,7 +83,7 @@ const team = [
     role: 'Flutter Developer',
     image: 'assets/images/team/team_7.jpg',
     twitterUrl: null,
-    linkedinUrl: null,
+    linkedinUrl: "https://www.linkedin.com/in/matias-casco-lobos-b3b491177/",
     githubUrl: null,
   ),
   Team(
