@@ -58,7 +58,7 @@ class SpeakerCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    speaker.name,
+                    '${speaker.name}   ${speaker.countryEmoji}',
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
