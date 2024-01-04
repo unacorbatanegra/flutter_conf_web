@@ -74,13 +74,11 @@ class _TeamViewState extends State<TeamView> {
                           e.image,
                           fit: BoxFit.cover,
                         ),
-                        if (_isHover[team.indexOf(e)])
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: OverlayTeamCard(
-                              team: e,
-                              launchUrlSocialMedia: launchUrlSocialMedia,
-                            ),
+                        if (_isHover[team.indexOf(e)] ||
+                            size.width < breakpointSmallScreen)
+                          OverlayTeamCard(
+                            team: e,
+                            launchUrlSocialMedia: launchUrlSocialMedia,
                           ),
                       ],
                     ),
@@ -137,11 +135,13 @@ class TeamNavigationBar extends StatelessWidget {
               context.pop();
             },
           ),
-          const Text(
-            'Flutter Conf Paraguay Team 2024',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
+          const Flexible(
+            child: Text(
+              'Flutter Conf Paraguay Team 2024',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
             ),
           ),
           if (size.width > breakpointSmallScreen)
@@ -172,7 +172,7 @@ class OverlayTeamCard extends StatelessWidget {
     return Container(
         color: Colors.black.withOpacity(0.5),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Text(
               team.name,
