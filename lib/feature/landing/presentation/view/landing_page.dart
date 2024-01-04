@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/feature/landing/models/speaker_model.dart';
 import 'package:flutter_conf_web/feature/landing/presentation/view/about_view.dart';
+import 'package:flutter_conf_web/feature/landing/presentation/widget/animated_banner_widget.dart';
 import 'package:flutter_conf_web/feature/landing/presentation/widget/custom_drawer.dart';
 import 'package:flutter_conf_web/feature/landing/presentation/widget/footer.dart';
 import 'package:flutter_conf_web/feature/landing/presentation/widget/navigation_bar.dart';
@@ -80,10 +81,11 @@ class LandingPage extends StatelessWidget {
             child: ListView(
               controller: scrollController,
               children: [
-                Assets.images.bannerPrincipal.svg(
-                  key: homeKey,
-                  width: size.width,
-                ),
+                // Assets.images.bannerPrincipal.svg(
+                //   key: homeKey,
+                //   width: size.width,
+                // ),
+                const AnimatedBannerWidget(),
                 const SizedBox(height: 50),
                 AboutView(
                   key: aboutKey,

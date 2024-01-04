@@ -10,5 +10,10 @@
     "about": "Sobre",
     "about_flutter_conf_paraguay":"es una conferencia de tecnología que se realiza en Paraguay, con el objetivo de compartir conocimientos y experiencias sobre Flutter, el framework de Google para crear aplicaciones multiplataforma.",
     "madeWith": "Hecho con",
-    "by": "por"
+    "by": "por",
+    "eventDate":"27 de enero",
+    "eventPlace":"Campus UCOM",
+    "eventNameTitle":"Flutter",
+    "eventNameSubtitle":"Conf",
+    "eventCountry":"Paraguay"
 }
