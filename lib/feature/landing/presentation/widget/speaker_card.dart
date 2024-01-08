@@ -143,6 +143,24 @@ class SpeakerCard extends StatelessWidget {
                           ),
                         )
                       ] else
+                        const _FakeIcon(),
+                      if (speaker.facebookUrl != null) ...[
+                        IconButton(
+                          tooltip: 'Facebook',
+                          onPressed: () {
+                            try {
+                              _launchUrl(speaker.facebookUrl!);
+                            } catch (e) {
+                              debugPrint(e.toString());
+                            }
+                          },
+                          icon: Assets.icons.facebook.image(
+                            width: 20,
+                            height: 20,
+                            color: Colors.white,
+                          ),
+                        )
+                      ] else
                         const _FakeIcon()
                     ],
                   ),

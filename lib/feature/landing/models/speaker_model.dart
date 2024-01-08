@@ -8,6 +8,7 @@ class SpeakerModel extends Equatable {
   final String? linkedinUrl;
   final String? twitterUrl;
   final String? youtubeUrl;
+  final String? facebookUrl;
   final String countryEmoji;
 
   const SpeakerModel({
@@ -18,6 +19,7 @@ class SpeakerModel extends Equatable {
     required this.linkedinUrl,
     required this.twitterUrl,
     required this.youtubeUrl,
+    required this.facebookUrl,
     required this.countryEmoji,
   });
 
@@ -30,6 +32,7 @@ class SpeakerModel extends Equatable {
         linkedinUrl,
         twitterUrl,
         youtubeUrl,
+        facebookUrl,
         countryEmoji,
       ];
 }
@@ -44,6 +47,7 @@ const List<SpeakerModel> speakers = [
     linkedinUrl: 'https://www.linkedin.com/in/kalitodev',
     twitterUrl: null,
     youtubeUrl: null,
+    facebookUrl: null,
     countryEmoji: '🇵🇾',
   ),
   SpeakerModel(
@@ -54,6 +58,7 @@ const List<SpeakerModel> speakers = [
     linkedinUrl: 'https://www.linkedin.com/in/maria-teresa-samudio/',
     twitterUrl: null,
     youtubeUrl: null,
+    facebookUrl: null,
     countryEmoji: '🇵🇾',
   ),
   SpeakerModel(
@@ -65,6 +70,7 @@ const List<SpeakerModel> speakers = [
     linkedinUrl: 'https://www.linkedin.com/in/diegoveloper/',
     twitterUrl: 'https://twitter.com/diegoveloper',
     youtubeUrl: 'https://www.youtube.com/diegoveloper',
+    facebookUrl: null,
     countryEmoji: '🇵🇪',
   ),
   SpeakerModel(
@@ -75,6 +81,7 @@ const List<SpeakerModel> speakers = [
     linkedinUrl: null,
     twitterUrl: null,
     youtubeUrl: null,
+    facebookUrl: null,
     countryEmoji: '🇵🇪',
   ),
   SpeakerModel(
@@ -83,9 +90,10 @@ const List<SpeakerModel> speakers = [
     profession: 'Senior Mobile Developer',
     talkTitle:
         'FlutterFire and beyond - Veremos cómo funciona Firebase para Flutter en algunos aspectos más avanzados, algunos servicios no tan comunes como RemoteConfig, Crashlytics, DynamicLinks y otros',
-    linkedinUrl: null,
+    linkedinUrl: "https://www.linkedin.com/in/david-rios-dev/",
     twitterUrl: null,
     youtubeUrl: null,
+    facebookUrl: "https://www.facebook.com/davidriosdev",
     countryEmoji: '🇵🇪',
   ),
 ];
