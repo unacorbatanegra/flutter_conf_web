@@ -77,7 +77,7 @@ class _FooterDesktop extends StatelessWidget {
             launchUrlSocialMedia(
                 'https://github.com/unacorbatanegra/flutter_conf_web');
           },
-          icon: Assets.icons.github.image(
+          icon: Assets.icons.github.svg(
             width: 20,
             height: 20,
             color: Colors.white,
@@ -89,7 +89,7 @@ class _FooterDesktop extends StatelessWidget {
           onPressed: () {
             launchUrlSocialMedia('https://twitter.com/flutter_py');
           },
-          icon: Assets.icons.twitter.image(
+          icon: Assets.icons.x.svg(
             width: 20,
             height: 20,
             color: Colors.white,
@@ -101,7 +101,7 @@ class _FooterDesktop extends StatelessWidget {
             launchUrlSocialMedia(
                 'https://www.linkedin.com/company/flutter-conf-paraguay-2024/');
           },
-          icon: Assets.icons.linkedin.image(
+          icon: Assets.icons.linkedin.svg(
             width: 20,
             height: 20,
             color: Colors.white,
@@ -113,10 +113,9 @@ class _FooterDesktop extends StatelessWidget {
           onPressed: () {
             launchUrlSocialMedia('https://www.instagram.com/flutterconfpy/');
           },
-          icon: Assets.icons.instagram.image(
+          icon: Assets.icons.instagram.svg(
             width: 20,
             height: 20,
-            color: Colors.white,
           ),
         ),
       ],
@@ -145,7 +144,7 @@ class _FooterMobile extends StatelessWidget {
                 launchUrlSocialMedia(
                     'https://github.com/unacorbatanegra/flutter_conf_web');
               },
-              icon: Assets.icons.github.image(
+              icon: Assets.icons.github.svg(
                 width: 20,
                 height: 20,
                 color: Colors.white,
@@ -156,7 +155,7 @@ class _FooterMobile extends StatelessWidget {
               onPressed: () {
                 launchUrlSocialMedia('https://twitter.com/flutter_py');
               },
-              icon: Assets.icons.twitter.image(
+              icon: Assets.icons.x.svg(
                 width: 20,
                 height: 20,
                 color: Colors.white,
@@ -168,7 +167,7 @@ class _FooterMobile extends StatelessWidget {
                 launchUrlSocialMedia(
                     'https://www.linkedin.com/company/flutter-conf-paraguay-2024/');
               },
-              icon: Assets.icons.linkedin.image(
+              icon: Assets.icons.linkedin.svg(
                 width: 20,
                 height: 20,
                 color: Colors.white,
@@ -181,7 +180,7 @@ class _FooterMobile extends StatelessWidget {
                 launchUrlSocialMedia(
                     'https://www.instagram.com/flutterconfpy/');
               },
-              icon: Assets.icons.instagram.image(
+              icon: Assets.icons.instagram.svg(
                 width: 20,
                 height: 20,
                 color: Colors.white,

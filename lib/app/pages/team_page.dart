@@ -197,8 +197,7 @@ class OverlayTeamCard extends StatelessWidget {
               children: [
                 if (team.twitterUrl != null)
                   IconButton(
-                    icon: Assets.icons.twitter.image(
-                      color: Colors.white,
+                    icon: Assets.icons.x.svg(
                       width: 20,
                       height: 20,
                     ),
@@ -208,8 +207,7 @@ class OverlayTeamCard extends StatelessWidget {
                   ),
                 if (team.linkedinUrl != null)
                   IconButton(
-                    icon: Assets.icons.linkedin.image(
-                      color: Colors.white,
+                    icon: Assets.icons.linkedin.svg(
                       width: 20,
                       height: 20,
                     ),
@@ -219,8 +217,7 @@ class OverlayTeamCard extends StatelessWidget {
                   ),
                 if (team.githubUrl != null)
                   IconButton(
-                    icon: Assets.icons.github.image(
-                      color: Colors.white,
+                    icon: Assets.icons.github.svg(
                       width: 20,
                       height: 20,
                     ),
