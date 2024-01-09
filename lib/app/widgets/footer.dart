@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use_from_same_package
+
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/app/services/url_service.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
@@ -75,7 +77,8 @@ class _FooterDesktop extends StatelessWidget {
           tooltip: 'Github',
           onPressed: () {
             launchUrlSocialMedia(
-                'https://github.com/unacorbatanegra/flutter_conf_web');
+              'https://github.com/unacorbatanegra/flutter_conf_web',
+            );
           },
           icon: Assets.icons.github.svg(
             width: 20,
@@ -83,28 +86,26 @@ class _FooterDesktop extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        const SizedBox(width: 10),
         IconButton(
-          tooltip: 'Twitter',
+          tooltip: 'X',
           onPressed: () {
             launchUrlSocialMedia('https://twitter.com/flutter_py');
           },
           icon: Assets.icons.x.svg(
             width: 20,
             height: 20,
-            color: Colors.white,
           ),
         ),
         IconButton(
           tooltip: 'Linkedin',
           onPressed: () {
             launchUrlSocialMedia(
-                'https://www.linkedin.com/company/flutter-conf-paraguay-2024/');
+              'https://www.linkedin.com/company/flutter-conf-paraguay-2024/',
+            );
           },
           icon: Assets.icons.linkedin.svg(
             width: 20,
             height: 20,
-            color: Colors.white,
           ),
         ),
         // Add instagram
@@ -151,14 +152,13 @@ class _FooterMobile extends StatelessWidget {
               ),
             ),
             IconButton(
-              tooltip: 'Twitter',
+              tooltip: 'X',
               onPressed: () {
                 launchUrlSocialMedia('https://twitter.com/flutter_py');
               },
               icon: Assets.icons.x.svg(
                 width: 20,
                 height: 20,
-                color: Colors.white,
               ),
             ),
             IconButton(
@@ -170,7 +170,6 @@ class _FooterMobile extends StatelessWidget {
               icon: Assets.icons.linkedin.svg(
                 width: 20,
                 height: 20,
-                color: Colors.white,
               ),
             ),
             // Add instagram
@@ -183,7 +182,6 @@ class _FooterMobile extends StatelessWidget {
               icon: Assets.icons.instagram.svg(
                 width: 20,
                 height: 20,
-                color: Colors.white,
               ),
             ),
           ],
