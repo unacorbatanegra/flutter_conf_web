@@ -116,6 +116,7 @@ class _SpeakersMobile extends StatelessWidget {
             _SpeakerInfo(
               speaker: speaker,
             ),
+            const SizedBox(height: 20),
           ],
         ),
       ],
