@@ -79,10 +79,6 @@ class LandingPage extends StatelessWidget {
             child: ListView(
               controller: scrollController,
               children: [
-                // Assets.images.bannerPrincipal.svg(
-                //   key: homeKey,
-                //   width: size.width,
-                // ),
                 const AnimatedBannerWidget(),
                 const SizedBox(height: 50),
                 AboutView(
