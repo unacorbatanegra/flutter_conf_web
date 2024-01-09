@@ -6,7 +6,6 @@ import 'package:flutter_conf_web/app/widgets/custom_drawer.dart';
 import 'package:flutter_conf_web/app/widgets/footer.dart';
 import 'package:flutter_conf_web/app/widgets/navigation_bar.dart';
 import 'package:flutter_conf_web/app/widgets/speaker_card.dart';
-import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
 
 class LandingPage extends StatelessWidget {
@@ -40,7 +39,6 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final l10n = context.l10n;
 
     return Scaffold(
