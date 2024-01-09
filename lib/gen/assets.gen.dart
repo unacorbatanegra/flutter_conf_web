@@ -53,30 +53,27 @@ class $AssetsAnimationGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
-  /// File path: assets/icons/facebook.png
-  AssetGenImage get facebook =>
-      const AssetGenImage('assets/icons/facebook.png');
+  /// File path: assets/icons/facebook.svg
+  SvgGenImage get facebook => const SvgGenImage('assets/icons/facebook.svg');
 
-  /// File path: assets/icons/github.png
-  AssetGenImage get github => const AssetGenImage('assets/icons/github.png');
+  /// File path: assets/icons/github.svg
+  SvgGenImage get github => const SvgGenImage('assets/icons/github.svg');
 
-  /// File path: assets/icons/instagram.png
-  AssetGenImage get instagram =>
-      const AssetGenImage('assets/icons/instagram.png');
+  /// File path: assets/icons/instagram.svg
+  SvgGenImage get instagram => const SvgGenImage('assets/icons/instagram.svg');
 
-  /// File path: assets/icons/linkedin.png
-  AssetGenImage get linkedin =>
-      const AssetGenImage('assets/icons/linkedin.png');
+  /// File path: assets/icons/linkedin.svg
+  SvgGenImage get linkedin => const SvgGenImage('assets/icons/linkedin.svg');
 
-  /// File path: assets/icons/twitter.png
-  AssetGenImage get twitter => const AssetGenImage('assets/icons/twitter.png');
+  /// File path: assets/icons/x.svg
+  SvgGenImage get x => const SvgGenImage('assets/icons/x.svg');
 
-  /// File path: assets/icons/youtube.png
-  AssetGenImage get youtube => const AssetGenImage('assets/icons/youtube.png');
+  /// File path: assets/icons/youtube.svg
+  SvgGenImage get youtube => const SvgGenImage('assets/icons/youtube.svg');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [facebook, github, instagram, linkedin, twitter, youtube];
+  List<SvgGenImage> get values =>
+      [facebook, github, instagram, linkedin, x, youtube];
 }
 
 class $AssetsImagesGen {
@@ -94,12 +91,20 @@ class $AssetsImagesGen {
   SvgGenImage get bannerPrincipal =>
       const SvgGenImage('assets/images/banner_principal.svg');
 
+  /// File path: assets/images/circle_speaker.svg
+  SvgGenImage get circleSpeaker =>
+      const SvgGenImage('assets/images/circle_speaker.svg');
+
   /// File path: assets/images/dash.png
   AssetGenImage get dash => const AssetGenImage('assets/images/dash.png');
 
   /// File path: assets/images/dash_logo.png
   AssetGenImage get dashLogo =>
       const AssetGenImage('assets/images/dash_logo.png');
+
+  /// File path: assets/images/dot_speaker.svg
+  SvgGenImage get dotSpeaker =>
+      const SvgGenImage('assets/images/dot_speaker.svg');
 
   /// File path: assets/images/flutter_paraguay_logo.svg
   SvgGenImage get flutterParaguayLogo =>
@@ -111,15 +116,21 @@ class $AssetsImagesGen {
   $AssetsImagesSpeakersGen get speakers => const $AssetsImagesSpeakersGen();
   $AssetsImagesTeamGen get team => const $AssetsImagesTeamGen();
 
+  /// File path: assets/images/x_speaker.svg
+  SvgGenImage get xSpeaker => const SvgGenImage('assets/images/x_speaker.svg');
+
   /// List of all assets
   List<dynamic> get values => [
         bannerConGdg,
         bannerDashLogo,
         bannerPrincipal,
+        circleSpeaker,
         dash,
         dashLogo,
+        dotSpeaker,
         flutterParaguayLogo,
-        logo
+        logo,
+        xSpeaker
       ];
 }
 
