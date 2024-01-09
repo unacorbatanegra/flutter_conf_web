@@ -42,7 +42,7 @@ class SpeakersSection extends StatelessWidget {
       children: [
         const SizedBox(height: 32),
         for (final speaker in speakers) ...[
-          _SpeakersRow(
+          _SpeakersView(
             speaker: speaker.copyWith(
                 talkTitle: _getTalkTitleL10n(
               context,
@@ -56,12 +56,60 @@ class SpeakersSection extends StatelessWidget {
   }
 }
 
-class _SpeakersRow extends StatelessWidget {
+class _SpeakersView extends StatelessWidget {
   final SpeakerModel speaker;
 
-  const _SpeakersRow({
+  const _SpeakersView({
     required this.speaker,
   });
+
+  @override
+  Widget build(BuildContext context) {
+    final breakpoint = MediaQuery.of(context).size.width > 800;
+
+    if (breakpoint) {
+      return _SpeakersDesktop(speaker: speaker);
+    } else {
+      return _SpeakersMobile(speaker: speaker);
+    }
+  }
+}
+
+class _SpeakersMobile extends StatelessWidget {
+  const _SpeakersMobile({
+    super.key,
+    required this.speaker,
+  });
+
+  final SpeakerModel speaker;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        _SpeakerAvatar(
+          speaker: speaker,
+        ),
+        const SizedBox(height: 20),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: _SpeakerInfo(
+            speaker: speaker,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _SpeakersDesktop extends StatelessWidget {
+  const _SpeakersDesktop({
+    super.key,
+    required this.speaker,
+  });
+
+  final SpeakerModel speaker;
 
   @override
   Widget build(BuildContext context) {
