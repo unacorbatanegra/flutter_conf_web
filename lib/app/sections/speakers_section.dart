@@ -77,7 +77,6 @@ class _SpeakersView extends StatelessWidget {
 
 class _SpeakersMobile extends StatelessWidget {
   const _SpeakersMobile({
-    super.key,
     required this.speaker,
   });
 
@@ -105,7 +104,6 @@ class _SpeakersMobile extends StatelessWidget {
 
 class _SpeakersDesktop extends StatelessWidget {
   const _SpeakersDesktop({
-    super.key,
     required this.speaker,
   });
 

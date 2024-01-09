@@ -11,7 +11,7 @@ class CustomDrawer extends StatelessWidget {
   final VoidCallback _onScrollToAbout;
   final VoidCallback _onScrollToHome;
   final VoidCallback _onScrollToSpeakers;
-  final VoidCallback _onScollToSponsors;
+  // final VoidCallback _onScollToSponsors;
 
   const CustomDrawer({
     Key? key,
@@ -19,12 +19,12 @@ class CustomDrawer extends StatelessWidget {
     required VoidCallback onScrollToAbout,
     required VoidCallback onScrollToHome,
     required VoidCallback onScrollToSpeakers,
-    required VoidCallback onScollToSponsors,
+    // required VoidCallback onScollToSponsors,
   })  : _scaffoldKey = scaffoldKey,
         _onScrollToAbout = onScrollToAbout,
         _onScrollToHome = onScrollToHome,
         _onScrollToSpeakers = onScrollToSpeakers,
-        _onScollToSponsors = onScollToSponsors,
+        // _onScollToSponsors = onScollToSponsors,
         super(key: key);
 
   @override

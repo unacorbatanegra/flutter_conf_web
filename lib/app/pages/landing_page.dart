@@ -54,9 +54,9 @@ class LandingPage extends StatelessWidget {
         onScrollToSpeakers: () {
           scrollToKey(speakersKey);
         },
-        onScollToSponsors: () {
-          // scrollToKey(sponsorsKey);
-        },
+        // onScollToSponsors: () {
+        // scrollToKey(sponsorsKey);
+        // },
       ),
       body: Column(
         children: [
@@ -71,9 +71,9 @@ class LandingPage extends StatelessWidget {
             onScrollToSpeakers: () {
               scrollToKey(speakersKey);
             },
-            onScollToSponsors: () {
-              // scrollToKey(sponsorsKey);
-            },
+            // onScollToSponsors: () {
+            // scrollToKey(sponsorsKey);
+            // },
           ),
           Expanded(
             child: ListView(
