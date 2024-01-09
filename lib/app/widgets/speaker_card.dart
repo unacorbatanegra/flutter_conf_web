@@ -78,7 +78,7 @@ class SpeakerCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    speaker.talkTitle,
+                    speaker.talkTitle!,
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,

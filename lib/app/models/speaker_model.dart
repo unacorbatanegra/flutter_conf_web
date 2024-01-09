@@ -1,10 +1,11 @@
 import 'package:equatable/equatable.dart';
 
 class SpeakerModel extends Equatable {
+  final int id;
   final String imagePath;
   final String name;
   final String profession;
-  final String talkTitle;
+  final String? talkTitle;
   final String? linkedinUrl;
   final String? twitterUrl;
   final String? youtubeUrl;
@@ -12,6 +13,7 @@ class SpeakerModel extends Equatable {
   final String countryEmoji;
 
   const SpeakerModel({
+    required this.id,
     required this.imagePath,
     required this.name,
     required this.profession,
@@ -23,8 +25,36 @@ class SpeakerModel extends Equatable {
     required this.countryEmoji,
   });
 
+  SpeakerModel copyWith({
+    int? id,
+    String? imagePath,
+    String? name,
+    String? profession,
+    String? talkTitle,
+    String? linkedinUrl,
+    String? twitterUrl,
+    String? youtubeUrl,
+    String? facebookUrl,
+    String? countryEmoji,
+    String? l10nCode,
+  }) {
+    return SpeakerModel(
+      id: id ?? this.id,
+      imagePath: imagePath ?? this.imagePath,
+      name: name ?? this.name,
+      profession: profession ?? this.profession,
+      talkTitle: talkTitle ?? this.talkTitle,
+      linkedinUrl: linkedinUrl ?? this.linkedinUrl,
+      twitterUrl: twitterUrl ?? this.twitterUrl,
+      youtubeUrl: youtubeUrl ?? this.youtubeUrl,
+      facebookUrl: facebookUrl ?? this.facebookUrl,
+      countryEmoji: countryEmoji ?? this.countryEmoji,
+    );
+  }
+
   @override
   List<Object?> get props => [
+        id,
         imagePath,
         name,
         profession,
@@ -39,11 +69,11 @@ class SpeakerModel extends Equatable {
 
 const List<SpeakerModel> speakers = [
   SpeakerModel(
+    id: 0,
     imagePath: 'assets/images/speakers/speaker_3.jpg',
     name: 'Carlitos Vargas',
     profession: 'Senior Flutter Developer | Banco Basa',
-    talkTitle:
-        "Del Inicio al Éxito: El roadmap para convertirte de Junior a Senior con Flutter",
+    talkTitle: null,
     linkedinUrl: 'https://www.linkedin.com/in/kalitodev',
     twitterUrl: null,
     youtubeUrl: null,
@@ -51,10 +81,11 @@ const List<SpeakerModel> speakers = [
     countryEmoji: '🇵🇾',
   ),
   SpeakerModel(
+    id: 1,
     imagePath: 'assets/images/speakers/speaker_4.jpg',
     name: 'María Teresa Samudio González',
     profession: 'Software Engineer | Very Good Ventures',
-    talkTitle: 'Rumbo a lo Very Good: Trabajando remoto desde Paraguay',
+    talkTitle: null,
     linkedinUrl: 'https://www.linkedin.com/in/maria-teresa-samudio/',
     twitterUrl: null,
     youtubeUrl: null,
@@ -62,11 +93,11 @@ const List<SpeakerModel> speakers = [
     countryEmoji: '🇵🇾',
   ),
   SpeakerModel(
+    id: 2,
     imagePath: 'assets/images/speakers/speaker_1.png',
     name: 'Diego Velasquez',
     profession: 'Software Engineer | Google Developer Expert',
-    talkTitle:
-        '¿Por qué uso Flutter en lugar de nativo? Tomando decisiones que impactan el negocio',
+    talkTitle: null,
     linkedinUrl: 'https://www.linkedin.com/in/diegoveloper/',
     twitterUrl: 'https://twitter.com/diegoveloper',
     youtubeUrl: 'https://www.youtube.com/diegoveloper',
@@ -74,10 +105,11 @@ const List<SpeakerModel> speakers = [
     countryEmoji: '🇵🇪',
   ),
   SpeakerModel(
+    id: 3,
     imagePath: 'assets/images/speakers/speaker_2.jpg',
     name: 'Hansy Schmitt',
     profession: 'Senior Mobile/Backend Developer',
-    talkTitle: 'Game Development Desde Cero: Mi primer videojuego con Flutter',
+    talkTitle: null,
     linkedinUrl: null,
     twitterUrl: null,
     youtubeUrl: null,
@@ -85,11 +117,12 @@ const List<SpeakerModel> speakers = [
     countryEmoji: '🇵🇪',
   ),
   SpeakerModel(
+    id: 4,
     imagePath: 'assets/images/speakers/speaker_5.jpeg',
     name: 'David Nuñez',
     profession: 'Senior Mobile Developer',
     talkTitle:
-        'FlutterFire and beyond - Veremos cómo funciona Firebase para Flutter en algunos aspectos más avanzados, algunos servicios no tan comunes como RemoteConfig, Crashlytics, DynamicLinks y otros',
+        'Performance Best Practices: Estrategias y Mejoras Prácticas en Flutter',
     linkedinUrl: "https://www.linkedin.com/in/david-rios-dev/",
     twitterUrl: null,
     youtubeUrl: null,
