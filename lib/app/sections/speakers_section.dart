@@ -3,6 +3,7 @@ import 'package:flutter_conf_web/app/models/speaker_model.dart';
 import 'package:flutter_conf_web/app/services/url_service.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class SpeakersSection extends StatelessWidget {
@@ -14,11 +15,11 @@ class SpeakersSection extends StatelessWidget {
   });
 
   //[
-//   {"id": "1", "name": "Carlitos Vargas"},
-//   {"id": "2", "name": "María Teresa Samudio González"},
-//   {"id": "3", "name": "Diego Velasquez"},
-//   {"id": "4", "name": "Hansy Schmitt"},
-//   {"id": "5", "name": "David Nuñez"}
+//   {"id": "0", "name": "Carlitos Vargas"},
+//   {"id": "1", "name": "María Teresa Samudio González"},
+//   {"id": "2", "name": "Diego Velasquez"},
+//   {"id": "3", "name": "Hansy Schmitt"},
+//   {"id": "4", "name": "David Nuñez"}
 // ]
 
   String _getTalkTitleL10n(
@@ -65,7 +66,7 @@ class _SpeakersView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = MediaQuery.of(context).size.width > 800;
+    final breakpoint = MediaQuery.of(context).size.width > 900;
 
     if (breakpoint) {
       return _SpeakersDesktop(speaker: speaker);
@@ -84,18 +85,38 @@ class _SpeakersMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+    return Stack(
+      clipBehavior: Clip.none,
       children: [
-        _SpeakerAvatar(
-          speaker: speaker,
-        ),
-        const SizedBox(height: 20),
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: _SpeakerInfo(
-            speaker: speaker,
+        if (speaker.id % 2 != 0)
+          Positioned(
+            top: 0,
+            right: 0,
+            child: Assets.images.xSpeaker.svg(
+              width: 300.w,
+              height: 300.h,
+            ),
+          )
+        else
+          Positioned(
+            top: -50,
+            left: 0,
+            child: Assets.images.circleSpeaker.svg(
+              width: 300.w,
+              height: 300.h,
+            ),
           ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _SpeakerAvatar(
+              speaker: speaker,
+            ),
+            const SizedBox(height: 20),
+            _SpeakerInfo(
+              speaker: speaker,
+            ),
+          ],
         ),
       ],
     );
@@ -111,39 +132,83 @@ class _SpeakersDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        if (speaker.id % 2 == 0) ...[
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: _SpeakerInfo(
-                speaker: speaker,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 0),
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          if (speaker.id % 2 == 0)
+            Positioned(
+              top: 0,
+              left: 0,
+              child: Assets.images.circleSpeaker.svg(
+                width: 300.w,
+                height: 300.h,
+              ),
+            )
+          else
+            Positioned(
+              top: -50,
+              right: 0,
+              child: Assets.images.xSpeaker.svg(
+                width: 300.w,
+                height: 300.h,
               ),
             ),
-          ),
-          const SizedBox(width: 50),
-          Expanded(
-            child: _SpeakerAvatar(speaker: speaker),
-          ),
-        ] else ...[
-          Expanded(
-            child: _SpeakerAvatar(
-              speaker: speaker,
-            ),
-          ),
-          const SizedBox(width: 50),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: _SpeakerInfo(
-                speaker: speaker,
-              ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.06),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (speaker.id % 2 != 0) ...[
+                  Expanded(
+                    child: _SpeakerInfo(
+                      speaker: speaker,
+                    ),
+                  ),
+                  const SizedBox(width: 50),
+                  Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Positioned(
+                        bottom: -30,
+                        right: -20,
+                        child: Assets.images.dotSpeaker.svg(
+                          width: 300.w,
+                          height: 300.h,
+                        ),
+                      ),
+                      _SpeakerAvatar(speaker: speaker),
+                    ],
+                  ),
+                ] else ...[
+                  Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Positioned(
+                        bottom: -40,
+                        left: -20,
+                        child: Assets.images.dotSpeaker.svg(
+                          width: 300.w,
+                          height: 300.h,
+                        ),
+                      ),
+                      _SpeakerAvatar(speaker: speaker),
+                    ],
+                  ),
+                  const SizedBox(width: 50),
+                  Expanded(
+                    child: _SpeakerInfo(
+                      speaker: speaker,
+                    ),
+                  ),
+                ],
+              ],
             ),
           ),
         ],
-      ],
+      ),
     );
   }
 }
@@ -157,12 +222,15 @@ class _SpeakerAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(16),
-      child: Image.asset(
-        speaker.imagePath,
-        width: 300,
-        height: 400,
+    return SizedBox(
+      width: 300,
+      height: 300,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(25),
+        child: Image.asset(
+          speaker.imagePath,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
@@ -177,128 +245,87 @@ class _SpeakerInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      clipBehavior: Clip.antiAlias,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      color: Colors.blue[900],
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+    final size = MediaQuery.of(context).size;
+    return Column(
+      crossAxisAlignment: size.width > 900
+          ? speaker.id % 2 == 0
+              ? CrossAxisAlignment.start
+              : CrossAxisAlignment.end
+          : CrossAxisAlignment.center,
+      children: [
+        Text(
+          '${speaker.name} ${speaker.countryEmoji}',
+          style: const TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+          textAlign: size.width > 900 ? null : TextAlign.center,
+        ),
+        const SizedBox(height: 8),
+        Text(
+          speaker.profession,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+          textAlign: size.width > 900 ? null : TextAlign.center,
+        ),
+        const SizedBox(height: 8),
+        Text(
+          speaker.talkTitle!,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+          textAlign: size.width > 900 ? null : TextAlign.center,
+        ),
+        const SizedBox(height: 8),
+        Row(
+          mainAxisAlignment: size.width > 900
+              ? speaker.id % 2 == 0
+                  ? MainAxisAlignment.start
+                  : MainAxisAlignment.end
+              : MainAxisAlignment.center,
           children: [
-            Text(
-              '${speaker.name} ${speaker.countryEmoji}',
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+            if (speaker.twitterUrl != null) ...[
+              IconButton(
+                tooltip: 'X',
+                onPressed: () {
+                  context.read<UrlService>().openUrl(speaker.twitterUrl!);
+                },
+                icon: Assets.icons.x.svg(),
               ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              speaker.profession,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+            ],
+            if (speaker.linkedinUrl != null) ...[
+              IconButton(
+                tooltip: 'Linkedin',
+                onPressed: () {
+                  context.read<UrlService>().openUrl(speaker.linkedinUrl!);
+                },
+                icon: Assets.icons.linkedin.svg(),
               ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              speaker.talkTitle!,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                if (speaker.twitterUrl != null) ...[
-                  IconButton(
-                    tooltip: 'Twitter',
-                    onPressed: () {
-                      context.read<UrlService>().openUrl(speaker.twitterUrl!);
-                    },
-                    icon: Assets.icons.twitter.image(
-                      width: 20,
-                      height: 20,
-                      color: Colors.white,
-                    ),
-                  ),
-                ] else
-                  const _FakeIcon(),
-                if (speaker.linkedinUrl != null) ...[
-                  IconButton(
-                    tooltip: 'Linkedin',
-                    onPressed: () {
-                      context.read<UrlService>().openUrl(speaker.linkedinUrl!);
-                    },
-                    icon: Assets.icons.linkedin.image(
-                      width: 20,
-                      height: 20,
-                      color: Colors.white,
-                    ),
-                  ),
-                ] else
-                  const _FakeIcon(),
-                if (speaker.youtubeUrl != null) ...[
-                  IconButton(
-                    tooltip: 'Youtube',
-                    onPressed: () {
-                      context.read<UrlService>().openUrl(speaker.youtubeUrl!);
-                    },
-                    icon: Assets.icons.youtube.image(
-                      width: 20,
-                      height: 20,
-                      color: Colors.white,
-                    ),
-                  )
-                ] else
-                  const _FakeIcon(),
-                if (speaker.facebookUrl != null) ...[
-                  IconButton(
-                    tooltip: 'Facebook',
-                    onPressed: () {
-                      context.read<UrlService>().openUrl(speaker.facebookUrl!);
-                    },
-                    icon: Assets.icons.facebook.image(
-                      width: 20,
-                      height: 20,
-                      color: Colors.white,
-                    ),
-                  )
-                ] else
-                  const _FakeIcon()
-              ],
-            ),
+            ],
+            if (speaker.youtubeUrl != null) ...[
+              IconButton(
+                tooltip: 'Youtube',
+                onPressed: () {
+                  context.read<UrlService>().openUrl(speaker.youtubeUrl!);
+                },
+                icon: Assets.icons.youtube.svg(),
+              )
+            ],
+            if (speaker.facebookUrl != null) ...[
+              IconButton(
+                tooltip: 'Facebook',
+                onPressed: () {
+                  context.read<UrlService>().openUrl(speaker.facebookUrl!);
+                },
+                icon: Assets.icons.facebook.svg(),
+              )
+            ],
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _FakeIcon extends StatelessWidget {
-  const _FakeIcon();
-
-  @override
-  Widget build(BuildContext context) {
-    return const IconButton(
-      onPressed: null,
-      icon: Icon(
-        Icons.info,
-        color: Colors.transparent,
-        size: 20,
-      ),
+      ],
     );
   }
 }
