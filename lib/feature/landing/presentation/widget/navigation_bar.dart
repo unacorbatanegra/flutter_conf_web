@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_conf_web/feature/landing/change_notifiers/language_change_notifier.dart';
+import 'package:flutter_conf_web/feature/landing/presentation/widget/language_switch.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey;
@@ -28,6 +31,9 @@ class CustomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final size = MediaQuery.of(context).size;
+    final localeLanguageChangeNotifier =
+        context.watch<LanguageChangeNotifier>();
+
     const breakpoint = 1400;
 
     return Container(
@@ -88,6 +94,10 @@ class CustomNavigationBar extends StatelessWidget {
                   onTap: () {
                     context.push('/team');
                   },
+                ),
+                const SizedBox(width: 60),
+                LanguageSwitch(
+                  localeLanguageChangeNotifier: localeLanguageChangeNotifier,
                 ),
               ],
             )

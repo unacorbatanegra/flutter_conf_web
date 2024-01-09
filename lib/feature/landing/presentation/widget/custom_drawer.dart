@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_conf_web/feature/landing/change_notifiers/language_change_notifier.dart';
+import 'package:flutter_conf_web/feature/landing/presentation/widget/language_switch.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class CustomDrawer extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey;
@@ -27,6 +30,8 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final localeLanguageChangeNotifier =
+        context.watch<LanguageChangeNotifier>();
 
     return Drawer(
       child: Container(
@@ -109,6 +114,10 @@ class CustomDrawer extends StatelessWidget {
                 _scaffoldKey.currentState?.closeEndDrawer();
                 context.push('/team');
               },
+            ),
+            const Divider(),
+            LanguageSwitch(
+              localeLanguageChangeNotifier: localeLanguageChangeNotifier,
             ),
           ],
         ),
