@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_conf_web/notifiers/language_change_notifier.dart';
+import 'package:flutter_conf_web/app/notifiers/language_change_notifier.dart';
 
 class LanguageSwitch extends StatelessWidget {
   const LanguageSwitch({

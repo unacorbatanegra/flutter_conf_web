@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_conf_web/models/speaker_model.dart';
-import 'package:flutter_conf_web/widgets/about_section.dart';
-import 'package:flutter_conf_web/widgets/animated_banner_widget.dart';
-import 'package:flutter_conf_web/widgets/custom_drawer.dart';
-import 'package:flutter_conf_web/widgets/footer.dart';
-import 'package:flutter_conf_web/widgets/navigation_bar.dart';
-import 'package:flutter_conf_web/widgets/speaker_card.dart';
+import 'package:flutter_conf_web/app/models/speaker_model.dart';
+import 'package:flutter_conf_web/app/widgets/about_section.dart';
+import 'package:flutter_conf_web/app/widgets/animated_banner_widget.dart';
+import 'package:flutter_conf_web/app/widgets/custom_drawer.dart';
+import 'package:flutter_conf_web/app/widgets/footer.dart';
+import 'package:flutter_conf_web/app/widgets/navigation_bar.dart';
+import 'package:flutter_conf_web/app/widgets/speaker_card.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
 
