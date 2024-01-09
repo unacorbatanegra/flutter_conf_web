@@ -295,7 +295,10 @@ class _SpeakerInfo extends StatelessWidget {
                 onPressed: () {
                   context.read<UrlService>().openUrl(speaker.twitterUrl!);
                 },
-                icon: Assets.icons.x.svg(),
+                icon: Assets.icons.x.svg(
+                  width: 40,
+                  height: 40,
+                ),
               ),
             ],
             if (speaker.linkedinUrl != null) ...[
@@ -304,7 +307,10 @@ class _SpeakerInfo extends StatelessWidget {
                 onPressed: () {
                   context.read<UrlService>().openUrl(speaker.linkedinUrl!);
                 },
-                icon: Assets.icons.linkedin.svg(),
+                icon: Assets.icons.linkedin.svg(
+                  width: 40,
+                  height: 40,
+                ),
               ),
             ],
             if (speaker.youtubeUrl != null) ...[
@@ -313,7 +319,10 @@ class _SpeakerInfo extends StatelessWidget {
                 onPressed: () {
                   context.read<UrlService>().openUrl(speaker.youtubeUrl!);
                 },
-                icon: Assets.icons.youtube.svg(),
+                icon: Assets.icons.youtube.svg(
+                  width: 40,
+                  height: 40,
+                ),
               )
             ],
             if (speaker.facebookUrl != null) ...[
@@ -322,7 +331,10 @@ class _SpeakerInfo extends StatelessWidget {
                 onPressed: () {
                   context.read<UrlService>().openUrl(speaker.facebookUrl!);
                 },
-                icon: Assets.icons.facebook.svg(),
+                icon: Assets.icons.facebook.svg(
+                  width: 40,
+                  height: 40,
+                ),
               )
             ],
           ],
