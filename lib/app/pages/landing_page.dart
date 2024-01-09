@@ -81,7 +81,7 @@ class LandingPage extends StatelessWidget {
               children: [
                 const AnimatedBannerWidget(),
                 const SizedBox(height: 50),
-                AboutView(
+                AboutSection(
                   key: aboutKey,
                 ),
                 const SizedBox(height: 50),
