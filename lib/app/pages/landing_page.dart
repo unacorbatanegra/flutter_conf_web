@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/app/models/speaker_model.dart';
+import 'package:flutter_conf_web/app/sections/speakers_section.dart';
 import 'package:flutter_conf_web/app/widgets/about_section.dart';
 import 'package:flutter_conf_web/app/widgets/animated_banner_widget.dart';
 import 'package:flutter_conf_web/app/widgets/custom_drawer.dart';
 import 'package:flutter_conf_web/app/widgets/footer.dart';
 import 'package:flutter_conf_web/app/widgets/navigation_bar.dart';
-import 'package:flutter_conf_web/app/widgets/speaker_card.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
 
 class LandingPage extends StatelessWidget {
@@ -89,57 +89,13 @@ class LandingPage extends StatelessWidget {
                   l10n.speakers,
                   key: speakersKey,
                   style: const TextStyle(
-                    fontSize: 20,
+                    fontSize: 36,
                     fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.center,
                 ),
+                const SpeakersSection(speakers: speakers),
                 const SizedBox(height: 50),
-                SizedBox(
-                  height: 500,
-                  child: GridView.count(
-                    crossAxisCount: 1,
-                    shrinkWrap: true,
-                    mainAxisSpacing: 20,
-                    scrollDirection: Axis.horizontal,
-                    children: List.generate(
-                      speakers.length,
-                      (index) {
-                        final speaker = speakers[index];
-                        return SpeakerCard(
-                          speaker: speaker,
-                        );
-                      },
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 50),
-                // Text(
-                //   l10n.sponsors,
-                //   key: sponsorsKey,
-                //   style: const TextStyle(
-                //     fontSize: 20,
-                //     fontWeight: FontWeight.bold,
-                //   ),
-                //   textAlign: TextAlign.center,
-                // ),
-                // const SizedBox(height: 50),
-                // SizedBox(
-                //   height: 200,
-                //   child: GridView.count(
-                //     crossAxisCount: 1,
-                //     shrinkWrap: true,
-                //     mainAxisSpacing: 20,
-                //     scrollDirection: Axis.horizontal,
-                //     children: List.generate(
-                //       5,
-                //       (index) {
-                //         return const FlutterLogo();
-                //       },
-                //     ),
-                //   ),
-                // ),
-                // const SizedBox(height: 50),
               ],
             ),
           ),
