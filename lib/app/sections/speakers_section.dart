@@ -157,7 +157,8 @@ class _SpeakersDesktop extends StatelessWidget {
             ),
           Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.06),
+              horizontal: MediaQuery.of(context).size.width * 0.06,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
