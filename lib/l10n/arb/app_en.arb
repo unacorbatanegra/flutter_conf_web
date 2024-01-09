@@ -15,5 +15,10 @@
   "eventPlace":"UCOM Campus",
   "eventNameTitle":"Flutter",
   "eventNameSubtitle":"Conf",
-  "eventCountry":"Paraguay"
+  "eventCountry":"Paraguay",
+  "carlitosCharla":"From Start to Success: The roadmap to transition from Junior to Senior with Flutter",
+  "techiCharla":"On the Way to Very Good: Working Remotely from Paraguay",
+  "diegoCharla":"Why I use Flutter instead of native? Making decisions that impact the business.",
+  "hansyCharla":"Game Development from Scratch: My First Video Game with Flutter",
+  "davidCharla":"Performance Best Practices: Strategies and Practical Improvements in Flutter"
 }
