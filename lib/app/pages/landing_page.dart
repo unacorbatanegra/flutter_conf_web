@@ -88,9 +88,14 @@ class LandingPage extends StatelessWidget {
                 const SizedBox(height: 50),
                 Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: size.width > 1000 ? 96 : 0,
+                    horizontal: size.width > 900
+                        ? MediaQuery.of(context).size.width * 0.06
+                        : 0,
                   ),
                   child: Row(
+                    mainAxisAlignment: size.width > 900
+                        ? MainAxisAlignment.start
+                        : MainAxisAlignment.center,
                     children: [
                       Text(
                         l10n.speakers,
