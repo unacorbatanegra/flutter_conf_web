@@ -15,11 +15,11 @@ class SpeakersSection extends StatelessWidget {
   });
 
   //[
-//   {"id": "0", "name": "Carlitos Vargas"},
-//   {"id": "1", "name": "María Teresa Samudio González"},
-//   {"id": "2", "name": "Diego Velasquez"},
+//   {"id": "4", "name": "Carlitos Vargas"},
+//   {"id": "2", "name": "María Teresa Samudio González"},
+//   {"id": "1", "name": "Diego Velasquez"},
 //   {"id": "3", "name": "Hansy Schmitt"},
-//   {"id": "4", "name": "David Nuñez"}
+//   {"id": "0", "name": "David Rios"}
 // ]
 
   String _getTalkTitleL10n(
@@ -28,11 +28,11 @@ class SpeakersSection extends StatelessWidget {
   }) {
     final l10n = context.l10n;
     return switch (id) {
-      0 => l10n.carlitosCharla,
-      1 => l10n.techiCharla,
-      2 => l10n.diegoCharla,
+      4 => l10n.carlitosCharla,
+      2 => l10n.techiCharla,
+      1 => l10n.diegoCharla,
       3 => l10n.hansyCharla,
-      4 => l10n.davidCharla,
+      0 => l10n.davidCharla,
       _ => "Error",
     };
   }
