@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/app/models/speaker_model.dart';
+import 'package:flutter_conf_web/app/services/url_service.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
+import 'package:provider/provider.dart';
 
 class SpeakersSection extends StatelessWidget {
   final List<SpeakerModel> speakers;
@@ -142,7 +144,7 @@ class _SpeakerInfo extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              '${speaker.name}   ${speaker.countryEmoji}',
+              '${speaker.name} ${speaker.countryEmoji}',
               style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -177,7 +179,9 @@ class _SpeakerInfo extends StatelessWidget {
                 if (speaker.twitterUrl != null) ...[
                   IconButton(
                     tooltip: 'Twitter',
-                    onPressed: () {},
+                    onPressed: () {
+                      context.read<UrlService>().openUrl(speaker.twitterUrl!);
+                    },
                     icon: Assets.icons.twitter.image(
                       width: 20,
                       height: 20,
@@ -189,7 +193,9 @@ class _SpeakerInfo extends StatelessWidget {
                 if (speaker.linkedinUrl != null) ...[
                   IconButton(
                     tooltip: 'Linkedin',
-                    onPressed: () {},
+                    onPressed: () {
+                      context.read<UrlService>().openUrl(speaker.linkedinUrl!);
+                    },
                     icon: Assets.icons.linkedin.image(
                       width: 20,
                       height: 20,
@@ -201,7 +207,9 @@ class _SpeakerInfo extends StatelessWidget {
                 if (speaker.youtubeUrl != null) ...[
                   IconButton(
                     tooltip: 'Youtube',
-                    onPressed: () {},
+                    onPressed: () {
+                      context.read<UrlService>().openUrl(speaker.youtubeUrl!);
+                    },
                     icon: Assets.icons.youtube.image(
                       width: 20,
                       height: 20,
@@ -213,7 +221,9 @@ class _SpeakerInfo extends StatelessWidget {
                 if (speaker.facebookUrl != null) ...[
                   IconButton(
                     tooltip: 'Facebook',
-                    onPressed: () {},
+                    onPressed: () {
+                      context.read<UrlService>().openUrl(speaker.facebookUrl!);
+                    },
                     icon: Assets.icons.facebook.image(
                       width: 20,
                       height: 20,
