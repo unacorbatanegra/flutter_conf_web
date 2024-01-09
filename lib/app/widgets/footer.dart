@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_conf_web/app/services/url_service.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:provider/provider.dart';
 
 class Footer extends StatelessWidget {
   const Footer({
     super.key,
   });
-
-  Future<void> launchUrlSocialMedia(String link) async {
-    final url = Uri.parse(link);
-    if (!await launchUrl(url)) {
-      throw Exception('Could not launch $url');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +17,10 @@ class Footer extends StatelessWidget {
       color: Colors.black,
       child: size.width > 600
           ? _FooterDesktop(
-              launchUrlSocialMedia: launchUrlSocialMedia,
+              launchUrlSocialMedia: context.read<UrlService>().openUrl,
             )
           : _FooterMobile(
-              launchUrlSocialMedia: launchUrlSocialMedia,
+              launchUrlSocialMedia: context.read<UrlService>().openUrl,
             ),
     );
   }
