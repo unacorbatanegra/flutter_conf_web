@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_conf_web/app/services/url_service.dart';
 import 'package:flutter_conf_web/core/themes/colors.dart';
 import 'package:flutter_conf_web/app/notifiers/language_change_notifier.dart';
 import 'package:flutter_conf_web/app/pages/landing_page.dart';
@@ -11,8 +12,15 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => LanguageChangeNotifier(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => LanguageChangeNotifier(),
+        ),
+        Provider(
+          create: (context) => UrlService(),
+        ),
+      ],
       child: MyApp(),
     ),
   );
