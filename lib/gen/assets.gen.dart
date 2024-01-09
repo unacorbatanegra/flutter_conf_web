@@ -53,6 +53,10 @@ class $AssetsAnimationGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/facebook.png
+  AssetGenImage get facebook =>
+      const AssetGenImage('assets/icons/facebook.png');
+
   /// File path: assets/icons/github.png
   AssetGenImage get github => const AssetGenImage('assets/icons/github.png');
 
@@ -72,7 +76,7 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<AssetGenImage> get values =>
-      [github, instagram, linkedin, twitter, youtube];
+      [facebook, github, instagram, linkedin, twitter, youtube];
 }
 
 class $AssetsImagesGen {
@@ -138,8 +142,13 @@ class $AssetsImagesSpeakersGen {
   AssetGenImage get speaker4 =>
       const AssetGenImage('assets/images/speakers/speaker_4.jpg');
 
+  /// File path: assets/images/speakers/speaker_5.jpeg
+  AssetGenImage get speaker5 =>
+      const AssetGenImage('assets/images/speakers/speaker_5.jpeg');
+
   /// List of all assets
-  List<AssetGenImage> get values => [speaker1, speaker2, speaker3, speaker4];
+  List<AssetGenImage> get values =>
+      [speaker1, speaker2, speaker3, speaker4, speaker5];
 }
 
 class $AssetsImagesTeamGen {
@@ -173,9 +182,13 @@ class $AssetsImagesTeamGen {
   AssetGenImage get team7 =>
       const AssetGenImage('assets/images/team/team_7.jpg');
 
+  /// File path: assets/images/team/team_8.jpeg
+  AssetGenImage get team8 =>
+      const AssetGenImage('assets/images/team/team_8.jpeg');
+
   /// List of all assets
   List<AssetGenImage> get values =>
-      [team1, team2, team3, team4, team5, team6, team7];
+      [team1, team2, team3, team4, team5, team6, team7, team8];
 }
 
 class Assets {

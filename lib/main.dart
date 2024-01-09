@@ -1,14 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_conf_web/app/services/url_service.dart';
 import 'package:flutter_conf_web/core/themes/colors.dart';
-import 'package:flutter_conf_web/feature/landing/presentation/view/landing_page.dart';
-import 'package:flutter_conf_web/feature/landing/presentation/view/team_view.dart';
+import 'package:flutter_conf_web/app/notifiers/language_change_notifier.dart';
+import 'package:flutter_conf_web/app/pages/landing_page.dart';
+import 'package:flutter_conf_web/app/pages/team_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => LanguageChangeNotifier(),
+        ),
+        Provider(
+          create: (context) => UrlService(),
+        ),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -52,6 +67,7 @@ class MyApp extends StatelessWidget {
           Locale('en'),
           Locale('es'),
         ],
+        locale: context.watch<LanguageChangeNotifier>().locale,
       ),
     );
   }

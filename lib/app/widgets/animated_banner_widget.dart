@@ -2,10 +2,8 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/core/themes/colors.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
-import 'package:flutter_conf_web/l10n/l10n.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AnimatedBannerWidget extends StatelessWidget {
@@ -44,7 +42,7 @@ class AnimatedBannerWidget extends StatelessWidget {
               left: 1,
               top: -45.dm,
               right: 1,
-              child: _RotateWheelAnimation(),
+              child: const _RotateWheelAnimation(),
             ),
             Positioned(
               bottom: 40.dm,
@@ -61,7 +59,7 @@ class AnimatedBannerWidget extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 2,
                   ),
                   Text(
@@ -138,7 +136,7 @@ class AnimatedBannerWidget extends StatelessWidget {
 }
 
 class _RotateWheelAnimation extends StatefulWidget {
-  const _RotateWheelAnimation({super.key});
+  const _RotateWheelAnimation();
 
   @override
   State<_RotateWheelAnimation> createState() => __RotateWheelAnimationState();

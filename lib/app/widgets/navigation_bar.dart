@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_conf_web/app/notifiers/language_change_notifier.dart';
+import 'package:flutter_conf_web/app/widgets/language_switch.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey;
   final VoidCallback _onScrollToHome;
   final VoidCallback _onScrollToAbout;
   final VoidCallback _onScrollToSpeakers;
-  final VoidCallback _onScollToSponsors;
+  // final VoidCallback _onScollToSponsors;
 
   const CustomNavigationBar({
     Key? key,
@@ -16,18 +19,21 @@ class CustomNavigationBar extends StatelessWidget {
     required VoidCallback onScrollToHome,
     required VoidCallback onScrollToAbout,
     required VoidCallback onScrollToSpeakers,
-    required VoidCallback onScollToSponsors,
+    // required VoidCallback onScollToSponsors,
   })  : _scaffoldKey = scaffoldKey,
         _onScrollToHome = onScrollToHome,
         _onScrollToAbout = onScrollToAbout,
         _onScrollToSpeakers = onScrollToSpeakers,
-        _onScollToSponsors = onScollToSponsors,
+        // _onScollToSponsors = onScollToSponsors,
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final size = MediaQuery.of(context).size;
+    final localeLanguageChangeNotifier =
+        context.watch<LanguageChangeNotifier>();
+
     const breakpoint = 1400;
 
     return Container(
@@ -88,6 +94,10 @@ class CustomNavigationBar extends StatelessWidget {
                   onTap: () {
                     context.push('/team');
                   },
+                ),
+                const SizedBox(width: 60),
+                LanguageSwitch(
+                  localeLanguageChangeNotifier: localeLanguageChangeNotifier,
                 ),
               ],
             )

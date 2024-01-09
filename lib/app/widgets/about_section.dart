@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
 
-class AboutView extends StatelessWidget {
-  const AboutView({super.key});
+class AboutSection extends StatelessWidget {
+  const AboutSection({super.key});
 
   @override
   Widget build(BuildContext context) {
