@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_conf_web/feature/landing/change_notifiers/language_change_notifier.dart';
-import 'package:flutter_conf_web/feature/landing/presentation/widget/language_switch.dart';
+import 'package:flutter_conf_web/notifiers/language_change_notifier.dart';
+import 'package:flutter_conf_web/widgets/language_switch.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
 import 'package:go_router/go_router.dart';

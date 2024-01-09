@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_conf_web/feature/landing/presentation/widget/leyends_widget.dart';
+import 'package:flutter_conf_web/widgets/leyends_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 

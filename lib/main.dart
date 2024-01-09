@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/core/themes/colors.dart';
-import 'package:flutter_conf_web/feature/landing/change_notifiers/language_change_notifier.dart';
-import 'package:flutter_conf_web/feature/landing/presentation/pages/landing_page.dart';
-import 'package:flutter_conf_web/feature/landing/presentation/pages/team_page.dart';
+import 'package:flutter_conf_web/notifiers/language_change_notifier.dart';
+import 'package:flutter_conf_web/pages/landing_page.dart';
+import 'package:flutter_conf_web/pages/team_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';

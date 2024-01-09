@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_conf_web/feature/landing/models/speaker_model.dart';
+import 'package:flutter_conf_web/models/speaker_model.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
