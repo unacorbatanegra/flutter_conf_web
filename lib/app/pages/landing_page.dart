@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/app/models/speaker_model.dart';
 import 'package:flutter_conf_web/app/sections/speakers_section.dart';
-import 'package:flutter_conf_web/app/widgets/about_section.dart';
+import 'package:flutter_conf_web/app/sections/about_section.dart';
 import 'package:flutter_conf_web/app/widgets/animated_banner_widget.dart';
 import 'package:flutter_conf_web/app/widgets/custom_drawer.dart';
 import 'package:flutter_conf_web/app/widgets/footer.dart';
@@ -40,6 +40,7 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final size = MediaQuery.of(context).size;
 
     return Scaffold(
       key: scaffoldKey,
@@ -85,14 +86,28 @@ class LandingPage extends StatelessWidget {
                   key: aboutKey,
                 ),
                 const SizedBox(height: 50),
-                Text(
-                  l10n.speakers,
-                  key: speakersKey,
-                  style: const TextStyle(
-                    fontSize: 36,
-                    fontWeight: FontWeight.bold,
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: size.width > 900
+                        ? MediaQuery.of(context).size.width * 0.06
+                        : 0,
                   ),
-                  textAlign: TextAlign.center,
+                  child: Row(
+                    mainAxisAlignment: size.width > 900
+                        ? MainAxisAlignment.start
+                        : MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        l10n.speakers,
+                        key: speakersKey,
+                        style: const TextStyle(
+                          fontSize: 36,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
                 ),
                 const SpeakersSection(speakers: speakers),
                 const SizedBox(height: 50),
