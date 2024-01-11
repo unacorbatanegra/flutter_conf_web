@@ -19,7 +19,7 @@ jobs:
       - run: |
           flutter clean
           flutter pub get
-          flutter build web --release
+          flutter build web --release --web-renderer canvaskit
       - run: cp -R build/web/* public/
       - uses: w9jds/firebase-action@master       
         with:
