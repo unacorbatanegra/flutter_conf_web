@@ -74,7 +74,7 @@ const List<SpeakerModel> speakers = [
     name: 'David Rios',
     profession: 'Senior Mobile Developer',
     talkTitle:
-        'Performance Best Practices: Estrategias y Mejoras Prácticas en Flutter',
+        'Performance Best Practices: Estrategias y Mejores Prácticas en Flutter',
     linkedinUrl: "https://www.linkedin.com/in/david-rios-dev/",
     twitterUrl: null,
     youtubeUrl: null,
