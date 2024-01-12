@@ -46,6 +46,14 @@ class LandingPage extends StatelessWidget {
 
     return Scaffold(
       key: scaffoldKey,
+      floatingActionButton: size.width > 900
+          ? null
+          : FloatingActionButton(
+              onPressed: () {
+                scrollToTop();
+              },
+              child: const Icon(Icons.arrow_upward),
+            ),
       endDrawer: CustomDrawer(
         scaffoldKey: scaffoldKey,
         onScrollToHome: () {
