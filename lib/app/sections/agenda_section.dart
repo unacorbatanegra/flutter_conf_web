@@ -9,10 +9,12 @@ class AgendaSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    const breakpoint = 900;
+    final size = MediaQuery.of(context).size;
 
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: 32,
+        horizontal: 72,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -22,83 +24,146 @@ class AgendaSection extends StatelessWidget {
             style: TextStyle(
               fontSize: 48,
               fontWeight: FontWeight.w700,
+              color: Color(0xff0C283A),
+              decoration: TextDecoration.underline,
             ),
           ),
-          const SizedBox(height: 32),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          const SizedBox(height: 48),
+          if (size.width > breakpoint)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _AgendaItem(
+                        info: AgendaInfo(
+                          time: "1:00 pm",
+                          title: l10n.accreditation,
+                          speaker: null,
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      _AgendaItem(
+                        info: AgendaInfo(
+                          time: "2:30 pm",
+                          title: l10n.performanceBestPractices,
+                          speaker: "David Rios ",
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      _AgendaItem(
+                        info: AgendaInfo(
+                          time: "3:15 pm",
+                          title: l10n.whyFlutter,
+                          speaker: "Diego Velázquez",
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      _AgendaItem(
+                        info: AgendaInfo(
+                          time: "4:30 pm",
+                          title: l10n.remoteParaguay,
+                          speaker: "María Teresa Samudio",
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _AgendaItem(
+                        info: AgendaInfo(
+                          time: "5:15 pm",
+                          title: l10n.gameDevelopment,
+                          speaker: "Hansy Schmitt",
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      _AgendaItem(
+                        info: AgendaInfo(
+                          time: "6:15 pm",
+                          title: l10n.roadMap,
+                          speaker: "Carlitos Vargas",
+                        ),
+                      ),
+                      const SizedBox(height: 36),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Assets.images.dash.image(),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            )
+          else
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _AgendaItem(
+                  info: AgendaInfo(
+                    time: "1:00 pm",
+                    title: l10n.accreditation,
+                    speaker: null,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                _AgendaItem(
+                  info: AgendaInfo(
+                    time: "2:30 pm",
+                    title: l10n.performanceBestPractices,
+                    speaker: "David Rios ",
+                  ),
+                ),
+                const SizedBox(height: 12),
+                _AgendaItem(
+                  info: AgendaInfo(
+                    time: "3:15 pm",
+                    title: l10n.whyFlutter,
+                    speaker: "Diego Velázquez",
+                  ),
+                ),
+                const SizedBox(height: 12),
+                _AgendaItem(
+                  info: AgendaInfo(
+                    time: "4:30 pm",
+                    title: l10n.remoteParaguay,
+                    speaker: "María Teresa Samudio",
+                  ),
+                ),
+                const SizedBox(height: 12),
+                _AgendaItem(
+                  info: AgendaInfo(
+                    time: "5:15 pm",
+                    title: l10n.gameDevelopment,
+                    speaker: "Hansy Schmitt",
+                  ),
+                ),
+                const SizedBox(height: 12),
+                _AgendaItem(
+                  info: AgendaInfo(
+                    time: "6:15 pm",
+                    title: l10n.roadMap,
+                    speaker: "Carlitos Vargas",
+                  ),
+                ),
+                const SizedBox(height: 36),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    _AgendaItem(
-                      info: AgendaInfo(
-                        time: "1:00 pm",
-                        title: l10n.accreditation,
-                        speaker: null,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    _AgendaItem(
-                      info: AgendaInfo(
-                        time: "2:30 pm",
-                        title: l10n.performanceBestPractices,
-                        speaker: "David Rios ",
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    _AgendaItem(
-                      info: AgendaInfo(
-                        time: "3:15 pm",
-                        title: l10n.whyFlutter,
-                        speaker: "Diego Velázquez",
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    _AgendaItem(
-                      info: AgendaInfo(
-                        time: "4:30 pm",
-                        title: l10n.remoteParaguay,
-                        speaker: "María Teresa Samudio",
-                      ),
-                    ),
+                    Assets.images.dash.image(),
                   ],
                 ),
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _AgendaItem(
-                      info: AgendaInfo(
-                        time: "5:15 pm",
-                        title: l10n.gameDevelopment,
-                        speaker: "Hansy Schmitt",
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    _AgendaItem(
-                      info: AgendaInfo(
-                        time: "6:15 pm",
-                        title: l10n.roadMap,
-                        speaker: "Carlitos Vargas",
-                      ),
-                    ),
-                    const SizedBox(height: 36),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Assets.images.dash.image(),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+              ],
+            ),
         ],
       ),
     );
@@ -126,21 +191,23 @@ class _AgendaItem extends StatelessWidget {
             color: Color(0xFF2F80EB),
           ),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 15),
         Text(
           info.title,
           style: const TextStyle(
             fontSize: 24.4764404296875,
+            color: Color(0xff333333),
             fontWeight: FontWeight.w400,
           ),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 10),
         if (info.speaker != null)
           Text(
             info.speaker!,
             style: const TextStyle(
               fontSize: 22.251310348510742,
               fontWeight: FontWeight.w300,
+              color: Color(0xff9B9B9B),
             ),
           )
       ],
