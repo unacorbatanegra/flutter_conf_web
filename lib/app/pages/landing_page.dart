@@ -112,7 +112,7 @@ class LandingPage extends StatelessWidget {
                 ),
                 const SpeakersSection(speakers: speakers),
                 const SizedBox(height: 50),
-                AgendaSection(),
+                const AgendaSection(),
                 const SizedBox(height: 50),
               ],
             ),
