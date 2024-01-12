@@ -85,45 +85,47 @@ class LandingPage extends StatelessWidget {
             // },
           ),
           Expanded(
-            child: ListView(
+            child: SingleChildScrollView(
               controller: scrollController,
-              children: [
-                const AnimatedBannerWidget(),
-                const SizedBox(height: 50),
-                AboutSection(
-                  key: aboutKey,
-                ),
-                const SizedBox(height: 50),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: size.width > 900
-                        ? MediaQuery.of(context).size.width * 0.06
-                        : 0,
+              child: Column(
+                children: [
+                  const AnimatedBannerWidget(),
+                  const SizedBox(height: 50),
+                  AboutSection(
+                    key: aboutKey,
                   ),
-                  child: Row(
-                    mainAxisAlignment: size.width > 900
-                        ? MainAxisAlignment.start
-                        : MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        l10n.speakers,
-                        key: speakersKey,
-                        style: const TextStyle(
-                          fontSize: 36,
-                          fontWeight: FontWeight.bold,
+                  const SizedBox(height: 50),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: size.width > 900
+                          ? MediaQuery.of(context).size.width * 0.06
+                          : 0,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: size.width > 900
+                          ? MainAxisAlignment.start
+                          : MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          l10n.speakers,
+                          key: speakersKey,
+                          style: const TextStyle(
+                            fontSize: 36,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                const SpeakersSection(speakers: speakers),
-                const SizedBox(height: 50),
-                AgendaSection(
-                  key: agendaKey,
-                ),
-                const SizedBox(height: 50),
-              ],
+                  const SpeakersSection(speakers: speakers),
+                  const SizedBox(height: 50),
+                  AgendaSection(
+                    key: agendaKey,
+                  ),
+                  const SizedBox(height: 50),
+                ],
+              ),
             ),
           ),
           const Footer(),
