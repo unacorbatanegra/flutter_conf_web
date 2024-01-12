@@ -11,6 +11,7 @@ class CustomDrawer extends StatelessWidget {
   final VoidCallback _onScrollToAbout;
   final VoidCallback _onScrollToHome;
   final VoidCallback _onScrollToSpeakers;
+  final VoidCallback _onScollToAgenda;
   // final VoidCallback _onScollToSponsors;
 
   const CustomDrawer({
@@ -19,11 +20,13 @@ class CustomDrawer extends StatelessWidget {
     required VoidCallback onScrollToAbout,
     required VoidCallback onScrollToHome,
     required VoidCallback onScrollToSpeakers,
+    required VoidCallback onScollToAgenda,
     // required VoidCallback onScollToSponsors,
   })  : _scaffoldKey = scaffoldKey,
         _onScrollToAbout = onScrollToAbout,
         _onScrollToHome = onScrollToHome,
         _onScrollToSpeakers = onScrollToSpeakers,
+        _onScollToAgenda = onScollToAgenda,
         // _onScollToSponsors = onScollToSponsors,
         super(key: key);
 
@@ -102,6 +105,20 @@ class CustomDrawer extends StatelessWidget {
             //     _onScollToSponsors();
             //   },
             // ),
+            ListTile(
+              title: const Text(
+                "Agenda",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                ),
+              ),
+              onTap: () {
+                _scaffoldKey.currentState?.closeEndDrawer();
+                _onScollToAgenda();
+              },
+            ),
+            const Divider(),
             ListTile(
               title: Text(
                 l10n.team,

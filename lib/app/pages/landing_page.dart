@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/app/models/speaker_model.dart';
+import 'package:flutter_conf_web/app/sections/agenda_section.dart';
 import 'package:flutter_conf_web/app/sections/speakers_section.dart';
 import 'package:flutter_conf_web/app/sections/about_section.dart';
 import 'package:flutter_conf_web/app/widgets/animated_banner_widget.dart';
@@ -15,6 +16,7 @@ class LandingPage extends StatelessWidget {
   final aboutKey = GlobalKey();
   final speakersKey = GlobalKey();
   final sponsorsKey = GlobalKey();
+  final agendaKey = GlobalKey();
 
   LandingPage({super.key});
 
@@ -44,6 +46,14 @@ class LandingPage extends StatelessWidget {
 
     return Scaffold(
       key: scaffoldKey,
+      floatingActionButton: size.width > 900
+          ? null
+          : FloatingActionButton(
+              onPressed: () {
+                scrollToTop();
+              },
+              child: const Icon(Icons.arrow_upward),
+            ),
       endDrawer: CustomDrawer(
         scaffoldKey: scaffoldKey,
         onScrollToHome: () {
@@ -54,6 +64,9 @@ class LandingPage extends StatelessWidget {
         },
         onScrollToSpeakers: () {
           scrollToKey(speakersKey);
+        },
+        onScollToAgenda: () {
+          scrollToKey(agendaKey);
         },
         // onScollToSponsors: () {
         // scrollToKey(sponsorsKey);
@@ -72,46 +85,55 @@ class LandingPage extends StatelessWidget {
             onScrollToSpeakers: () {
               scrollToKey(speakersKey);
             },
+            onScollToAgenda: () {
+              scrollToKey(agendaKey);
+            },
             // onScollToSponsors: () {
             // scrollToKey(sponsorsKey);
             // },
           ),
           Expanded(
-            child: ListView(
+            child: SingleChildScrollView(
               controller: scrollController,
-              children: [
-                const AnimatedBannerWidget(),
-                const SizedBox(height: 50),
-                AboutSection(
-                  key: aboutKey,
-                ),
-                const SizedBox(height: 50),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: size.width > 900
-                        ? MediaQuery.of(context).size.width * 0.06
-                        : 0,
+              child: Column(
+                children: [
+                  const AnimatedBannerWidget(),
+                  const SizedBox(height: 50),
+                  AboutSection(
+                    key: aboutKey,
                   ),
-                  child: Row(
-                    mainAxisAlignment: size.width > 900
-                        ? MainAxisAlignment.start
-                        : MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        l10n.speakers,
-                        key: speakersKey,
-                        style: const TextStyle(
-                          fontSize: 36,
-                          fontWeight: FontWeight.bold,
+                  const SizedBox(height: 50),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: size.width > 900
+                          ? MediaQuery.of(context).size.width * 0.06
+                          : 0,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: size.width > 900
+                          ? MainAxisAlignment.start
+                          : MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          l10n.speakers,
+                          key: speakersKey,
+                          style: const TextStyle(
+                            fontSize: 36,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                const SpeakersSection(speakers: speakers),
-                const SizedBox(height: 50),
-              ],
+                  const SpeakersSection(speakers: speakers),
+                  const SizedBox(height: 50),
+                  AgendaSection(
+                    key: agendaKey,
+                  ),
+                  const SizedBox(height: 50),
+                ],
+              ),
             ),
           ),
           const Footer(),
