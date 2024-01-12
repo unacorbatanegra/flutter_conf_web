@@ -114,6 +114,7 @@ class $AssetsImagesGen {
   SvgGenImage get logo => const SvgGenImage('assets/images/logo.svg');
 
   $AssetsImagesSpeakersGen get speakers => const $AssetsImagesSpeakersGen();
+  $AssetsImagesSponsorsGen get sponsors => const $AssetsImagesSponsorsGen();
   $AssetsImagesTeamGen get team => const $AssetsImagesTeamGen();
 
   /// File path: assets/images/x_speaker.svg
@@ -160,6 +161,17 @@ class $AssetsImagesSpeakersGen {
   /// List of all assets
   List<AssetGenImage> get values =>
       [speaker1, speaker2, speaker3, speaker4, speaker5];
+}
+
+class $AssetsImagesSponsorsGen {
+  const $AssetsImagesSponsorsGen();
+
+  /// File path: assets/images/sponsors/ucom_logo.png
+  AssetGenImage get ucomLogo =>
+      const AssetGenImage('assets/images/sponsors/ucom_logo.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [ucomLogo];
 }
 
 class $AssetsImagesTeamGen {

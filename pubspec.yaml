@@ -61,6 +61,7 @@ flutter:
     - assets/animation/
     - assets/images/
     - assets/images/speakers/
+    - assets/images/sponsors/
     - assets/images/team/
     - assets/icons/
 
