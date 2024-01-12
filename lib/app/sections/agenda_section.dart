@@ -1,12 +1,15 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
+import 'package:flutter_conf_web/l10n/l10n.dart';
 
 class AgendaSection extends StatelessWidget {
   const AgendaSection({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 32,
@@ -26,39 +29,38 @@ class AgendaSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Expanded(
+              Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _AgendaItem(
                       info: AgendaInfo(
                         time: "1:00 pm",
-                        title: "Acreditaciones",
+                        title: l10n.accreditation,
                         speaker: null,
                       ),
                     ),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
                     _AgendaItem(
                       info: AgendaInfo(
                         time: "2:30 pm",
-                        title: "Performance Best Practices",
+                        title: l10n.performanceBestPractices,
                         speaker: "David Rios ",
                       ),
                     ),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
                     _AgendaItem(
                       info: AgendaInfo(
                         time: "3:15 pm",
-                        title: "¿Por qué uso Flutter en lugar de nativo?",
+                        title: l10n.whyFlutter,
                         speaker: "Diego Velázquez",
                       ),
                     ),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
                     _AgendaItem(
                       info: AgendaInfo(
                         time: "4:30 pm",
-                        title:
-                            'Rumbo a lo "Very Good" : Trabajando remoto desde Paraguay',
+                        title: l10n.remoteParaguay,
                         speaker: "María Teresa Samudio",
                       ),
                     ),
@@ -70,19 +72,18 @@ class AgendaSection extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const _AgendaItem(
+                    _AgendaItem(
                       info: AgendaInfo(
                         time: "5:15 pm",
-                        title: "Game Development Desde Cero con Flutter",
+                        title: l10n.gameDevelopment,
                         speaker: "Hansy Schmitt",
                       ),
                     ),
                     const SizedBox(height: 12),
-                    const _AgendaItem(
+                    _AgendaItem(
                       info: AgendaInfo(
                         time: "6:15 pm",
-                        title:
-                            "Roadmap para convertirte de Junior a Senior con Flutter",
+                        title: l10n.roadMap,
                         speaker: "Carlitos Vargas",
                       ),
                     ),
