@@ -20,5 +20,11 @@
   "techiCharla":"On the Way to Very Good: Working Remotely from Paraguay",
   "diegoCharla":"Why I use Flutter instead of native? Making decisions that impact the business.",
   "hansyCharla":"Game Development from Scratch: My First Video Game with Flutter",
-  "davidCharla":"Performance Best Practices: Strategies and Practical Improvements in Flutter"
+  "davidCharla":"Performance Best Practices: Strategies and Practical Improvements in Flutter",
+  "accreditation":"Accreditation",
+  "performanceBestPractices":"Performance Best Practices",
+  "whyFlutter":"Why I use Flutter instead of native?",
+  "remoteParaguay":"On the Way to Very Good: Working Remotely from Paraguay",
+  "gameDevelopment":"Game Development from Scratch with Flutter",
+  "roadMap":"Roadmap to transition from Junior to Senior with Flutter"
 }
