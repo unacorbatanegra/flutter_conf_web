@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/app/models/speaker_model.dart';
+import 'package:flutter_conf_web/app/sections/agenda_section.dart';
 import 'package:flutter_conf_web/app/sections/speakers_section.dart';
 import 'package:flutter_conf_web/app/sections/about_section.dart';
 import 'package:flutter_conf_web/app/widgets/animated_banner_widget.dart';
@@ -110,6 +111,8 @@ class LandingPage extends StatelessWidget {
                   ),
                 ),
                 const SpeakersSection(speakers: speakers),
+                const SizedBox(height: 50),
+                AgendaSection(),
                 const SizedBox(height: 50),
               ],
             ),
