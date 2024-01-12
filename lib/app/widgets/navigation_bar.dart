@@ -11,6 +11,7 @@ class CustomNavigationBar extends StatelessWidget {
   final VoidCallback _onScrollToHome;
   final VoidCallback _onScrollToAbout;
   final VoidCallback _onScrollToSpeakers;
+  final VoidCallback _onScollToAgenda;
   // final VoidCallback _onScollToSponsors;
 
   const CustomNavigationBar({
@@ -19,11 +20,13 @@ class CustomNavigationBar extends StatelessWidget {
     required VoidCallback onScrollToHome,
     required VoidCallback onScrollToAbout,
     required VoidCallback onScrollToSpeakers,
+    required VoidCallback onScollToAgenda,
     // required VoidCallback onScollToSponsors,
   })  : _scaffoldKey = scaffoldKey,
         _onScrollToHome = onScrollToHome,
         _onScrollToAbout = onScrollToAbout,
         _onScrollToSpeakers = onScrollToSpeakers,
+        _onScollToAgenda = onScollToAgenda,
         // _onScollToSponsors = onScollToSponsors,
         super(key: key);
 
@@ -79,6 +82,13 @@ class CustomNavigationBar extends StatelessWidget {
                   l10n.speakers,
                   onTap: () {
                     _onScrollToSpeakers();
+                  },
+                ),
+                const SizedBox(width: 60),
+                _NavBarItem(
+                  "Agenda",
+                  onTap: () {
+                    _onScollToAgenda();
                   },
                 ),
                 const SizedBox(width: 60),

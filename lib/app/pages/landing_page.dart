@@ -16,6 +16,7 @@ class LandingPage extends StatelessWidget {
   final aboutKey = GlobalKey();
   final speakersKey = GlobalKey();
   final sponsorsKey = GlobalKey();
+  final agendaKey = GlobalKey();
 
   LandingPage({super.key});
 
@@ -56,6 +57,9 @@ class LandingPage extends StatelessWidget {
         onScrollToSpeakers: () {
           scrollToKey(speakersKey);
         },
+        onScollToAgenda: () {
+          scrollToKey(agendaKey);
+        },
         // onScollToSponsors: () {
         // scrollToKey(sponsorsKey);
         // },
@@ -72,6 +76,9 @@ class LandingPage extends StatelessWidget {
             },
             onScrollToSpeakers: () {
               scrollToKey(speakersKey);
+            },
+            onScollToAgenda: () {
+              scrollToKey(agendaKey);
             },
             // onScollToSponsors: () {
             // scrollToKey(sponsorsKey);
@@ -112,7 +119,9 @@ class LandingPage extends StatelessWidget {
                 ),
                 const SpeakersSection(speakers: speakers),
                 const SizedBox(height: 50),
-                const AgendaSection(),
+                AgendaSection(
+                  key: agendaKey,
+                ),
                 const SizedBox(height: 50),
               ],
             ),
