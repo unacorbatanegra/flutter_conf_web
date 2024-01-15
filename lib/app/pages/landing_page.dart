@@ -98,17 +98,15 @@ class LandingPage extends StatelessWidget {
                 children: [
                   const AnimatedBannerWidget(),
                   const SizedBox(height: 50),
-                  AboutSection(
-                    key: aboutKey,
-                  ),
-                  const SizedBox(height: 50),
-                  SpeakersSection(
-                    key: speakersKey,
-                    speakers: speakers,
-                  ),
-                  const SizedBox(height: 50),
-                  AgendaSection(
-                    key: agendaKey,
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      maxWidth: 820,
+                    ),
+                    child: _landingContent(
+                      aboutKey: aboutKey,
+                      speakersKey: speakersKey,
+                      agendaKey: agendaKey,
+                    ),
                   ),
                   const SizedBox(height: 50),
                 ],
@@ -116,6 +114,44 @@ class LandingPage extends StatelessWidget {
             ),
           ),
           const Footer(),
+        ],
+      ),
+    );
+  }
+}
+
+class _landingContent extends StatelessWidget {
+  const _landingContent({
+    super.key,
+    required this.aboutKey,
+    required this.speakersKey,
+    required this.agendaKey,
+  });
+
+  final GlobalKey<State<StatefulWidget>> aboutKey;
+  final GlobalKey<State<StatefulWidget>> speakersKey;
+  final GlobalKey<State<StatefulWidget>> agendaKey;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 72,
+      ),
+      child: Column(
+        children: [
+          AboutSection(
+            key: aboutKey,
+          ),
+          const SizedBox(height: 50),
+          SpeakersSection(
+            key: speakersKey,
+            speakers: speakers,
+          ),
+          const SizedBox(height: 50),
+          AgendaSection(
+            key: agendaKey,
+          ),
         ],
       ),
     );
