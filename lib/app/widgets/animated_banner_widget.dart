@@ -267,7 +267,6 @@ class __RotateWheelAnimationState extends State<_RotateWheelAnimation>
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return RotationTransition(
       turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
       child: DottedBorder(

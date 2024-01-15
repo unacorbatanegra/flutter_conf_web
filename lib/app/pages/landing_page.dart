@@ -8,7 +8,6 @@ import 'package:flutter_conf_web/app/widgets/custom_drawer.dart';
 import 'package:flutter_conf_web/app/widgets/footer.dart';
 import 'package:flutter_conf_web/app/widgets/navigation_bar.dart';
 import 'package:flutter_conf_web/core/constants/constants.dart';
-import 'package:flutter_conf_web/l10n/l10n.dart';
 
 class LandingPage extends StatelessWidget {
   final scaffoldKey = GlobalKey<ScaffoldState>();
