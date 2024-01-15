@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/app/models/speaker_model.dart';
 import 'package:flutter_conf_web/app/services/url_service.dart';
+import 'package:flutter_conf_web/core/constants/constants.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,8 +40,25 @@ class SpeakersSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final size = MediaQuery.of(context).size;
     return Column(
       children: [
+        Row(
+          mainAxisAlignment: size.width > kBreakPoint
+              ? MainAxisAlignment.start
+              : MainAxisAlignment.center,
+          children: [
+            Text(
+              l10n.speakers,
+              style: const TextStyle(
+                fontSize: 36,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
         const SizedBox(height: 32),
         for (final speaker in speakers) ...[
           _SpeakersView(
@@ -66,7 +84,7 @@ class _SpeakersView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final breakpoint = MediaQuery.of(context).size.width > 900;
+    final breakpoint = MediaQuery.of(context).size.width > kBreakPoint;
 
     if (breakpoint) {
       return _SpeakersDesktop(speaker: speaker);
@@ -249,7 +267,7 @@ class _SpeakerInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Column(
-      crossAxisAlignment: size.width > 900
+      crossAxisAlignment: size.width > kBreakPoint
           ? speaker.id % 2 == 0
               ? CrossAxisAlignment.start
               : CrossAxisAlignment.end
@@ -261,7 +279,7 @@ class _SpeakerInfo extends StatelessWidget {
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
-          textAlign: size.width > 900 ? null : TextAlign.center,
+          textAlign: size.width > kBreakPoint ? null : TextAlign.center,
         ),
         const SizedBox(height: 8),
         Text(
@@ -270,7 +288,7 @@ class _SpeakerInfo extends StatelessWidget {
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
-          textAlign: size.width > 900 ? null : TextAlign.center,
+          textAlign: size.width > kBreakPoint ? null : TextAlign.center,
         ),
         const SizedBox(height: 8),
         Text(
@@ -279,11 +297,11 @@ class _SpeakerInfo extends StatelessWidget {
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
-          textAlign: size.width > 900 ? null : TextAlign.center,
+          textAlign: size.width > kBreakPoint ? null : TextAlign.center,
         ),
         const SizedBox(height: 8),
         Row(
-          mainAxisAlignment: size.width > 900
+          mainAxisAlignment: size.width > kBreakPoint
               ? speaker.id % 2 == 0
                   ? MainAxisAlignment.start
                   : MainAxisAlignment.end

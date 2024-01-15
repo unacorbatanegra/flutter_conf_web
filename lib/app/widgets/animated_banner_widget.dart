@@ -1,5 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_conf_web/core/constants/constants.dart';
 import 'package:flutter_conf_web/core/themes/colors.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
@@ -16,7 +17,7 @@ class AnimatedBannerWidget extends StatelessWidget {
 
     return Container(
       color: AppColors.secondaryColor,
-      child: size.width > 900
+      child: size.width > kBreakPoint
           ? const _AnimationDesktop()
           : const _AnimationMobile(),
     );
