@@ -92,7 +92,10 @@ class AgendaSection extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Assets.images.dash.image(),
+                        Assets.images.dash.image(
+                          height: 250,
+                          fit: BoxFit.cover,
+                        ),
                       ],
                     ),
                   ],
@@ -152,11 +155,9 @@ class AgendaSection extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 36),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Assets.images.dash.image(),
-                ],
+              Assets.images.dash.image(
+                height: 250,
+                fit: BoxFit.cover,
               ),
             ],
           ),
