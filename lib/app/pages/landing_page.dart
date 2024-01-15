@@ -7,6 +7,7 @@ import 'package:flutter_conf_web/app/widgets/animated_banner_widget.dart';
 import 'package:flutter_conf_web/app/widgets/custom_drawer.dart';
 import 'package:flutter_conf_web/app/widgets/footer.dart';
 import 'package:flutter_conf_web/app/widgets/navigation_bar.dart';
+import 'package:flutter_conf_web/core/constants/constants.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
 
 class LandingPage extends StatelessWidget {
@@ -41,12 +42,11 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
       key: scaffoldKey,
-      floatingActionButton: size.width > 900
+      floatingActionButton: size.width > kBreakPoint
           ? null
           : FloatingActionButton(
               onPressed: () {
@@ -103,30 +103,10 @@ class LandingPage extends StatelessWidget {
                     key: aboutKey,
                   ),
                   const SizedBox(height: 50),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: size.width > 900
-                          ? MediaQuery.of(context).size.width * 0.06
-                          : 0,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: size.width > 900
-                          ? MainAxisAlignment.start
-                          : MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          l10n.speakers,
-                          key: speakersKey,
-                          style: const TextStyle(
-                            fontSize: 36,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
+                  SpeakersSection(
+                    key: speakersKey,
+                    speakers: speakers,
                   ),
-                  const SpeakersSection(speakers: speakers),
                   const SizedBox(height: 50),
                   AgendaSection(
                     key: agendaKey,
