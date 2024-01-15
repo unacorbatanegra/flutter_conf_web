@@ -61,12 +61,17 @@ class SpeakersSection extends StatelessWidget {
         ),
         const SizedBox(height: 32),
         for (final speaker in speakers) ...[
-          _SpeakersView(
-            speaker: speaker.copyWith(
-                talkTitle: _getTalkTitleL10n(
-              context,
-              id: speaker.id,
-            )),
+          Column(
+            children: [
+              _SpeakersView(
+                speaker: speaker.copyWith(
+                    talkTitle: _getTalkTitleL10n(
+                  context,
+                  id: speaker.id,
+                )),
+              ),
+              SizedBox(height: 32),
+            ],
           ),
           const SizedBox(height: 32),
         ],
