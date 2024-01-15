@@ -1,5 +1,5 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_conf_web/app/models/agenda_info.dart';
 import 'package:flutter_conf_web/core/constants/constants.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
@@ -208,19 +208,4 @@ class _AgendaItem extends StatelessWidget {
       ],
     );
   }
-}
-
-class AgendaInfo extends Equatable {
-  final String time;
-  final String title;
-  final String? speaker;
-
-  const AgendaInfo({
-    required this.time,
-    required this.title,
-    required this.speaker,
-  });
-
-  @override
-  List<Object?> get props => [time, title, speaker];
 }
