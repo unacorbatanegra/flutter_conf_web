@@ -7,7 +7,7 @@ import 'package:flutter_conf_web/app/widgets/animated_banner_widget.dart';
 import 'package:flutter_conf_web/app/widgets/custom_drawer.dart';
 import 'package:flutter_conf_web/app/widgets/footer.dart';
 import 'package:flutter_conf_web/app/widgets/navigation_bar.dart';
-import 'package:flutter_conf_web/l10n/l10n.dart';
+import 'package:flutter_conf_web/core/constants/constants.dart';
 
 class LandingPage extends StatelessWidget {
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -41,12 +41,11 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
       key: scaffoldKey,
-      floatingActionButton: size.width > 900
+      floatingActionButton: size.width > kBreakPoint
           ? null
           : FloatingActionButton(
               onPressed: () {
@@ -99,37 +98,15 @@ class LandingPage extends StatelessWidget {
                 children: [
                   const AnimatedBannerWidget(),
                   const SizedBox(height: 50),
-                  AboutSection(
-                    key: aboutKey,
-                  ),
-                  const SizedBox(height: 50),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: size.width > 900
-                          ? MediaQuery.of(context).size.width * 0.06
-                          : 0,
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      maxWidth: 820,
                     ),
-                    child: Row(
-                      mainAxisAlignment: size.width > 900
-                          ? MainAxisAlignment.start
-                          : MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          l10n.speakers,
-                          key: speakersKey,
-                          style: const TextStyle(
-                            fontSize: 36,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
+                    child: _landingContent(
+                      aboutKey: aboutKey,
+                      speakersKey: speakersKey,
+                      agendaKey: agendaKey,
                     ),
-                  ),
-                  const SpeakersSection(speakers: speakers),
-                  const SizedBox(height: 50),
-                  AgendaSection(
-                    key: agendaKey,
                   ),
                   const SizedBox(height: 50),
                 ],
@@ -137,6 +114,44 @@ class LandingPage extends StatelessWidget {
             ),
           ),
           const Footer(),
+        ],
+      ),
+    );
+  }
+}
+
+class _landingContent extends StatelessWidget {
+  const _landingContent({
+    super.key,
+    required this.aboutKey,
+    required this.speakersKey,
+    required this.agendaKey,
+  });
+
+  final GlobalKey<State<StatefulWidget>> aboutKey;
+  final GlobalKey<State<StatefulWidget>> speakersKey;
+  final GlobalKey<State<StatefulWidget>> agendaKey;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 72,
+      ),
+      child: Column(
+        children: [
+          AboutSection(
+            key: aboutKey,
+          ),
+          const SizedBox(height: 50),
+          SpeakersSection(
+            key: speakersKey,
+            speakers: speakers,
+          ),
+          const SizedBox(height: 50),
+          AgendaSection(
+            key: agendaKey,
+          ),
         ],
       ),
     );

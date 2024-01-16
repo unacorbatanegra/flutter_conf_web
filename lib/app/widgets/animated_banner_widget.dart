@@ -1,5 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_conf_web/core/constants/constants.dart';
 import 'package:flutter_conf_web/core/themes/colors.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
@@ -16,7 +17,7 @@ class AnimatedBannerWidget extends StatelessWidget {
 
     return Container(
       color: AppColors.secondaryColor,
-      child: size.width > 900
+      child: size.width > kBreakPoint
           ? const _AnimationDesktop()
           : const _AnimationMobile(),
     );
@@ -266,7 +267,6 @@ class __RotateWheelAnimationState extends State<_RotateWheelAnimation>
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return RotationTransition(
       turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
       child: DottedBorder(
