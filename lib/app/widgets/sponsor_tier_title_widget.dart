@@ -13,33 +13,22 @@ class SponsorTiertitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(5),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 10,
+      ),
       decoration: BoxDecoration(
+        color: sponsorTier.tierColor,
         borderRadius: const BorderRadius.all(
           Radius.circular(100),
         ),
-        border: Border.all(
-          color: sponsorTier.tierColor,
-          style: BorderStyle.solid,
-        ),
       ),
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 10,
-        ),
-        decoration: BoxDecoration(
-          color: sponsorTier.tierColor,
-          borderRadius: const BorderRadius.all(
-            Radius.circular(100),
-          ),
-        ),
-        child: Text(
-          sponsorTier.title,
-          style: GoogleFonts.inter(
-            fontSize: 24,
-            color: Colors.white,
-          ),
+      child: Text(
+        sponsorTier.title,
+        style: GoogleFonts.inter(
+          fontSize: 24,
+          fontWeight: FontWeight.w400,
+          color: Colors.black,
         ),
       ),
     );

@@ -5,6 +5,7 @@ import 'package:flutter_conf_web/core/themes/colors.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 enum SponsorTier {
   gold,
@@ -60,10 +61,12 @@ class SponsorSection extends StatelessWidget {
               ),
             ),
             child: Text(
+              textAlign: TextAlign.center,
               context.l10n.thanksSponsorsLegend,
               style: GoogleFonts.inter(
-                fontSize: 24,
+                fontSize: 28,
                 color: Colors.white,
+                fontWeight: FontWeight.w300,
               ),
             ),
           ),
@@ -71,28 +74,16 @@ class SponsorSection extends StatelessWidget {
             height: 20,
           ),
           _SponsorTier(sponsorTier: SponsorTier.gold, sponsorAssetList: [
-            Assets.images.sponsors.ucomLogo,
-            Assets.images.sponsors.ucomLogo,
-            Assets.images.sponsors.ucomLogo,
-            Assets.images.sponsors.ucomLogo,
+            (Assets.images.sponsors.ucomLogo, 'https://ucom.edu.py/'),
           ]),
           const SizedBox(
             height: 20,
           ),
-          _SponsorTier(
-            sponsorTier: SponsorTier.silver,
-            sponsorAssetList: [
-              Assets.images.sponsors.ucomLogo,
-            ],
-          ),
+          _SponsorTier(sponsorTier: SponsorTier.silver, sponsorAssetList: [
+            (Assets.images.sponsors.plubLogo, 'https://plub.com/'),
+          ]),
           const SizedBox(
             height: 20,
-          ),
-          _SponsorTier(
-            sponsorTier: SponsorTier.bronce,
-            sponsorAssetList: [
-              Assets.images.sponsors.ucomLogo,
-            ],
           ),
         ],
       ),
@@ -107,7 +98,7 @@ class _SponsorTier extends StatelessWidget {
     required this.sponsorAssetList,
   });
   final SponsorTier sponsorTier;
-  final List<AssetGenImage> sponsorAssetList;
+  final List<(AssetGenImage, String)> sponsorAssetList;
 
   @override
   Widget build(BuildContext context) {
@@ -120,10 +111,24 @@ class _SponsorTier extends StatelessWidget {
         ),
         Wrap(
           direction: Axis.horizontal,
+          alignment: WrapAlignment.center,
           children: sponsorAssetList
               .map(
-                (asset) => asset.image(
-                  scale: sponsorTier.tierSize,
+                (asset) => InkWell(
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      top: 20,
+                    ),
+                    child: asset.$1.image(
+                      scale: sponsorTier.tierSize,
+                    ),
+                  ),
+                  onTap: () {
+                    launchUrl(
+                      Uri.parse(asset.$2),
+                      mode: LaunchMode.platformDefault,
+                    );
+                  },
                 ),
               )
               .toList(),

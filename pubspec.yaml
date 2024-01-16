@@ -20,7 +20,7 @@ dependencies:
   flutter_screenutil: ^5.9.0
   flutter_svg: ^2.0.9
   equatable: ^2.0.5
-  url_launcher: ^6.2.2
+  url_launcher: ^6.2.3
   intl: ^0.18.1
   go_router: ^13.0.0
   dotted_border: ^2.1.0
