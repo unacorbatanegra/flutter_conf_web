@@ -79,7 +79,7 @@ const List<SpeakerModel> speakers = [
     twitterUrl: null,
     youtubeUrl: null,
     facebookUrl: "https://www.facebook.com/davidriosdev",
-    countryEmoji: '🇵🇪',
+    countryEmoji: '🇧🇴',
   ),
   SpeakerModel(
     id: 1,

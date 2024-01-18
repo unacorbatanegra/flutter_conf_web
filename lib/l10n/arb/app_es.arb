@@ -21,5 +21,11 @@
     "techiCharla":"Rumbo a lo Very Good: Trabajando remoto desde Paraguay",
     "diegoCharla":"¿Por qué uso Flutter en lugar de nativo? Tomando decisiones que impactan el negocio",
     "hansyCharla":"Game Development Desde Cero: Mi primer videojuego con Flutter",
-    "davidCharla":"Performance Best Practices: Estrategias y Mejoras Prácticas en Flutter"
+    "davidCharla":"Performance Best Practices: Estrategias y Mejoras Prácticas en Flutter",
+    "accreditation":"Acreditación",
+  "performanceBestPractices":"Buenas Prácticas de Performance",
+  "whyFlutter":"¿Por qué uso Flutter en lugar de nativo?",
+  "remoteParaguay":"Rumbo a lo Very Good: Trabajando remoto desde Paraguay",
+  "gameDevelopment":"Game Development Desde Cero con Flutter",    
+  "roadMap":"Roadmap para convertirte de Junior a Senior con Flutter"
 }
