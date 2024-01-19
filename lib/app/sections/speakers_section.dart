@@ -136,8 +136,17 @@ class _SpeakersMobile extends StatelessWidget {
               speaker: speaker,
             ),
             const SizedBox(height: 20),
-            _SpeakerInfo(
-              speaker: speaker,
+            Container(
+              padding: const EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(25),
+                ),
+              ),
+              child: _SpeakerInfo(
+                speaker: speaker,
+              ),
             ),
             const SizedBox(height: 20),
           ],
@@ -196,14 +205,6 @@ class _SpeakersDesktop extends StatelessWidget {
                   Stack(
                     clipBehavior: Clip.none,
                     children: [
-                      Positioned(
-                        bottom: -30,
-                        right: -20,
-                        child: Assets.images.dotSpeaker.svg(
-                          width: 300.w,
-                          height: 300.h,
-                        ),
-                      ),
                       _SpeakerAvatar(speaker: speaker),
                     ],
                   ),

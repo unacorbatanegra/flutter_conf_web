@@ -14,9 +14,9 @@ enum SponsorTier {
 
   double get tierSize {
     return switch (this) {
-      SponsorTier.gold => 2,
-      SponsorTier.silver => 3,
-      SponsorTier.bronce => 4,
+      SponsorTier.gold => 3,
+      SponsorTier.silver => 4,
+      SponsorTier.bronce => 5,
     };
   }
 
@@ -43,6 +43,7 @@ class SponsorSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 40),
       width: MediaQuery.of(context).size.width,
       color: AppColors.secondaryColor,
       child: Column(
@@ -75,6 +76,10 @@ class SponsorSection extends StatelessWidget {
           ),
           _SponsorTier(sponsorTier: SponsorTier.gold, sponsorAssetList: [
             (Assets.images.sponsors.ucomLogo, 'https://ucom.edu.py/'),
+            (
+              Assets.images.sponsors.mentormateLogo,
+              'https://mentormate.com/es/'
+            ),
           ]),
           const SizedBox(
             height: 20,

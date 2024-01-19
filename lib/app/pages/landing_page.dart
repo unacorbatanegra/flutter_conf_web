@@ -101,7 +101,7 @@ class LandingPage extends StatelessWidget {
                   const SizedBox(height: 50),
                   ConstrainedBox(
                     constraints: const BoxConstraints(
-                      maxWidth: 820,
+                      maxWidth: 1450,
                     ),
                     child: _landingContent(
                       aboutKey: aboutKey,
@@ -110,6 +110,7 @@ class LandingPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 50),
+                  const SponsorSection(),
                 ],
               ),
             ),

@@ -166,6 +166,10 @@ class $AssetsImagesSpeakersGen {
 class $AssetsImagesSponsorsGen {
   const $AssetsImagesSponsorsGen();
 
+  /// File path: assets/images/sponsors/mentormate_logo.png
+  AssetGenImage get mentormateLogo =>
+      const AssetGenImage('assets/images/sponsors/mentormate_logo.png');
+
   /// File path: assets/images/sponsors/plub_logo.png
   AssetGenImage get plubLogo =>
       const AssetGenImage('assets/images/sponsors/plub_logo.png');
@@ -175,7 +179,7 @@ class $AssetsImagesSponsorsGen {
       const AssetGenImage('assets/images/sponsors/ucom_logo.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [plubLogo, ucomLogo];
+  List<AssetGenImage> get values => [mentormateLogo, plubLogo, ucomLogo];
 }
 
 class $AssetsImagesTeamGen {
