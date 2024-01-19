@@ -14,9 +14,9 @@ enum SponsorTier {
 
   double get tierSize {
     return switch (this) {
-      SponsorTier.gold => 3,
-      SponsorTier.silver => 4,
-      SponsorTier.bronce => 5,
+      SponsorTier.gold => 2,
+      SponsorTier.silver => 3,
+      SponsorTier.bronce => 4,
     };
   }
 
