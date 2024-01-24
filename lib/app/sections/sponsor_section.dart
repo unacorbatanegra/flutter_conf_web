@@ -124,8 +124,13 @@ class _SponsorTier extends StatelessWidget {
                     padding: const EdgeInsets.only(
                       top: 20,
                     ),
-                    child: asset.$1.image(
-                      scale: sponsorTier.tierSize,
+                    child: Container(
+                      margin: const EdgeInsets.all(
+                        50,
+                      ),
+                      child: asset.$1.image(
+                        scale: sponsorTier.tierSize,
+                      ),
                     ),
                   ),
                   onTap: () {
