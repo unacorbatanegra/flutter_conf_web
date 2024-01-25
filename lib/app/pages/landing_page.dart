@@ -3,6 +3,7 @@ import 'package:flutter_conf_web/app/models/speaker_model.dart';
 import 'package:flutter_conf_web/app/sections/agenda_section.dart';
 import 'package:flutter_conf_web/app/sections/speakers_section.dart';
 import 'package:flutter_conf_web/app/sections/about_section.dart';
+import 'package:flutter_conf_web/app/sections/sponsor_section.dart';
 import 'package:flutter_conf_web/app/widgets/animated_banner_widget.dart';
 import 'package:flutter_conf_web/app/widgets/custom_drawer.dart';
 import 'package:flutter_conf_web/app/widgets/footer.dart';
@@ -100,7 +101,7 @@ class LandingPage extends StatelessWidget {
                   const SizedBox(height: 50),
                   ConstrainedBox(
                     constraints: const BoxConstraints(
-                      maxWidth: 820,
+                      maxWidth: 1450,
                     ),
                     child: _landingContent(
                       aboutKey: aboutKey,
@@ -109,6 +110,7 @@ class LandingPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 50),
+                  const SponsorSection(),
                 ],
               ),
             ),
