@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
   <!--
@@ -18,6 +18,7 @@
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="Únete a Flutter Conf Paraguay 2024, la primera conferencia sobre Flutter en Paraguay, enfocada en ofrecer contenido de calidad para Dart y Flutter.">
 
@@ -42,6 +43,41 @@
 </head>
 
 <body>
+  <!-- Loading indicator -->
+  <div id="loading" style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0E47A1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  ">
+    <div style="
+      width: 60px;
+      height: 60px;
+      border: 6px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    "></div>
+    <p style="
+      color: white;
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      margin-top: 20px;
+    " aria-live="polite">Cargando FlutterConf Paraguay...</p>
+  </div>
+
+  <style>
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
 
   <script>
     window.addEventListener('load', function (ev) {
@@ -55,6 +91,11 @@
             useColorEmoji: true,
           }).then(function (appRunner) {
             appRunner.runApp();
+            // Hide loading indicator once app is running
+            var loading = document.getElementById('loading');
+            if (loading) {
+              loading.style.display = 'none';
+            }
           });
         }
       });
