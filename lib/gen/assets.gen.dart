@@ -153,6 +153,7 @@ class $AssetsImagesGen {
   SvgGenImage get speakerBackground1 =>
       const SvgGenImage('assets/images/speaker_background_1.svg');
 
+  $AssetsImagesSpeakersGen get speakers => const $AssetsImagesSpeakersGen();
   $AssetsImagesSponsorsGen get sponsors => const $AssetsImagesSponsorsGen();
   $AssetsImagesTeamGen get team => const $AssetsImagesTeamGen();
 
@@ -178,6 +179,34 @@ class $AssetsImagesGen {
         speakerBackground1,
         xSpeaker
       ];
+}
+
+class $AssetsImagesSpeakersGen {
+  const $AssetsImagesSpeakersGen();
+
+  /// File path: assets/images/speakers/speaker_1.png
+  AssetGenImage get speaker1 =>
+      const AssetGenImage('assets/images/speakers/speaker_1.png');
+
+  /// File path: assets/images/speakers/speaker_2.jpg
+  AssetGenImage get speaker2 =>
+      const AssetGenImage('assets/images/speakers/speaker_2.jpg');
+
+  /// File path: assets/images/speakers/speaker_3.jpg
+  AssetGenImage get speaker3 =>
+      const AssetGenImage('assets/images/speakers/speaker_3.jpg');
+
+  /// File path: assets/images/speakers/speaker_4.jpg
+  AssetGenImage get speaker4 =>
+      const AssetGenImage('assets/images/speakers/speaker_4.jpg');
+
+  /// File path: assets/images/speakers/speaker_5.jpeg
+  AssetGenImage get speaker5 =>
+      const AssetGenImage('assets/images/speakers/speaker_5.jpeg');
+
+  /// List of all assets
+  List<AssetGenImage> get values =>
+      [speaker1, speaker2, speaker3, speaker4, speaker5];
 }
 
 class $AssetsImagesSponsorsGen {
