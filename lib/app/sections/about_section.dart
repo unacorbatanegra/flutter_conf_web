@@ -46,9 +46,13 @@ class AboutSection extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: Assets.images.dash.image(
-                    width: size.width,
-                    height: 300,
+                  child: Semantics(
+                    label: "Flutter's Dash mascot",
+                    image: true,
+                    child: Assets.images.dash.image(
+                      width: size.width,
+                      height: 300,
+                    ),
                   ),
                 ),
               ],
@@ -56,9 +60,13 @@ class AboutSection extends StatelessWidget {
           : Column(
               children: [
                 Expanded(
-                  child: Assets.images.dash.image(
-                    width: size.width,
-                    height: 300,
+                  child: Semantics(
+                    label: "Flutter's Dash mascot",
+                    image: true,
+                    child: Assets.images.dash.image(
+                      width: size.width,
+                      height: 300,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 16),
