@@ -5,7 +5,9 @@ class SpeakerModel extends Equatable {
   final String imagePath;
   final String name;
   final String profession;
-  final String? talkTitle;
+  final String? gdeCategory;
+  final String? talkTitleEs;
+  final String? talkTitleEn;
   final String? linkedinUrl;
   final String? twitterUrl;
   final String? youtubeUrl;
@@ -17,7 +19,9 @@ class SpeakerModel extends Equatable {
     required this.imagePath,
     required this.name,
     required this.profession,
-    required this.talkTitle,
+    this.gdeCategory,
+    this.talkTitleEs,
+    this.talkTitleEn,
     required this.linkedinUrl,
     required this.twitterUrl,
     required this.youtubeUrl,
@@ -25,25 +29,62 @@ class SpeakerModel extends Equatable {
     required this.countryEmoji,
   });
 
+  factory SpeakerModel.fromJson(Map<String, dynamic> json) {
+    return SpeakerModel(
+      id: json['id'] as int,
+      imagePath: json['imagePath'] as String,
+      name: json['name'] as String,
+      profession: json['profession'] as String,
+      gdeCategory: json['gdeCategory'] as String?,
+      talkTitleEs: json['talkTitleEs'] as String?,
+      talkTitleEn: json['talkTitleEn'] as String?,
+      linkedinUrl: json['linkedinUrl'] as String?,
+      twitterUrl: json['twitterUrl'] as String?,
+      youtubeUrl: json['youtubeUrl'] as String?,
+      facebookUrl: json['facebookUrl'] as String?,
+      countryEmoji: json['countryEmoji'] as String,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'imagePath': imagePath,
+      'name': name,
+      'profession': profession,
+      'gdeCategory': gdeCategory,
+      'talkTitleEs': talkTitleEs,
+      'talkTitleEn': talkTitleEn,
+      'linkedinUrl': linkedinUrl,
+      'twitterUrl': twitterUrl,
+      'youtubeUrl': youtubeUrl,
+      'facebookUrl': facebookUrl,
+      'countryEmoji': countryEmoji,
+    };
+  }
+
   SpeakerModel copyWith({
     int? id,
     String? imagePath,
     String? name,
     String? profession,
-    String? talkTitle,
+    String? gdeCategory,
+    String? talkTitleEs,
+    String? talkTitleEn,
     String? linkedinUrl,
     String? twitterUrl,
     String? youtubeUrl,
     String? facebookUrl,
     String? countryEmoji,
-    String? l10nCode,
   }) {
     return SpeakerModel(
       id: id ?? this.id,
       imagePath: imagePath ?? this.imagePath,
       name: name ?? this.name,
       profession: profession ?? this.profession,
-      talkTitle: talkTitle ?? this.talkTitle,
+      gdeCategory: gdeCategory ?? this.gdeCategory,
+      talkTitleEs: talkTitleEs ?? this.talkTitleEs,
+      talkTitleEn: talkTitleEn ?? this.talkTitleEn,
       linkedinUrl: linkedinUrl ?? this.linkedinUrl,
       twitterUrl: twitterUrl ?? this.twitterUrl,
       youtubeUrl: youtubeUrl ?? this.youtubeUrl,
@@ -52,13 +93,29 @@ class SpeakerModel extends Equatable {
     );
   }
 
+  /// Get available social links (pre-filtered for performance)
+  List<MapEntry<String, String>> get availableSocialLinks {
+    final links = <String, String?>{
+      'linkedin': linkedinUrl,
+      'twitter': twitterUrl,
+      'youtube': youtubeUrl,
+      'facebook': facebookUrl,
+    };
+    return links.entries
+        .where((entry) => entry.value != null)
+        .map((entry) => MapEntry(entry.key, entry.value!))
+        .toList();
+  }
+
   @override
   List<Object?> get props => [
         id,
         imagePath,
         name,
         profession,
-        talkTitle,
+        gdeCategory,
+        talkTitleEs,
+        talkTitleEn,
         linkedinUrl,
         twitterUrl,
         youtubeUrl,
@@ -66,67 +123,3 @@ class SpeakerModel extends Equatable {
         countryEmoji,
       ];
 }
-
-const List<SpeakerModel> speakers = [
-  SpeakerModel(
-    id: 0,
-    imagePath: 'assets/images/speakers/speaker_5.jpeg',
-    name: 'David Rios',
-    profession: 'Senior Mobile Developer',
-    talkTitle:
-        'Performance Best Practices: Estrategias y Mejores Prácticas en Flutter',
-    linkedinUrl: "https://www.linkedin.com/in/david-rios-dev/",
-    twitterUrl: null,
-    youtubeUrl: null,
-    facebookUrl: "https://www.facebook.com/davidriosdev",
-    countryEmoji: '🇧🇴',
-  ),
-  SpeakerModel(
-    id: 1,
-    imagePath: 'assets/images/speakers/speaker_1.png',
-    name: 'Diego Velasquez',
-    profession: 'Software Engineer | Google Developer Expert',
-    talkTitle: null,
-    linkedinUrl: 'https://www.linkedin.com/in/diegoveloper/',
-    twitterUrl: 'https://twitter.com/diegoveloper',
-    youtubeUrl: 'https://www.youtube.com/diegoveloper',
-    facebookUrl: null,
-    countryEmoji: '🇵🇪',
-  ),
-  SpeakerModel(
-    id: 2,
-    imagePath: 'assets/images/speakers/speaker_4.jpg',
-    name: 'María Teresa Samudio González',
-    profession: 'Software Engineer | Very Good Ventures',
-    talkTitle: null,
-    linkedinUrl: 'https://www.linkedin.com/in/maria-teresa-samudio/',
-    twitterUrl: null,
-    youtubeUrl: null,
-    facebookUrl: null,
-    countryEmoji: '🇵🇾',
-  ),
-  SpeakerModel(
-    id: 3,
-    imagePath: 'assets/images/speakers/speaker_2.jpg',
-    name: 'Hansy Schmitt',
-    profession: 'Senior Mobile/Backend Developer',
-    talkTitle: null,
-    linkedinUrl: null,
-    twitterUrl: null,
-    youtubeUrl: null,
-    facebookUrl: null,
-    countryEmoji: '🇵🇪',
-  ),
-  SpeakerModel(
-    id: 4,
-    imagePath: 'assets/images/speakers/speaker_3.jpg',
-    name: 'Carlitos Vargas',
-    profession: 'Senior Flutter Developer | Banco Basa',
-    talkTitle: null,
-    linkedinUrl: 'https://www.linkedin.com/in/kalitodev',
-    twitterUrl: null,
-    youtubeUrl: null,
-    facebookUrl: null,
-    countryEmoji: '🇵🇾',
-  ),
-];

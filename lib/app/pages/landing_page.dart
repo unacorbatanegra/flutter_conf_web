@@ -1,32 +1,67 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_conf_web/app/models/speaker_model.dart';
+import 'package:flutter_conf_web/app/config/conference_constants.dart';
+import 'package:flutter_conf_web/app/models/conference_config.dart';
 import 'package:flutter_conf_web/app/sections/agenda_section.dart';
 import 'package:flutter_conf_web/app/sections/speakers_section.dart';
-import 'package:flutter_conf_web/app/sections/about_section.dart';
 import 'package:flutter_conf_web/app/sections/sponsor_section.dart';
+import 'package:flutter_conf_web/app/sections/team_section.dart';
+import 'package:flutter_conf_web/app/services/conference_config_service.dart';
 import 'package:flutter_conf_web/app/widgets/animated_banner_widget.dart';
 import 'package:flutter_conf_web/app/widgets/custom_drawer.dart';
 import 'package:flutter_conf_web/app/widgets/footer.dart';
 import 'package:flutter_conf_web/app/widgets/navigation_bar.dart';
 import 'package:flutter_conf_web/core/constants/constants.dart';
 
-class LandingPage extends StatelessWidget {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
-  final scrollController = ScrollController();
-  final homeKey = GlobalKey();
-  final aboutKey = GlobalKey();
-  final speakersKey = GlobalKey();
-  final sponsorsKey = GlobalKey();
-  final agendaKey = GlobalKey();
+class LandingPage extends StatefulWidget {
+  const LandingPage({super.key});
 
-  LandingPage({super.key});
+  @override
+  State<LandingPage> createState() => _LandingPageState();
+}
+
+class _LandingPageState extends State<LandingPage> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+  late final ScrollController scrollController;
+  final speakersKey = GlobalKey();
+  final agendaKey = GlobalKey();
+  final sponsorsKey = GlobalKey();
+  final teamKey = GlobalKey();
+
+  final _configService = ConferenceConfigService();
+  ConferenceConfig? _config;
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    scrollController = ScrollController();
+    _loadConfig();
+  }
+
+  Future<void> _loadConfig() async {
+    try {
+      await _configService.loadConfig(year: ConferenceConstants.currentYear);
+      setState(() {
+        _config = _configService.config;
+        _isLoading = false;
+      });
+    } catch (e) {
+      debugPrint('Error loading config: $e');
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
 
   void scrollToKey(GlobalKey key) {
-    final RenderBox? renderBox =
-        key.currentContext?.findRenderObject() as RenderBox?;
-    final position = renderBox?.localToGlobal(Offset.zero);
-    scrollController.animateTo(
-      position?.dy ?? 0,
+    Scrollable.ensureVisible(
+      key.currentContext!,
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
     );
@@ -44,6 +79,22 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
+    if (_isLoading) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
+    if (_config == null) {
+      return const Scaffold(
+        body: Center(
+          child: Text('Error loading conference data'),
+        ),
+      );
+    }
+
     return Scaffold(
       key: scaffoldKey,
       floatingActionButton: size.width > kBreakPoint
@@ -59,18 +110,19 @@ class LandingPage extends StatelessWidget {
         onScrollToHome: () {
           scrollToTop();
         },
-        onScrollToAbout: () {
-          scrollToKey(aboutKey);
-        },
         onScrollToSpeakers: () {
           scrollToKey(speakersKey);
         },
         onScollToAgenda: () {
           scrollToKey(agendaKey);
         },
-        // onScollToSponsors: () {
-        // scrollToKey(sponsorsKey);
-        // },
+        onScrollToSponsors: () {
+          scrollToKey(sponsorsKey);
+        },
+        onScrollToTeam: () {
+          scrollToKey(teamKey);
+        },
+        config: _config,
       ),
       body: Column(
         children: [
@@ -79,83 +131,80 @@ class LandingPage extends StatelessWidget {
             onScrollToHome: () {
               scrollToTop();
             },
-            onScrollToAbout: () {
-              scrollToKey(aboutKey);
-            },
             onScrollToSpeakers: () {
               scrollToKey(speakersKey);
             },
             onScollToAgenda: () {
               scrollToKey(agendaKey);
             },
-            // onScollToSponsors: () {
-            // scrollToKey(sponsorsKey);
-            // },
+            onScrollToSponsors: () {
+              scrollToKey(sponsorsKey);
+            },
+            onScrollToTeam: () {
+              scrollToKey(teamKey);
+            },
+            config: _config,
           ),
           Expanded(
             child: SingleChildScrollView(
               controller: scrollController,
               child: Column(
                 children: [
-                  const AnimatedBannerWidget(),
-                  const SizedBox(height: 50),
-                  ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      maxWidth: 1450,
-                    ),
-                    child: _landingContent(
-                      aboutKey: aboutKey,
-                      speakersKey: speakersKey,
-                      agendaKey: agendaKey,
-                    ),
+                  AnimatedBannerWidget(config: _config!),
+                  _LandingContent(
+                    speakersKey: speakersKey,
+                    agendaKey: agendaKey,
+                    sponsorsKey: sponsorsKey,
+                    teamKey: teamKey,
+                    config: _config!,
                   ),
-                  const SizedBox(height: 50),
-                  const SponsorSection(),
                 ],
               ),
             ),
           ),
-          const Footer(),
+          Footer(config: _config!),
         ],
       ),
     );
   }
 }
 
-class _landingContent extends StatelessWidget {
-  const _landingContent({
-    super.key,
-    required this.aboutKey,
+class _LandingContent extends StatelessWidget {
+  const _LandingContent({
     required this.speakersKey,
     required this.agendaKey,
+    required this.sponsorsKey,
+    required this.teamKey,
+    required this.config,
   });
 
-  final GlobalKey<State<StatefulWidget>> aboutKey;
   final GlobalKey<State<StatefulWidget>> speakersKey;
   final GlobalKey<State<StatefulWidget>> agendaKey;
+  final GlobalKey<State<StatefulWidget>> sponsorsKey;
+  final GlobalKey<State<StatefulWidget>> teamKey;
+  final ConferenceConfig config;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 72,
-      ),
-      child: Column(
-        children: [
-          AboutSection(
-            key: aboutKey,
-          ),
-          const SizedBox(height: 50),
-          SpeakersSection(
-            key: speakersKey,
-            speakers: speakers,
-          ),
-          const SizedBox(height: 50),
-          AgendaSection(
-            key: agendaKey,
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        SpeakersSection(
+          key: speakersKey,
+          speakers: config.speakers,
+        ),
+        AgendaSection(
+          key: agendaKey,
+          config: config,
+        ),
+        SponsorSection(
+          key: sponsorsKey,
+          config: config,
+        ),
+        TeamSection(
+          key: teamKey,
+          config: config,
+        ),
+      ],
     );
   }
 }

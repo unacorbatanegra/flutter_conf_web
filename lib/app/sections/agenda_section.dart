@@ -1,211 +1,350 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_conf_web/app/models/agenda_info.dart';
+import 'package:intl/intl.dart';
+import 'package:flutter_conf_web/app/models/conference_config.dart';
 import 'package:flutter_conf_web/core/constants/constants.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class AgendaSection extends StatelessWidget {
-  const AgendaSection({super.key});
+class AgendaSection extends StatefulWidget {
+  final ConferenceConfig config;
+
+  const AgendaSection({
+    super.key,
+    required this.config,
+  });
+
+  @override
+  State<AgendaSection> createState() => _AgendaSectionState();
+}
+
+class _AgendaSectionState extends State<AgendaSection> {
+  late String _eventInfo;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _eventInfo = _formatEventDate();
+  }
+
+  String _formatEventDate() {
+    final locale = Localizations.localeOf(context);
+    final isSpanish = locale.languageCode == 'es';
+    final format = isSpanish
+        ? DateFormat('d \'de\' MMMM \'de\' y', 'es')
+        : DateFormat('MMMM d, y', 'en');
+    return format.format(widget.config.eventDate).toUpperCase();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final isDesktop = size.width > kBreakPoint;
+    final l10n = context.l10n;
+    final eventInfo = _eventInfo;
+
+    return Container(
+      width: double.infinity,
+      decoration: const BoxDecoration(
+        color: Color(0xFFF5F5F5),
+      ),
+      child: Stack(
+        children: [
+          // Background Image - Top Right
+          Positioned(
+            top: 0,
+            right: 0,
+            child: Assets.images.agendaBackground1.image(
+              width: 300,
+              height: 300,
+              fit: BoxFit.contain,
+            ),
+          ),
+          // Content
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: isDesktop ? 80 : 20,
+              vertical: isDesktop ? 100 : 60,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // Title
+                Text(
+                  l10n.agenda,
+                  style: GoogleFonts.lato(
+                    fontSize: isDesktop ? 48 : 36,
+                    fontWeight: FontWeight.w700,
+                    color: const Color(0xFF1a1d3a),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 60),
+
+                // Date Header
+                Container(
+                  constraints: const BoxConstraints(maxWidth: 1200),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        eventInfo,
+                        style: GoogleFonts.lato(
+                          fontSize: isDesktop ? 32 : 24,
+                          fontWeight: FontWeight.w700,
+                          color: const Color(0xFF1a1d3a),
+                        ),
+                      ),
+                      const SizedBox(height: 40),
+
+                      // Schedule Grid
+                      if (isDesktop)
+                        _DesktopSchedule(config: widget.config)
+                      else
+                        _MobileSchedule(config: widget.config),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _DesktopSchedule extends StatelessWidget {
+  final ConferenceConfig config;
+
+  const _DesktopSchedule({
+    required this.config,
+  });
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final size = MediaQuery.of(context).size;
+    final morningItems = config.morningAgenda;
+    final afternoonItems = config.afternoonAgenda;
 
-    return Column(
+    return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          "Agenda",
-          style: TextStyle(
-            fontSize: 48,
-            fontWeight: FontWeight.w700,
-            color: Color(0xff0C283A),
-            decoration: TextDecoration.underline,
+        // Morning Column
+        if (morningItems.isNotEmpty)
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  l10n.morning,
+                  style: GoogleFonts.lato(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    color: const Color(0xFF1a1d3a),
+                  ),
+                ),
+                const SizedBox(height: 24),
+                ...morningItems.map((item) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 24),
+                    child: _AgendaItem(
+                      time: item.time,
+                      title: item.title ?? '',
+                      speaker: item.speaker,
+                      description: item.description,
+                      isHighlighted: item.isHighlighted,
+                    ),
+                  );
+                }),
+              ],
+            ),
           ),
-        ),
-        const SizedBox(height: 48),
-        if (size.width > kBreakPoint)
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _AgendaItem(
-                      info: AgendaInfo(
-                        time: "1:00 pm",
-                        title: l10n.accreditation,
-                        speaker: null,
-                      ),
+        if (morningItems.isNotEmpty && afternoonItems.isNotEmpty)
+          const SizedBox(width: 60),
+
+        // Afternoon Column
+        if (afternoonItems.isNotEmpty)
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  l10n.afternoon,
+                  style: GoogleFonts.lato(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    color: const Color(0xFF1a1d3a),
+                  ),
+                ),
+                const SizedBox(height: 24),
+                ...afternoonItems.map((item) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 24),
+                    child: _AgendaItem(
+                      time: item.time,
+                      title: item.title ?? '',
+                      speaker: item.speaker,
+                      description: item.description,
+                      isHighlighted: item.isHighlighted,
                     ),
-                    const SizedBox(height: 12),
-                    _AgendaItem(
-                      info: AgendaInfo(
-                        time: "2:30 pm",
-                        title: l10n.performanceBestPractices,
-                        speaker: "David Rios ",
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    _AgendaItem(
-                      info: AgendaInfo(
-                        time: "3:15 pm",
-                        title: l10n.whyFlutter,
-                        speaker: "Diego Velázquez",
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    _AgendaItem(
-                      info: AgendaInfo(
-                        time: "4:30 pm",
-                        title: l10n.remoteParaguay,
-                        speaker: "María Teresa Samudio",
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _AgendaItem(
-                      info: AgendaInfo(
-                        time: "5:15 pm",
-                        title: l10n.gameDevelopment,
-                        speaker: "Hansy Schmitt",
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    _AgendaItem(
-                      info: AgendaInfo(
-                        time: "6:15 pm",
-                        title: l10n.roadMap,
-                        speaker: "Carlitos Vargas",
-                      ),
-                    ),
-                    const SizedBox(height: 36),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Assets.images.dash.image(
-                          height: 250,
-                          fit: BoxFit.cover,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          )
-        else
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _AgendaItem(
-                info: AgendaInfo(
-                  time: "1:00 pm",
-                  title: l10n.accreditation,
-                  speaker: null,
-                ),
-              ),
-              const SizedBox(height: 12),
-              _AgendaItem(
-                info: AgendaInfo(
-                  time: "2:30 pm",
-                  title: l10n.performanceBestPractices,
-                  speaker: "David Rios ",
-                ),
-              ),
-              const SizedBox(height: 12),
-              _AgendaItem(
-                info: AgendaInfo(
-                  time: "3:15 pm",
-                  title: l10n.whyFlutter,
-                  speaker: "Diego Velázquez",
-                ),
-              ),
-              const SizedBox(height: 12),
-              _AgendaItem(
-                info: AgendaInfo(
-                  time: "4:30 pm",
-                  title: l10n.remoteParaguay,
-                  speaker: "María Teresa Samudio",
-                ),
-              ),
-              const SizedBox(height: 12),
-              _AgendaItem(
-                info: AgendaInfo(
-                  time: "5:15 pm",
-                  title: l10n.gameDevelopment,
-                  speaker: "Hansy Schmitt",
-                ),
-              ),
-              const SizedBox(height: 12),
-              _AgendaItem(
-                info: AgendaInfo(
-                  time: "6:15 pm",
-                  title: l10n.roadMap,
-                  speaker: "Carlitos Vargas",
-                ),
-              ),
-              const SizedBox(height: 36),
-              Assets.images.dash.image(
-                height: 250,
-                fit: BoxFit.cover,
-              ),
-            ],
+                  );
+                }),
+              ],
+            ),
           ),
       ],
     );
   }
 }
 
+class _MobileSchedule extends StatelessWidget {
+  final ConferenceConfig config;
+
+  const _MobileSchedule({
+    required this.config,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final morningItems = config.morningAgenda;
+    final afternoonItems = config.afternoonAgenda;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Morning Section
+        if (morningItems.isNotEmpty) ...[
+          Text(
+            l10n.morning,
+            style: GoogleFonts.lato(
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              color: const Color(0xFF1a1d3a),
+            ),
+          ),
+          const SizedBox(height: 20),
+          ...morningItems.map((item) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: _AgendaItem(
+                time: item.time,
+                title: item.title ?? '',
+                speaker: item.speaker,
+                description: item.description,
+                isHighlighted: item.isHighlighted,
+              ),
+            );
+          }),
+          const SizedBox(height: 40),
+        ],
+
+        // Afternoon Section
+        if (afternoonItems.isNotEmpty) ...[
+          Text(
+            l10n.afternoon,
+            style: GoogleFonts.lato(
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              color: const Color(0xFF1a1d3a),
+            ),
+          ),
+          const SizedBox(height: 20),
+          ...afternoonItems.map((item) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: _AgendaItem(
+                time: item.time,
+                title: item.title ?? '',
+                speaker: item.speaker,
+                description: item.description,
+                isHighlighted: item.isHighlighted,
+              ),
+            );
+          }),
+        ],
+      ],
+    );
+  }
+}
+
 class _AgendaItem extends StatelessWidget {
-  final AgendaInfo info;
+  final String time;
+  final String title;
+  final String? speaker;
+  final String? description;
+  final bool isHighlighted;
 
   const _AgendaItem({
-    Key? key,
-    required this.info,
-  }) : super(key: key);
+    required this.time,
+    required this.title,
+    this.speaker,
+    this.description,
+    this.isHighlighted = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // Time
         Text(
-          info.time,
-          style: const TextStyle(
-            fontSize: 24.4764404296875,
+          time,
+          style: GoogleFonts.lato(
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+            color: const Color(0xFF666666),
+            letterSpacing: 0.5,
+          ),
+        ),
+        const SizedBox(height: 8),
+
+        // Title
+        Text(
+          title,
+          style: GoogleFonts.lato(
+            fontSize: 18,
             fontWeight: FontWeight.w700,
-            color: Color(0xFF2F80EB),
+            color: isHighlighted
+                ? const Color(0xFF5983F8)
+                : const Color(0xFF1a1d3a),
+            decoration: isHighlighted ? TextDecoration.underline : null,
+            decorationColor: const Color(0xFF5983F8),
+            decorationThickness: 2,
           ),
         ),
-        const SizedBox(height: 15),
-        Text(
-          info.title,
-          style: const TextStyle(
-            fontSize: 24.4764404296875,
-            color: Color(0xff333333),
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-        const SizedBox(height: 10),
-        if (info.speaker != null)
+
+        // Speaker
+        if (speaker != null && speaker!.isNotEmpty) ...[
+          const SizedBox(height: 8),
           Text(
-            info.speaker!,
-            style: const TextStyle(
-              fontSize: 22.251310348510742,
-              fontWeight: FontWeight.w300,
-              color: Color(0xff9B9B9B),
+            speaker!,
+            style: GoogleFonts.lato(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: const Color(0xFF5983F8),
+              fontStyle: FontStyle.italic,
             ),
-          )
+          ),
+        ],
+
+        // Description
+        if (description != null && description!.isNotEmpty) ...[
+          const SizedBox(height: 12),
+          Text(
+            description!,
+            style: GoogleFonts.lato(
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              color: const Color(0xFF555555),
+              height: 1.5,
+            ),
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
       ],
     );
   }
