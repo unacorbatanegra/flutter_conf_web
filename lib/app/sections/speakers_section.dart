@@ -1,13 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_conf_web/app/models/speaker_model.dart';
 import 'package:flutter_conf_web/app/services/url_service.dart';
 import 'package:flutter_conf_web/core/constants/constants.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class SpeakersSection extends StatelessWidget {
+class SpeakersSection extends StatefulWidget {
   final List<SpeakerModel> speakers;
 
   const SpeakersSection({
@@ -15,221 +17,162 @@ class SpeakersSection extends StatelessWidget {
     required this.speakers,
   });
 
-  //[
-//   {"id": "4", "name": "Carlitos Vargas"},
-//   {"id": "2", "name": "María Teresa Samudio González"},
-//   {"id": "1", "name": "Diego Velasquez"},
-//   {"id": "3", "name": "Hansy Schmitt"},
-//   {"id": "0", "name": "David Rios"}
-// ]
-
-  String _getTalkTitleL10n(
-    BuildContext context, {
-    required int id,
-  }) {
-    final l10n = context.l10n;
-    return switch (id) {
-      4 => l10n.carlitosCharla,
-      2 => l10n.techiCharla,
-      1 => l10n.diegoCharla,
-      3 => l10n.hansyCharla,
-      0 => l10n.davidCharla,
-      _ => "Error",
-    };
-  }
-
   @override
-  Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    final size = MediaQuery.of(context).size;
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: size.width > kBreakPoint
-              ? MainAxisAlignment.start
-              : MainAxisAlignment.center,
-          children: [
-            Text(
-              l10n.speakers,
-              style: const TextStyle(
-                fontSize: 36,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-        const SizedBox(height: 32),
-        for (final speaker in speakers) ...[
-          Column(
-            children: [
-              _SpeakersView(
-                speaker: speaker.copyWith(
-                    talkTitle: _getTalkTitleL10n(
-                  context,
-                  id: speaker.id,
-                )),
-              ),
-              SizedBox(height: 32),
-            ],
-          ),
-          const SizedBox(height: 32),
-        ],
-      ],
-    );
-  }
+  State<SpeakersSection> createState() => _SpeakersSectionState();
 }
 
-class _SpeakersView extends StatelessWidget {
-  final SpeakerModel speaker;
-
-  const _SpeakersView({
-    required this.speaker,
-  });
+class _SpeakersSectionState extends State<SpeakersSection> {
+  int _currentPage = 0;
+  Timer? _timer;
 
   @override
-  Widget build(BuildContext context) {
-    final breakpoint = MediaQuery.of(context).size.width > kBreakPoint;
+  void initState() {
+    super.initState();
+    _startAutoPlay();
+  }
 
-    if (breakpoint) {
-      return _SpeakersDesktop(speaker: speaker);
-    } else {
-      return _SpeakersMobile(speaker: speaker);
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  void _startAutoPlay() {
+    if (widget.speakers.length > 3) {
+      _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
+        if (mounted) {
+          setState(() {
+            _currentPage = (_currentPage + 1) % _getPageCount();
+          });
+        }
+      });
     }
   }
-}
 
-class _SpeakersMobile extends StatelessWidget {
-  const _SpeakersMobile({
-    required this.speaker,
-  });
+  void _resetTimer() {
+    _timer?.cancel();
+    _startAutoPlay();
+  }
 
-  final SpeakerModel speaker;
+  int _getPageCount() {
+    return (widget.speakers.length / 3).ceil();
+  }
+
+  void _onPrevious() {
+    if (_currentPage > 0) {
+      setState(() {
+        _currentPage--;
+      });
+      _resetTimer();
+    }
+  }
+
+  void _onNext() {
+    if (_currentPage < _getPageCount() - 1) {
+      setState(() {
+        _currentPage++;
+      });
+      _resetTimer();
+    }
+  }
+
+  List<SpeakerModel> _getCurrentPageSpeakers() {
+    final startIndex = _currentPage * 3;
+    final endIndex = (startIndex + 3).clamp(0, widget.speakers.length);
+    return widget.speakers.sublist(startIndex, endIndex);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        if (speaker.id % 2 != 0)
-          Positioned(
-            top: 0,
-            right: 0,
-            child: Assets.images.xSpeaker.svg(
-              width: 300.w,
-              height: 300.h,
-            ),
-          )
-        else
-          Positioned(
-            top: -50,
-            left: 0,
-            child: Assets.images.circleSpeaker.svg(
-              width: 300.w,
-              height: 300.h,
+    final size = MediaQuery.of(context).size;
+    final isDesktop = size.width > kBreakPoint;
+    final l10n = context.l10n;
+
+    return Container(
+      width: double.infinity,
+      constraints: BoxConstraints(
+        minHeight: isDesktop ? 900 : 800,
+      ),
+      decoration: const BoxDecoration(
+        color: Color(0xFF1C2541),
+      ),
+      child: Stack(
+        children: [
+          // Background Image
+          Positioned.fill(
+            child: Assets.images.speakerBackground1.svg(
+              fit: BoxFit.cover,
             ),
           ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _SpeakerAvatar(
-              speaker: speaker,
-            ),
-            const SizedBox(height: 20),
-            Container(
-              padding: const EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(25),
-                ),
-              ),
-              child: _SpeakerInfo(
-                speaker: speaker,
-              ),
-            ),
-            const SizedBox(height: 20),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-class _SpeakersDesktop extends StatelessWidget {
-  const _SpeakersDesktop({
-    required this.speaker,
-  });
-
-  final SpeakerModel speaker;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 0),
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          if (speaker.id % 2 == 0)
-            Positioned(
-              top: 0,
-              left: 0,
-              child: Assets.images.circleSpeaker.svg(
-                width: 300.w,
-                height: 300.h,
-              ),
-            )
-          else
-            Positioned(
-              top: -50,
-              right: 0,
-              child: Assets.images.xSpeaker.svg(
-                width: 300.w,
-                height: 300.h,
-              ),
-            ),
+          // Content
           Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width * 0.06,
+              horizontal: isDesktop ? 80 : 20,
+              vertical: isDesktop ? 100 : 60,
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: Column(
               children: [
-                if (speaker.id % 2 != 0) ...[
-                  Expanded(
-                    child: _SpeakerInfo(
-                      speaker: speaker,
-                    ),
+                // Title
+                Text(
+                  l10n.ourSpeakers,
+                  style: GoogleFonts.lato(
+                    fontSize: isDesktop ? 48 : 32,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
                   ),
-                  const SizedBox(width: 50),
-                  Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      _SpeakerAvatar(speaker: speaker),
-                    ],
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 60),
+
+                // Speaker Display
+                if (widget.speakers.isNotEmpty)
+                  SizedBox(
+                    height: isDesktop ? 600 : 550,
+                    child: isDesktop
+                        ? _DesktopSpeakerLayout(
+                            speakers: _getCurrentPageSpeakers(),
+                          )
+                        : _MobileSpeakerLayout(
+                            speaker: widget.speakers[_currentPage.clamp(0, widget.speakers.length - 1)],
+                          ),
                   ),
-                ] else ...[
-                  Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      Positioned(
-                        bottom: -40,
-                        left: -20,
-                        child: Assets.images.dotSpeaker.svg(
-                          width: 300.w,
-                          height: 300.h,
-                        ),
+
+                const SizedBox(height: 40),
+
+                // Navigation Controls
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: _currentPage > 0 ? _onPrevious : null,
+                      tooltip: 'Previous speakers',
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                        color: _currentPage > 0
+                            ? Colors.white
+                            : Colors.white.withOpacity(0.3),
                       ),
-                      _SpeakerAvatar(speaker: speaker),
-                    ],
-                  ),
-                  const SizedBox(width: 50),
-                  Expanded(
-                    child: _SpeakerInfo(
-                      speaker: speaker,
                     ),
-                  ),
-                ],
+                    const SizedBox(width: 20),
+                    _CarouselIndicators(
+                      currentPage: _currentPage,
+                      itemCount: isDesktop ? _getPageCount() : widget.speakers.length,
+                    ),
+                    const SizedBox(width: 20),
+                    IconButton(
+                      onPressed: _currentPage < (isDesktop ? _getPageCount() - 1 : widget.speakers.length - 1)
+                          ? _onNext
+                          : null,
+                      tooltip: 'Next speakers',
+                      icon: Icon(
+                        Icons.arrow_forward_ios,
+                        color: _currentPage < (isDesktop ? _getPageCount() - 1 : widget.speakers.length - 1)
+                            ? Colors.white
+                            : Colors.white.withOpacity(0.3),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
@@ -239,131 +182,286 @@ class _SpeakersDesktop extends StatelessWidget {
   }
 }
 
-class _SpeakerAvatar extends StatelessWidget {
-  final SpeakerModel speaker;
+class _DesktopSpeakerLayout extends StatelessWidget {
+  final List<SpeakerModel> speakers;
 
-  const _SpeakerAvatar({
-    required this.speaker,
+  const _DesktopSpeakerLayout({
+    required this.speakers,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 300,
-      height: 300,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(25),
-        child: Image.asset(
-          speaker.imagePath,
-          fit: BoxFit.cover,
-        ),
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: speakers.map((speaker) {
+        return Flexible(
+          child: Container(
+            constraints: const BoxConstraints(maxWidth: 400),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: _SpeakerCard(speaker: speaker),
+            ),
+          ),
+        );
+      }).toList(),
     );
   }
 }
 
-class _SpeakerInfo extends StatelessWidget {
+class _MobileSpeakerLayout extends StatelessWidget {
   final SpeakerModel speaker;
 
-  const _SpeakerInfo({
+  const _MobileSpeakerLayout({
     required this.speaker,
   });
 
   @override
   Widget build(BuildContext context) {
+    return _SpeakerCard(speaker: speaker);
+  }
+}
+
+class _SpeakerCard extends StatelessWidget {
+  final SpeakerModel speaker;
+
+  const _SpeakerCard({
+    required this.speaker,
+  });
+
+  String _getTalkTitle(Locale locale) {
+    return locale.languageCode == 'es'
+        ? (speaker.talkTitleEs ?? speaker.profession)
+        : (speaker.talkTitleEn ?? speaker.profession);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final isMobile = size.width <= kBreakPoint;
+    final locale = Localizations.localeOf(context);
+    final talkTitle = _getTalkTitle(locale);
+
     return Column(
-      crossAxisAlignment: size.width > kBreakPoint
-          ? speaker.id % 2 == 0
-              ? CrossAxisAlignment.start
-              : CrossAxisAlignment.end
-          : CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Text(
-          '${speaker.name} ${speaker.countryEmoji}',
-          style: const TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
+        // Speaker Image
+        Semantics(
+          label: '${speaker.name} headshot',
+          image: true,
+          child: AspectRatio(
+            aspectRatio: 4 / 3,
+            child: Container(
+              width: isMobile ? size.width * 0.8 : double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+                image: DecorationImage(
+                  image: AssetImage(speaker.imagePath),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
           ),
-          textAlign: size.width > kBreakPoint ? null : TextAlign.center,
         ),
-        const SizedBox(height: 8),
-        Text(
-          speaker.profession,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-          textAlign: size.width > kBreakPoint ? null : TextAlign.center,
-        ),
-        const SizedBox(height: 8),
-        Text(
-          speaker.talkTitle!,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-          textAlign: size.width > kBreakPoint ? null : TextAlign.center,
-        ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 24),
+
+        // Speaker Name with Country Emoji
         Row(
-          mainAxisAlignment: size.width > kBreakPoint
-              ? speaker.id % 2 == 0
-                  ? MainAxisAlignment.start
-                  : MainAxisAlignment.end
-              : MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (speaker.twitterUrl != null) ...[
-              IconButton(
-                tooltip: 'X',
-                onPressed: () {
-                  context.read<UrlService>().openUrl(speaker.twitterUrl!);
-                },
-                icon: Assets.icons.x.svg(
-                  width: 30,
-                  height: 30,
-                ),
+            Text(
+              speaker.name,
+              style: GoogleFonts.lato(
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+                color: Colors.white,
               ),
-            ],
-            if (speaker.linkedinUrl != null) ...[
-              IconButton(
-                tooltip: 'Linkedin',
-                onPressed: () {
-                  context.read<UrlService>().openUrl(speaker.linkedinUrl!);
-                },
-                icon: Assets.icons.linkedin.svg(
-                  width: 30,
-                  height: 30,
-                ),
-              ),
-            ],
-            if (speaker.youtubeUrl != null) ...[
-              IconButton(
-                tooltip: 'Youtube',
-                onPressed: () {
-                  context.read<UrlService>().openUrl(speaker.youtubeUrl!);
-                },
-                icon: Assets.icons.youtube.svg(
-                  width: 30,
-                  height: 30,
-                ),
-              )
-            ],
-            if (speaker.facebookUrl != null) ...[
-              IconButton(
-                tooltip: 'Facebook',
-                onPressed: () {
-                  context.read<UrlService>().openUrl(speaker.facebookUrl!);
-                },
-                icon: Assets.icons.facebook.svg(
-                  width: 30,
-                  height: 30,
-                ),
-              )
-            ],
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(width: 8),
+            Text(
+              speaker.countryEmoji,
+              style: const TextStyle(fontSize: 20),
+            ),
           ],
         ),
+        const SizedBox(height: 12),
+
+        // GDE Badge (if applicable)
+        if (speaker.gdeCategory != null) ...[
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            decoration: BoxDecoration(
+              color: const Color(0xFF5983F8),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Text(
+              'GDE ${speaker.gdeCategory}',
+              style: GoogleFonts.lato(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          const SizedBox(height: 12),
+        ],
+
+        // Talk Description
+        Text(
+          talkTitle,
+          style: GoogleFonts.lato(
+            fontSize: 14,
+            fontWeight: FontWeight.w400,
+            color: Colors.white.withOpacity(0.8),
+            height: 1.5,
+          ),
+          textAlign: TextAlign.center,
+          maxLines: 6,
+          overflow: TextOverflow.ellipsis,
+        ),
+        const SizedBox(height: 16),
+
+        // Social Media Links
+        _SocialMediaLinks(speaker: speaker),
       ],
+    );
+  }
+}
+
+class _SocialMediaLinks extends StatelessWidget {
+  final SpeakerModel speaker;
+
+  const _SocialMediaLinks({
+    required this.speaker,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final urlService = context.read<UrlService>();
+    final availableLinks = speaker.availableSocialLinks;
+
+    if (availableLinks.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: availableLinks.map((entry) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Semantics(
+            label: "Open ${speaker.name}'s ${_getPlatformName(entry.key)} profile",
+            button: true,
+            child: InkWell(
+              onTap: () => urlService.openUrl(entry.value),
+              borderRadius: BorderRadius.circular(20),
+              child: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.1),
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: _getSocialIcon(entry.key),
+                ),
+              ),
+            ),
+          ),
+        );
+      }).toList(),
+    );
+  }
+
+  Widget _getSocialIcon(String platform) {
+    switch (platform) {
+      case 'linkedin':
+        return Assets.icons.linkedin.svg(
+          width: 20,
+          height: 20,
+          colorFilter: const ColorFilter.mode(
+            Colors.white,
+            BlendMode.srcIn,
+          ),
+        );
+      case 'twitter':
+        return Assets.icons.x.svg(
+          width: 20,
+          height: 20,
+          colorFilter: const ColorFilter.mode(
+            Colors.white,
+            BlendMode.srcIn,
+          ),
+        );
+      case 'youtube':
+        return Assets.icons.youtube.svg(
+          width: 20,
+          height: 20,
+          colorFilter: const ColorFilter.mode(
+            Colors.white,
+            BlendMode.srcIn,
+          ),
+        );
+      case 'facebook':
+        return Assets.icons.facebook.svg(
+          width: 20,
+          height: 20,
+          colorFilter: const ColorFilter.mode(
+            Colors.white,
+            BlendMode.srcIn,
+          ),
+        );
+      default:
+        return const SizedBox.shrink();
+    }
+  }
+
+  String _getPlatformName(String platform) {
+    switch (platform) {
+      case 'linkedin':
+        return 'LinkedIn';
+      case 'twitter':
+        return 'X (Twitter)';
+      case 'youtube':
+        return 'YouTube';
+      case 'facebook':
+        return 'Facebook';
+      default:
+        return platform;
+    }
+  }
+}
+
+class _CarouselIndicators extends StatelessWidget {
+  final int currentPage;
+  final int itemCount;
+
+  const _CarouselIndicators({
+    required this.currentPage,
+    required this.itemCount,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(
+        itemCount,
+        (index) => AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          margin: const EdgeInsets.symmetric(horizontal: 4),
+          width: currentPage == index ? 12 : 8,
+          height: currentPage == index ? 12 : 8,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: currentPage == index
+                ? const Color(0xFF5983F8)
+                : Colors.white.withOpacity(0.4),
+          ),
+        ),
+      ),
     );
   }
 }
