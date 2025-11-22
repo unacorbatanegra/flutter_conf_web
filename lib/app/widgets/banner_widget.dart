@@ -6,55 +6,20 @@ import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-class AnimatedBannerWidget extends StatefulWidget {
+class BannerWidget extends StatefulWidget {
   final ConferenceConfig config;
 
-  const AnimatedBannerWidget({
+  const BannerWidget({
     super.key,
     required this.config,
   });
 
   @override
-  State<AnimatedBannerWidget> createState() => _AnimatedBannerWidgetState();
+  State<BannerWidget> createState() => _BannerWidgetState();
 }
 
-class _AnimatedBannerWidgetState extends State<AnimatedBannerWidget>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _fadeAnimation;
-  late Animation<Offset> _slideAnimation;
+class _BannerWidgetState extends State<BannerWidget> {
   late String _formattedEventInfo;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: 1200),
-      vsync: this,
-    );
-
-    _fadeAnimation = Tween<double>(
-      begin: 0.0,
-      end: 1.0,
-    ).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: const Interval(0.0, 0.6, curve: Curves.easeOut),
-      ),
-    );
-
-    _slideAnimation = Tween<Offset>(
-      begin: const Offset(0, 0.3),
-      end: Offset.zero,
-    ).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: const Interval(0.2, 1.0, curve: Curves.easeOutCubic),
-      ),
-    );
-
-    _controller.forward();
-  }
 
   @override
   void didChangeDependencies() {
@@ -70,12 +35,6 @@ class _AnimatedBannerWidgetState extends State<AnimatedBannerWidget>
         : DateFormat('MMMM d, y', 'en');
     final eventDate = format.format(widget.config.eventDate);
     return '${eventDate.toUpperCase()} | ${widget.config.venue.toUpperCase()}, ${widget.config.location.toUpperCase()}';
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 
   @override
@@ -121,32 +80,26 @@ class _AnimatedBannerWidgetState extends State<AnimatedBannerWidget>
                 horizontal: isDesktop ? 80 : 20,
                 vertical: 60,
               ),
-              child: FadeTransition(
-                opacity: _fadeAnimation,
-                child: SlideTransition(
-                  position: _slideAnimation,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      // Flutter Logo
-                      Assets.images.fullLogoSvg.svg(
-                        height: isDesktop ? 200 : 150,
-                      ),
-                      const SizedBox(height: 40),
-
-                      // Event Date and Location
-                      _EventInfo(eventInfo: _formattedEventInfo),
-                      const SizedBox(height: 30),
-
-                      // Description
-                      _Description(config: widget.config),
-                      const SizedBox(height: 50),
-
-                      // Countdown Timer
-                      CountdownTimer(eventDate: widget.config.eventDate),
-                    ],
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Flutter Logo
+                  Assets.images.fullLogoSvg.svg(
+                    height: isDesktop ? 200 : 150,
                   ),
-                ),
+                  const SizedBox(height: 40),
+
+                  // Event Date and Location
+                  _EventInfo(eventInfo: _formattedEventInfo),
+                  const SizedBox(height: 30),
+
+                  // Description
+                  _Description(config: widget.config),
+                  const SizedBox(height: 50),
+
+                  // Countdown Timer
+                  CountdownTimer(eventDate: widget.config.eventDate),
+                ],
               ),
             ),
           ),

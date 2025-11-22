@@ -6,7 +6,7 @@ import 'package:flutter_conf_web/app/sections/speakers_section.dart';
 import 'package:flutter_conf_web/app/sections/sponsor_section.dart';
 import 'package:flutter_conf_web/app/sections/team_section.dart';
 import 'package:flutter_conf_web/app/services/conference_config_service.dart';
-import 'package:flutter_conf_web/app/widgets/animated_banner_widget.dart';
+import 'package:flutter_conf_web/app/widgets/banner_widget.dart';
 import 'package:flutter_conf_web/app/widgets/custom_drawer.dart';
 import 'package:flutter_conf_web/app/widgets/footer.dart';
 import 'package:flutter_conf_web/app/widgets/navigation_bar.dart';
@@ -150,7 +150,7 @@ class _LandingPageState extends State<LandingPage> {
               controller: scrollController,
               child: Column(
                 children: [
-                  AnimatedBannerWidget(config: _config!),
+                  BannerWidget(config: _config!),
                   _LandingContent(
                     speakersKey: speakersKey,
                     agendaKey: agendaKey,
