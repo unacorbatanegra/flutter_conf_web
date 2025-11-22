@@ -1,33 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_conf_web/app/models/conference_config.dart';
 import 'package:flutter_conf_web/app/notifiers/language_change_notifier.dart';
 import 'package:flutter_conf_web/app/widgets/language_switch.dart';
+import 'package:flutter_conf_web/core/constants/constants.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+const Color _kBackgroundColor = Color(0xFF191C36);
+const Color _kTextColor = Colors.white;
+const Color _kButtonColor = Color(0xFF5983F8);
 
 class CustomNavigationBar extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey;
   final VoidCallback _onScrollToHome;
-  final VoidCallback _onScrollToAbout;
   final VoidCallback _onScrollToSpeakers;
   final VoidCallback _onScollToAgenda;
-  // final VoidCallback _onScollToSponsors;
+  final VoidCallback? _onScrollToSponsors;
+  final VoidCallback _onScrollToTeam;
+  final ConferenceConfig? config;
 
   const CustomNavigationBar({
     Key? key,
     required GlobalKey<ScaffoldState> scaffoldKey,
     required VoidCallback onScrollToHome,
-    required VoidCallback onScrollToAbout,
     required VoidCallback onScrollToSpeakers,
     required VoidCallback onScollToAgenda,
-    // required VoidCallback onScollToSponsors,
+    VoidCallback? onScrollToSponsors,
+    required VoidCallback onScrollToTeam,
+    this.config,
   })  : _scaffoldKey = scaffoldKey,
         _onScrollToHome = onScrollToHome,
-        _onScrollToAbout = onScrollToAbout,
         _onScrollToSpeakers = onScrollToSpeakers,
         _onScollToAgenda = onScollToAgenda,
-        // _onScollToSponsors = onScollToSponsors,
+        _onScrollToSponsors = onScrollToSponsors,
+        _onScrollToTeam = onScrollToTeam,
         super(key: key);
 
   @override
@@ -37,78 +45,60 @@ class CustomNavigationBar extends StatelessWidget {
     final localeLanguageChangeNotifier =
         context.watch<LanguageChangeNotifier>();
 
-    const breakpoint = 1400;
-
     return Container(
-      height: 100,
-      color: Colors.blue[900],
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      color: _kBackgroundColor,
+      padding: EdgeInsets.symmetric(
+        horizontal: size.width >= kBreakpointLarge ? 150.0 : 24.0,
+        vertical: 16.0,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Assets.images.logo.svg(
-            width: 100,
-            height: 100,
-          ),
-          if (size.width < breakpoint)
+          // Logo and Title Section
+          _LogoAndTitle(onTap: _onScrollToHome),
+
+          // Mobile menu button
+          if (size.width < kBreakpointLarge)
             IconButton(
               icon: const Icon(
                 Icons.menu,
-                color: Colors.white,
+                color: _kTextColor,
+                size: 28,
               ),
               onPressed: () {
                 _scaffoldKey.currentState?.openEndDrawer();
               },
             ),
-          if (size.width > breakpoint)
+
+          // Desktop navigation
+          if (size.width >= kBreakpointLarge)
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 _NavBarItem(
-                  l10n.home,
-                  onTap: () {
-                    _onScrollToHome();
-                  },
-                ),
-                const SizedBox(width: 60),
-                _NavBarItem(
-                  l10n.about_us,
-                  onTap: () {
-                    _onScrollToAbout();
-                  },
-                ),
-                const SizedBox(width: 60),
-                _NavBarItem(
                   l10n.speakers,
-                  onTap: () {
-                    _onScrollToSpeakers();
-                  },
+                  onTap: _onScrollToSpeakers,
                 ),
-                const SizedBox(width: 60),
                 _NavBarItem(
-                  "Agenda",
-                  onTap: () {
-                    _onScollToAgenda();
-                  },
+                  l10n.agenda,
+                  onTap: _onScollToAgenda,
                 ),
-                const SizedBox(width: 60),
-                // _NavBarItem(
-                //   l10n.sponsors,
-                //   onTap: () {
-                //     _onScollToSponsors();
-                //   },
-                // ),
-                // const SizedBox(width: 60),
+                _NavBarItem(
+                  l10n.sponsors,
+                  onTap: _onScrollToSponsors,
+                ),
                 _NavBarItem(
                   l10n.team,
-                  onTap: () {
-                    context.push('/team');
-                  },
+                  onTap: _onScrollToTeam,
                 ),
-                const SizedBox(width: 60),
-                LanguageSwitch(
-                  localeLanguageChangeNotifier: localeLanguageChangeNotifier,
+                const SizedBox(width: 20),
+                Flexible(
+                  child: LanguageSwitch(
+                    localeLanguageChangeNotifier: localeLanguageChangeNotifier,
+                  ),
                 ),
+                const SizedBox(width: 20),
+                _RegistrationButton(config: config),
               ],
             )
         ],
@@ -117,7 +107,72 @@ class CustomNavigationBar extends StatelessWidget {
   }
 }
 
-class _NavBarItem extends StatelessWidget {
+class _LogoAndTitle extends StatelessWidget {
+  final VoidCallback onTap;
+
+  const _LogoAndTitle({
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Assets.images.fullLogoSvg.svg(),
+    );
+  }
+}
+
+class _RegistrationButton extends StatelessWidget {
+  final ConferenceConfig? config;
+
+  const _RegistrationButton({
+    required this.config,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
+    return ElevatedButton(
+      onPressed: () {
+        if (config?.registrationUrl != null) {
+          launchUrl(Uri.parse(config!.registrationUrl!));
+        } else {
+          debugPrint('Registration URL is null');
+        }
+      },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: _kButtonColor,
+        foregroundColor: _kTextColor,
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        elevation: 0,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            l10n.register,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(width: 8),
+          const Icon(
+            Icons.arrow_forward_ios,
+            size: 14,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _NavBarItem extends StatefulWidget {
   final String _title;
   final VoidCallback? _onTap;
 
@@ -127,16 +182,30 @@ class _NavBarItem extends StatelessWidget {
   }) : _onTap = onTap;
 
   @override
+  State<_NavBarItem> createState() => _NavBarItemState();
+}
+
+class _NavBarItemState extends State<_NavBarItem> {
+  bool _isHovered = false;
+
+  @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: TextButton(
-        onPressed: _onTap,
-        child: Text(
-          _title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 18,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        onEnter: (_) => setState(() => _isHovered = true),
+        onExit: (_) => setState(() => _isHovered = false),
+        child: InkWell(
+          onTap: widget._onTap,
+          child: AnimatedDefaultTextStyle(
+            duration: const Duration(milliseconds: 200),
+            style: TextStyle(
+              color: _isHovered ? _kButtonColor : _kTextColor,
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+            ),
+            child: Text(widget._title),
           ),
         ),
       ),

@@ -3,12 +3,29 @@ import 'package:flutter_conf_web/app/services/url_service.dart';
 import 'package:flutter_conf_web/core/themes/colors.dart';
 import 'package:flutter_conf_web/app/notifiers/language_change_notifier.dart';
 import 'package:flutter_conf_web/app/pages/landing_page.dart';
-import 'package:flutter_conf_web/app/pages/team_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
+final _router = GoRouter(
+  routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const LandingPage(),
+    ),
+  ],
+  errorBuilder: (context, state) => Scaffold(
+    body: Center(
+      child: Text(
+        'Page not found',
+        style: Theme.of(context).textTheme.displayLarge,
+      ),
+    ),
+  ),
+  initialLocation: '/',
+);
 
 void main() {
   runApp(
@@ -21,35 +38,13 @@ void main() {
           create: (context) => UrlService(),
         ),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
-
-  final _router = GoRouter(
-    routes: [
-      GoRoute(
-        path: '/',
-        builder: (context, state) => LandingPage(),
-      ),
-      GoRoute(
-        path: '/team',
-        builder: (context, state) => const TeamView(),
-      ),
-    ],
-    errorBuilder: (context, state) => Scaffold(
-      body: Center(
-        child: Text(
-          'Page not found',
-          style: Theme.of(context).textTheme.displayLarge,
-        ),
-      ),
-    ),
-    initialLocation: '/',
-  );
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
