@@ -100,54 +100,11 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/agenda_background_1.png');
 
   /// File path: assets/images/background_image_banner.jpg
-  AssetGenImage get backgroundImageBannerJpg =>
+  AssetGenImage get backgroundImageBanner =>
       const AssetGenImage('assets/images/background_image_banner.jpg');
 
-  /// File path: assets/images/background_image_banner.svg
-  SvgGenImage get backgroundImageBannerSvg =>
-      const SvgGenImage('assets/images/background_image_banner.svg');
-
-  /// File path: assets/images/banner_con_gdg.svg
-  SvgGenImage get bannerConGdg =>
-      const SvgGenImage('assets/images/banner_con_gdg.svg');
-
-  /// File path: assets/images/banner_dash_logo.png
-  AssetGenImage get bannerDashLogo =>
-      const AssetGenImage('assets/images/banner_dash_logo.png');
-
-  /// File path: assets/images/banner_principal.svg
-  SvgGenImage get bannerPrincipal =>
-      const SvgGenImage('assets/images/banner_principal.svg');
-
-  /// File path: assets/images/circle_speaker.svg
-  SvgGenImage get circleSpeaker =>
-      const SvgGenImage('assets/images/circle_speaker.svg');
-
-  /// File path: assets/images/dash.png
-  AssetGenImage get dash => const AssetGenImage('assets/images/dash.png');
-
-  /// File path: assets/images/dash_logo.png
-  AssetGenImage get dashLogo =>
-      const AssetGenImage('assets/images/dash_logo.png');
-
-  /// File path: assets/images/dot_speaker.svg
-  SvgGenImage get dotSpeaker =>
-      const SvgGenImage('assets/images/dot_speaker.svg');
-
-  /// File path: assets/images/flutter_paraguay_logo.svg
-  SvgGenImage get flutterParaguayLogo =>
-      const SvgGenImage('assets/images/flutter_paraguay_logo.svg');
-
-  /// File path: assets/images/full_logo.png
-  AssetGenImage get fullLogoPng =>
-      const AssetGenImage('assets/images/full_logo.png');
-
   /// File path: assets/images/full_logo.svg
-  SvgGenImage get fullLogoSvg =>
-      const SvgGenImage('assets/images/full_logo.svg');
-
-  /// File path: assets/images/logo.svg
-  SvgGenImage get logo => const SvgGenImage('assets/images/logo.svg');
+  SvgGenImage get fullLogo => const SvgGenImage('assets/images/full_logo.svg');
 
   /// File path: assets/images/speaker_background_1.svg
   SvgGenImage get speakerBackground1 =>
@@ -157,28 +114,9 @@ class $AssetsImagesGen {
   $AssetsImagesSponsorsGen get sponsors => const $AssetsImagesSponsorsGen();
   $AssetsImagesTeamGen get team => const $AssetsImagesTeamGen();
 
-  /// File path: assets/images/x_speaker.svg
-  SvgGenImage get xSpeaker => const SvgGenImage('assets/images/x_speaker.svg');
-
   /// List of all assets
-  List<dynamic> get values => [
-        agendaBackground1,
-        backgroundImageBannerJpg,
-        backgroundImageBannerSvg,
-        bannerConGdg,
-        bannerDashLogo,
-        bannerPrincipal,
-        circleSpeaker,
-        dash,
-        dashLogo,
-        dotSpeaker,
-        flutterParaguayLogo,
-        fullLogoPng,
-        fullLogoSvg,
-        logo,
-        speakerBackground1,
-        xSpeaker
-      ];
+  List<dynamic> get values =>
+      [agendaBackground1, backgroundImageBanner, fullLogo, speakerBackground1];
 }
 
 class $AssetsImagesSpeakersGen {

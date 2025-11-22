@@ -54,7 +54,7 @@ class _BannerWidgetState extends State<BannerWidget> {
         children: [
           // Background Image
           Positioned.fill(
-            child: Assets.images.backgroundImageBannerJpg.image(
+            child: Assets.images.backgroundImageBanner.image(
               fit: BoxFit.cover,
             ),
           ),
@@ -84,7 +84,7 @@ class _BannerWidgetState extends State<BannerWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // Flutter Logo
-                  Assets.images.fullLogoSvg.svg(
+                  Assets.images.fullLogo.svg(
                     height: isDesktop ? 200 : 150,
                   ),
                   const SizedBox(height: 40),

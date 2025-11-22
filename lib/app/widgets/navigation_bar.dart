@@ -118,7 +118,7 @@ class _LogoAndTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Assets.images.fullLogoSvg.svg(),
+      child: Assets.images.fullLogo.svg(),
     );
   }
 }

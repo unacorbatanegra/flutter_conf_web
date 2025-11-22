@@ -48,7 +48,7 @@ class CustomDrawer extends StatelessWidget {
                 padding: const EdgeInsets.all(24.0),
                 child: Row(
                   children: [
-                    Assets.images.logo.svg(
+                    Assets.images.fullLogo.svg(
                       height: 40,
                       width: 40,
                     ),
