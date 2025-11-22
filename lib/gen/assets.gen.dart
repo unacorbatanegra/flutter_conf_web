@@ -50,6 +50,22 @@ class $AssetsAnimationGen {
       ];
 }
 
+class $AssetsConfigGen {
+  const $AssetsConfigGen();
+
+  /// File path: assets/config/conference_2024.json
+  String get conference2024 => 'assets/config/conference_2024.json';
+
+  /// File path: assets/config/conference_2025.json
+  String get conference2025 => 'assets/config/conference_2025.json';
+
+  /// File path: assets/config/conference_2026.json
+  String get conference2026 => 'assets/config/conference_2026.json';
+
+  /// List of all assets
+  List<String> get values => [conference2024, conference2025, conference2026];
+}
+
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
@@ -78,6 +94,18 @@ class $AssetsIconsGen {
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/agenda_background_1.png
+  AssetGenImage get agendaBackground1 =>
+      const AssetGenImage('assets/images/agenda_background_1.png');
+
+  /// File path: assets/images/background_image_banner.jpg
+  AssetGenImage get backgroundImageBannerJpg =>
+      const AssetGenImage('assets/images/background_image_banner.jpg');
+
+  /// File path: assets/images/background_image_banner.svg
+  SvgGenImage get backgroundImageBannerSvg =>
+      const SvgGenImage('assets/images/background_image_banner.svg');
 
   /// File path: assets/images/banner_con_gdg.svg
   SvgGenImage get bannerConGdg =>
@@ -110,10 +138,21 @@ class $AssetsImagesGen {
   SvgGenImage get flutterParaguayLogo =>
       const SvgGenImage('assets/images/flutter_paraguay_logo.svg');
 
+  /// File path: assets/images/full_logo.png
+  AssetGenImage get fullLogoPng =>
+      const AssetGenImage('assets/images/full_logo.png');
+
+  /// File path: assets/images/full_logo.svg
+  SvgGenImage get fullLogoSvg =>
+      const SvgGenImage('assets/images/full_logo.svg');
+
   /// File path: assets/images/logo.svg
   SvgGenImage get logo => const SvgGenImage('assets/images/logo.svg');
 
-  $AssetsImagesSpeakersGen get speakers => const $AssetsImagesSpeakersGen();
+  /// File path: assets/images/speaker_background_1.svg
+  SvgGenImage get speakerBackground1 =>
+      const SvgGenImage('assets/images/speaker_background_1.svg');
+
   $AssetsImagesSponsorsGen get sponsors => const $AssetsImagesSponsorsGen();
   $AssetsImagesTeamGen get team => const $AssetsImagesTeamGen();
 
@@ -122,6 +161,9 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<dynamic> get values => [
+        agendaBackground1,
+        backgroundImageBannerJpg,
+        backgroundImageBannerSvg,
         bannerConGdg,
         bannerDashLogo,
         bannerPrincipal,
@@ -130,41 +172,36 @@ class $AssetsImagesGen {
         dashLogo,
         dotSpeaker,
         flutterParaguayLogo,
+        fullLogoPng,
+        fullLogoSvg,
         logo,
+        speakerBackground1,
         xSpeaker
       ];
 }
 
-class $AssetsImagesSpeakersGen {
-  const $AssetsImagesSpeakersGen();
-
-  /// File path: assets/images/speakers/speaker_1.png
-  AssetGenImage get speaker1 =>
-      const AssetGenImage('assets/images/speakers/speaker_1.png');
-
-  /// File path: assets/images/speakers/speaker_2.jpg
-  AssetGenImage get speaker2 =>
-      const AssetGenImage('assets/images/speakers/speaker_2.jpg');
-
-  /// File path: assets/images/speakers/speaker_3.jpg
-  AssetGenImage get speaker3 =>
-      const AssetGenImage('assets/images/speakers/speaker_3.jpg');
-
-  /// File path: assets/images/speakers/speaker_4.jpg
-  AssetGenImage get speaker4 =>
-      const AssetGenImage('assets/images/speakers/speaker_4.jpg');
-
-  /// File path: assets/images/speakers/speaker_5.jpeg
-  AssetGenImage get speaker5 =>
-      const AssetGenImage('assets/images/speakers/speaker_5.jpeg');
-
-  /// List of all assets
-  List<AssetGenImage> get values =>
-      [speaker1, speaker2, speaker3, speaker4, speaker5];
-}
-
 class $AssetsImagesSponsorsGen {
   const $AssetsImagesSponsorsGen();
+
+  /// File path: assets/images/sponsors/basa_logo.png
+  AssetGenImage get basaLogo =>
+      const AssetGenImage('assets/images/sponsors/basa_logo.png');
+
+  /// File path: assets/images/sponsors/cashea_logo.png
+  AssetGenImage get casheaLogo =>
+      const AssetGenImage('assets/images/sponsors/cashea_logo.png');
+
+  /// File path: assets/images/sponsors/cuballama_logo.png
+  AssetGenImage get cuballamaLogo =>
+      const AssetGenImage('assets/images/sponsors/cuballama_logo.png');
+
+  /// File path: assets/images/sponsors/fortyau_logo.jpg
+  AssetGenImage get fortyauLogo =>
+      const AssetGenImage('assets/images/sponsors/fortyau_logo.jpg');
+
+  /// File path: assets/images/sponsors/itti_logo.png
+  AssetGenImage get ittiLogo =>
+      const AssetGenImage('assets/images/sponsors/itti_logo.png');
 
   /// File path: assets/images/sponsors/mentormate_logo.png
   AssetGenImage get mentormateLogo =>
@@ -179,7 +216,16 @@ class $AssetsImagesSponsorsGen {
       const AssetGenImage('assets/images/sponsors/ucom_logo.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [mentormateLogo, plubLogo, ucomLogo];
+  List<AssetGenImage> get values => [
+        basaLogo,
+        casheaLogo,
+        cuballamaLogo,
+        fortyauLogo,
+        ittiLogo,
+        mentormateLogo,
+        plubLogo,
+        ucomLogo
+      ];
 }
 
 class $AssetsImagesTeamGen {
@@ -226,6 +272,7 @@ class Assets {
   Assets._();
 
   static const $AssetsAnimationGen animation = $AssetsAnimationGen();
+  static const $AssetsConfigGen config = $AssetsConfigGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
