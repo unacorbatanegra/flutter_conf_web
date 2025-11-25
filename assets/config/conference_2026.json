@@ -1,0 +1,235 @@
+{
+  "year": 2026,
+  "eventDate": "2026-02-07",
+  "location": "Asunción, Paraguay",
+  "venue": "Campus UCOM",
+  "registrationUrl": "https://gdg.community.dev/events/details/google-gdg-encarnacion-presents-flutterconf-paraguay-2025/",
+  "description": "FlutterConf Paraguay es una conferencia de tecnología que se realiza en Paraguay, con el objetivo de compartir conocimientos y experiencias sobre Flutter, el framework de Google para crear aplicaciones multiplataforma.",
+  "speakers": [ 
+    {
+      "id": 0,
+      "imagePath": "assets/images/speakers/speaker_5.jpeg",
+      "name": "David Rios",
+      "profession": "Senior Mobile Developer",
+      "talkTitle": "Performance Best Practices: Estrategias y Mejores Prácticas en Flutter",
+      "linkedinUrl": "https://www.linkedin.com/in/david-rios-dev/",
+      "twitterUrl": null,
+      "youtubeUrl": null,
+      "facebookUrl": "https://www.facebook.com/davidriosdev",
+      "countryEmoji": "🇧🇴"
+    },
+    {
+      "id": 1,
+      "imagePath": "assets/images/speakers/speaker_1.png",
+      "name": "Diego Velasquez",
+      "profession": "Software Engineer",
+      "gdeCategory": "Flutter",
+      "talkTitle": "¿Por qué uso Flutter en lugar de nativo? Tomando decisiones que impactan el negocio",
+      "linkedinUrl": "https://www.linkedin.com/in/diegoveloper/",
+      "twitterUrl": "https://twitter.com/diegoveloper",
+      "youtubeUrl": "https://www.youtube.com/diegoveloper",
+      "facebookUrl": null,
+      "countryEmoji": "🇵🇪"
+    },
+    {
+      "id": 2,
+      "imagePath": "assets/images/speakers/speaker_4.jpg",
+      "name": "María Teresa Samudio González",
+      "profession": "Software Engineer | Very Good Ventures",
+      "talkTitle": "Rumbo a lo Very Good: Trabajando remoto desde Paraguay",
+      "linkedinUrl": "https://www.linkedin.com/in/maria-teresa-samudio/",
+      "twitterUrl": null,
+      "youtubeUrl": null,
+      "facebookUrl": null,
+      "countryEmoji": "🇵🇾"
+    },
+    {
+      "id": 3,
+      "imagePath": "assets/images/speakers/speaker_2.jpg",
+      "name": "Hansy Schmitt",
+      "profession": "Senior Mobile/Backend Developer",
+      "talkTitle": "Game Development Desde Cero: Mi primer videojuego con Flutter",
+      "linkedinUrl": null,
+      "twitterUrl": null,
+      "youtubeUrl": null,
+      "facebookUrl": null,
+      "countryEmoji": "🇵🇪"
+    },
+    {
+      "id": 4,
+      "imagePath": "assets/images/speakers/speaker_3.jpg",
+      "name": "Carlitos Vargas",
+      "profession": "Senior Flutter Developer | Banco Basa",
+      "talkTitle": "Del Inicio al Éxito: El roadmap para convertirte de Junior a Senior con Flutter",
+      "linkedinUrl": "https://www.linkedin.com/in/kalitodev",
+      "twitterUrl": null,
+      "youtubeUrl": null,
+      "facebookUrl": null,
+      "countryEmoji": "🇵🇾"
+    }
+  ],
+  "agenda": [
+    {
+      "time": "8:00 AM - 10:00 AM",
+      "title": "Performance Best Practices",
+      "speaker": "David Rios",
+      "description": "Estrategias y Mejoras Prácticas en Flutter para optimizar el rendimiento de tus aplicaciones.",
+      "period": "morning",
+      "isHighlighted": true
+    },
+    {
+      "time": "10:00 AM - 11:00 AM",
+      "title": "¿Por qué Flutter en lugar de nativo?",
+      "speaker": "Diego Velasquez",
+      "description": "Tomando decisiones que impactan el negocio y el desarrollo de aplicaciones móviles.",
+      "period": "morning",
+      "isHighlighted": false
+    },
+    {
+      "time": "11:00 AM - 12:00 PM",
+      "title": "Workshop de Flutter",
+      "speaker": null,
+      "description": "Sesión práctica para aprender las bases de Flutter y crear tu primera aplicación.",
+      "period": "morning",
+      "isHighlighted": false
+    },
+    {
+      "time": "12:00 PM - 1:00 PM",
+      "title": "Almuerzo",
+      "speaker": null,
+      "description": "Tiempo para almorzar y networking con los asistentes y speakers.",
+      "period": "morning",
+      "isHighlighted": false
+    },
+    {
+      "time": "2:00 PM - 3:00 PM",
+      "title": "Rumbo a lo Very Good",
+      "speaker": "María Teresa Samudio González",
+      "description": "Trabajando remoto desde Paraguay y las oportunidades en el desarrollo de software.",
+      "period": "afternoon",
+      "isHighlighted": false
+    },
+    {
+      "time": "3:00 PM - 4:00 PM",
+      "title": "Game Development con Flutter",
+      "speaker": "Hansy Schmitt",
+      "description": "Mi primer videojuego con Flutter: desde cero hasta el lanzamiento.",
+      "period": "afternoon",
+      "isHighlighted": false
+    },
+    {
+      "time": "4:00 PM - 5:00 PM",
+      "title": "Del Junior al Senior",
+      "speaker": "Carlitos Vargas",
+      "description": "El roadmap para convertirte de Junior a Senior con Flutter y crecer profesionalmente.",
+      "period": "afternoon",
+      "isHighlighted": false
+    },
+    {
+      "time": "5:00 PM - 6:00 PM",
+      "title": "Panel de Cierre",
+      "speaker": null,
+      "description": "Sesión de Q&A con todos los speakers y cierre del evento.",
+      "period": "afternoon",
+      "isHighlighted": false
+    }
+  ],
+  "sponsors": [
+    {
+      "name": "FortyAU",
+      "logoPath": "assets/images/sponsors/fortyau_logo.jpg",
+      "tier": "gold",
+      "description": "FortyAU - Empresa de desarrollo de software con experiencia.",
+      "websiteUrl": "https://fortyau.com/"
+    },
+    {
+      "name": "UCOM",
+      "logoPath": "assets/images/sponsors/ucom_logo.png",
+      "tier": "gold",
+      "description": "Universidad Comunera - Institución educativa líder en Paraguay, formando profesionales en tecnología y otras áreas del conocimiento.",
+      "websiteUrl": "https://www.ucom.edu.py"
+    },
+    {
+      "name": "Plub",
+      "logoPath": "assets/images/sponsors/plub_logo.png",
+      "tier": "silver",
+      "description": "Plub - Empresa de desarrollo de software especializada en soluciones móviles y web con Flutter.",
+      "websiteUrl": null
+    },
+    {
+      "name": "MentorMate",
+      "logoPath": "assets/images/sponsors/mentormate_logo.png",
+      "tier": "silver",
+      "description": "MentorMate - Compañía global de tecnología que ofrece servicios de desarrollo de software y consultoría.",
+      "websiteUrl": "https://www.mentormate.com"
+    }
+  ],
+  "team": [
+    {
+      "name": "Miguel Belotto",
+      "role": "Frontend Engineer",
+      "image": "assets/images/team/team_1.jpeg",
+      "twitterUrl": "https://twitter.com/MiguelBelotto00",
+      "linkedinUrl": null,
+      "githubUrl": "https://github.com/MiguelBelotto00"
+    },
+    {
+      "name": "Jose Martinez",
+      "role": "Frontend Engineer",
+      "image": "assets/images/team/team_2.png",
+      "twitterUrl": "https://twitter.com/JoseMLegal1",
+      "linkedinUrl": null,
+      "githubUrl": "https://github.com/josemlegal"
+    },
+    {
+      "name": "María Teresa Samudio González",
+      "role": "Software Engineer",
+      "image": "assets/images/team/team_3.jpg",
+      "twitterUrl": null,
+      "linkedinUrl": "https://www.linkedin.com/in/maria-teresa-samudio/",
+      "githubUrl": null
+    },
+    {
+      "name": "Nicolas Lopez",
+      "role": "Software Engineer",
+      "organizerRole": "GDG Organizer",
+      "image": "assets/images/team/team_4.jpeg",
+      "twitterUrl": "https://twitter.com/unacorbatanegra",
+      "linkedinUrl": null,
+      "githubUrl": "https://github.com/unacorbatanegra"
+    },
+    {
+      "name": "Matias Ramirez",
+      "role": "Software Engineer",
+      "image": "assets/images/team/team_5.jpeg",
+      "twitterUrl": "https://twitter.com/RamirezMatias03",
+      "linkedinUrl": "https://www.linkedin.com/in/matias-sebastian-ramirez-brizuela-75b62a199/",
+      "githubUrl": null
+    },
+    {
+      "name": "Doriham Russo",
+      "role": "Frontend Engineer",
+      "image": "assets/images/team/team_6.jpeg",
+      "twitterUrl": "https://twitter.com/dorihamR",
+      "linkedinUrl": "https://www.linkedin.com/in/doriham-russo-340a40242/",
+      "githubUrl": null
+    },
+    {
+      "name": "Matias Casco",
+      "role": "Software Developer",
+      "image": "assets/images/team/team_7.jpg",
+      "twitterUrl": null,
+      "linkedinUrl": "https://www.linkedin.com/in/matias-casco-lobos-b3b491177/",
+      "githubUrl": null
+    },
+    {
+      "name": "Leonardo Paredes",
+      "role": "UX Designer",
+      "organizerRole": "GDG Organizer",
+      "image": "assets/images/team/team_8.jpeg",
+      "twitterUrl": null,
+      "linkedinUrl": "https://www.linkedin.com/in/leo-paredest/",
+      "githubUrl": null
+    }
+  ]
+}

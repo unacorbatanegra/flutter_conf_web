@@ -1,38 +1,53 @@
-// ignore_for_file: deprecated_member_use_from_same_package
-
 import 'package:flutter/material.dart';
+import 'package:flutter_conf_web/app/models/conference_config.dart';
 import 'package:flutter_conf_web/app/services/url_service.dart';
+import 'package:flutter_conf_web/core/constants/constants.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class Footer extends StatelessWidget {
+  final ConferenceConfig config;
+
   const Footer({
     super.key,
+    required this.config,
   });
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final isDesktop = size.width > kBreakPoint;
 
     return Container(
-      color: Colors.black,
-      child: size.width > 600
-          ? _FooterDesktop(
-              launchUrlSocialMedia: context.read<UrlService>().openUrl,
-            )
-          : _FooterMobile(
-              launchUrlSocialMedia: context.read<UrlService>().openUrl,
-            ),
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(
+        horizontal: isDesktop ? 80 : 20,
+        vertical: isDesktop ? 40 : 30,
+      ),
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color(0xFF1C2541),
+            Color(0xFF0B1929),
+          ],
+        ),
+      ),
+      child: isDesktop
+          ? _FooterDesktop(config: config)
+          : _FooterMobile(config: config),
     );
   }
 }
 
 class _FooterDesktop extends StatelessWidget {
-  final Future<void> Function(String) launchUrlSocialMedia;
+  final ConferenceConfig config;
 
   const _FooterDesktop({
-    required this.launchUrlSocialMedia,
+    required this.config,
   });
 
   @override
@@ -47,76 +62,92 @@ class _FooterDesktop extends StatelessWidget {
             children: [
               TextSpan(
                 text: l10n.madeWith,
-                style: const TextStyle(
+                style: GoogleFonts.lato(
                   color: Colors.white,
+                  fontSize: 14,
                 ),
               ),
-              const TextSpan(
+              TextSpan(
                 text: ' 💙 ',
-                style: TextStyle(
+                style: GoogleFonts.lato(
                   color: Colors.red,
+                  fontSize: 14,
                 ),
               ),
               TextSpan(
                 text: l10n.by,
-                style: const TextStyle(
+                style: GoogleFonts.lato(
                   color: Colors.white,
+                  fontSize: 14,
                 ),
               ),
-              const TextSpan(
-                text: ' Flutter Conf Paraguay',
-                style: TextStyle(
-                  color: Colors.blue,
+              TextSpan(
+                text: ' FlutterConf Paraguay',
+                style: GoogleFonts.lato(
+                  color: const Color(0xFF5983F8),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ],
           ),
         ),
-        const SizedBox(width: 10),
-        IconButton(
-          tooltip: 'Github',
-          onPressed: () {
-            launchUrlSocialMedia(
-              'https://github.com/unacorbatanegra/flutter_conf_web',
-            );
-          },
-          icon: Assets.icons.github.svg(
-            width: 20,
-            height: 20,
-            color: Colors.white,
-          ),
-        ),
-        IconButton(
-          tooltip: 'X',
-          onPressed: () {
-            launchUrlSocialMedia('https://twitter.com/flutter_py');
-          },
-          icon: Assets.icons.x.svg(
-            width: 20,
-            height: 20,
-          ),
-        ),
-        IconButton(
-          tooltip: 'Linkedin',
-          onPressed: () {
-            launchUrlSocialMedia(
-              'https://www.linkedin.com/company/flutter-conf-paraguay-2024/',
-            );
-          },
-          icon: Assets.icons.linkedin.svg(
-            width: 20,
-            height: 20,
-          ),
-        ),
-        // Add instagram
-        IconButton(
-          tooltip: 'Instagram',
-          onPressed: () {
-            launchUrlSocialMedia('https://www.instagram.com/flutterconfpy/');
-          },
-          icon: Assets.icons.instagram.svg(
-            width: 20,
-            height: 20,
+        const SizedBox(width: 20),
+        _SocialMediaLinks(config: config),
+      ],
+    );
+  }
+}
+
+class _FooterMobile extends StatelessWidget {
+  final ConferenceConfig config;
+
+  const _FooterMobile({
+    required this.config,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
+    return Column(
+      children: [
+        _SocialMediaLinks(config: config),
+        const SizedBox(height: 16),
+        RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: l10n.madeWith,
+                style: GoogleFonts.lato(
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
+              ),
+              TextSpan(
+                text: ' 💙 ',
+                style: GoogleFonts.lato(
+                  color: Colors.red,
+                  fontSize: 14,
+                ),
+              ),
+              TextSpan(
+                text: l10n.by,
+                style: GoogleFonts.lato(
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
+              ),
+              TextSpan(
+                text: ' FlutterConf Paraguay ${config.year}',
+                style: GoogleFonts.lato(
+                  color: const Color(0xFF5983F8),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
           ),
         ),
       ],
@@ -124,101 +155,97 @@ class _FooterDesktop extends StatelessWidget {
   }
 }
 
-class _FooterMobile extends StatelessWidget {
-  final Future<void> Function(String) launchUrlSocialMedia;
+class _SocialMediaLinks extends StatelessWidget {
+  final ConferenceConfig config;
 
-  const _FooterMobile({
-    required this.launchUrlSocialMedia,
+  const _SocialMediaLinks({
+    required this.config,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-              tooltip: 'Github',
-              onPressed: () {
-                launchUrlSocialMedia(
-                    'https://github.com/unacorbatanegra/flutter_conf_web');
-              },
-              icon: Assets.icons.github.svg(
-                width: 20,
-                height: 20,
-                color: Colors.white,
-              ),
+    final urlService = context.read<UrlService>();
+    final availableLinks = config.availableSocialLinks;
+
+    if (availableLinks.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: availableLinks.map((entry) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: IconButton(
+            tooltip: _getTooltip(entry.key),
+            onPressed: () => urlService.openUrl(entry.value),
+            icon: _getSocialIcon(entry.key),
+            iconSize: 20,
+            constraints: const BoxConstraints(
+              minWidth: 40,
+              minHeight: 40,
             ),
-            IconButton(
-              tooltip: 'X',
-              onPressed: () {
-                launchUrlSocialMedia('https://twitter.com/flutter_py');
-              },
-              icon: Assets.icons.x.svg(
-                width: 20,
-                height: 20,
-              ),
-            ),
-            IconButton(
-              tooltip: 'Linkedin',
-              onPressed: () {
-                launchUrlSocialMedia(
-                    'https://www.linkedin.com/company/flutter-conf-paraguay-2024/');
-              },
-              icon: Assets.icons.linkedin.svg(
-                width: 20,
-                height: 20,
-              ),
-            ),
-            // Add instagram
-            IconButton(
-              tooltip: 'Instagram',
-              onPressed: () {
-                launchUrlSocialMedia(
-                    'https://www.instagram.com/flutterconfpy/');
-              },
-              icon: Assets.icons.instagram.svg(
-                width: 20,
-                height: 20,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        RichText(
-          text: const TextSpan(
-            children: [
-              TextSpan(
-                text: 'Made with',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              TextSpan(
-                text: ' 💙 ',
-                style: TextStyle(
-                  color: Colors.red,
-                ),
-              ),
-              TextSpan(
-                text: 'by',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              TextSpan(
-                text: ' Flutter Conf Paraguay',
-                style: TextStyle(
-                  color: Colors.blue,
-                ),
-              ),
-            ],
           ),
-        ),
-        const SizedBox(height: 10),
-      ],
+        );
+      }).toList(),
     );
+  }
+
+  String _getTooltip(String platform) {
+    switch (platform) {
+      case 'github':
+        return 'GitHub';
+      case 'twitter':
+        return 'X (Twitter)';
+      case 'linkedin':
+        return 'LinkedIn';
+      case 'instagram':
+        return 'Instagram';
+      default:
+        return '';
+    }
+  }
+
+  Widget _getSocialIcon(String platform) {
+    switch (platform) {
+      case 'github':
+        return Assets.icons.github.svg(
+          width: 20,
+          height: 20,
+          colorFilter: const ColorFilter.mode(
+            Colors.white,
+            BlendMode.srcIn,
+          ),
+        );
+      case 'twitter':
+        return Assets.icons.x.svg(
+          width: 20,
+          height: 20,
+          colorFilter: const ColorFilter.mode(
+            Colors.white,
+            BlendMode.srcIn,
+          ),
+        );
+      case 'linkedin':
+        return Assets.icons.linkedin.svg(
+          width: 20,
+          height: 20,
+          colorFilter: const ColorFilter.mode(
+            Colors.white,
+            BlendMode.srcIn,
+          ),
+        );
+      case 'instagram':
+        return Assets.icons.instagram.svg(
+          width: 20,
+          height: 20,
+          colorFilter: const ColorFilter.mode(
+            Colors.white,
+            BlendMode.srcIn,
+          ),
+        );
+      default:
+        return const SizedBox.shrink();
+    }
   }
 }
