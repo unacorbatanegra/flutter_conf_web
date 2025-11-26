@@ -56,6 +56,65 @@ class _CountdownTimerState extends State<CountdownTimer> {
     final minutes = _timeLeft.inMinutes % 60;
     final seconds = _timeLeft.inSeconds % 60;
 
+    // Check if event has concluded
+    final hasEventConcluded = _timeLeft == Duration.zero;
+
+    if (hasEventConcluded) {
+      return Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: size.width > kBreakPoint ? 60 : 30,
+          vertical: size.width > kBreakPoint ? 40 : 30,
+        ),
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFF1C2541),
+              Color(0xFF0B1929),
+            ],
+          ),
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 30,
+              offset: const Offset(0, 10),
+            ),
+          ],
+        ),
+        child: Column(
+          children: [
+            Icon(
+              Icons.event_available,
+              size: size.width > kBreakPoint ? 60 : 50,
+              color: Colors.white,
+            ),
+            const SizedBox(height: 20),
+            Text(
+              l10n.eventConcluded,
+              style: GoogleFonts.lato(
+                fontSize: size.width > kBreakPoint ? 32 : 24,
+                fontWeight: FontWeight.w700,
+                color: Colors.white,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 12),
+            Text(
+              l10n.eventConcludedMessage,
+              style: GoogleFonts.lato(
+                fontSize: size.width > kBreakPoint ? 16 : 14,
+                fontWeight: FontWeight.w400,
+                color: Colors.white.withOpacity(0.9),
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      );
+    }
+
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: size.width > kBreakPoint ? 60 : 30,

@@ -39,5 +39,7 @@
   "morning": "Morning",
   "afternoon": "Afternoon",
   "goldTier": "Gold",
-  "silverTier": "Silver"
+  "silverTier": "Silver",
+  "eventConcluded": "The event has concluded!",
+  "eventConcludedMessage": "Thank you for being part of FlutterConf Paraguay"
 }
