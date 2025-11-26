@@ -8,7 +8,9 @@ import 'package:flutter_conf_web/app/sections/team_section.dart';
 import 'package:flutter_conf_web/app/services/conference_config_service.dart';
 import 'package:flutter_conf_web/app/widgets/banner_widget.dart';
 import 'package:flutter_conf_web/app/widgets/custom_drawer.dart';
+import 'package:flutter_conf_web/app/widgets/error_state.dart';
 import 'package:flutter_conf_web/app/widgets/footer.dart';
+import 'package:flutter_conf_web/app/widgets/loading_state.dart';
 import 'package:flutter_conf_web/app/widgets/navigation_bar.dart';
 import 'package:flutter_conf_web/core/constants/constants.dart';
 
@@ -30,12 +32,27 @@ class _LandingPageState extends State<LandingPage> {
   final _configService = ConferenceConfigService();
   ConferenceConfig? _config;
   bool _isLoading = true;
+  bool _showFAB = false;
+  bool _isScrolled = false;
 
   @override
   void initState() {
     super.initState();
     scrollController = ScrollController();
+    scrollController.addListener(_onScroll);
     _loadConfig();
+  }
+
+  void _onScroll() {
+    final shouldShowFAB = scrollController.offset > 500;
+    final hasScrolled = scrollController.offset > 0;
+
+    if (shouldShowFAB != _showFAB || hasScrolled != _isScrolled) {
+      setState(() {
+        _showFAB = shouldShowFAB;
+        _isScrolled = hasScrolled;
+      });
+    }
   }
 
   Future<void> _loadConfig() async {
@@ -80,30 +97,28 @@ class _LandingPageState extends State<LandingPage> {
     final size = MediaQuery.of(context).size;
 
     if (_isLoading) {
-      return const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
+      return const LoadingState();
     }
 
     if (_config == null) {
-      return const Scaffold(
-        body: Center(
-          child: Text('Error loading conference data'),
-        ),
+      return ErrorState(
+        onRetry: _loadConfig,
       );
     }
 
     return Scaffold(
       key: scaffoldKey,
-      floatingActionButton: size.width > kBreakPoint
+      floatingActionButton: size.width > kBreakPoint || !_showFAB
           ? null
-          : FloatingActionButton(
-              onPressed: () {
-                scrollToTop();
-              },
-              child: const Icon(Icons.arrow_upward),
+          : AnimatedOpacity(
+              opacity: _showFAB ? 1.0 : 0.0,
+              duration: const Duration(milliseconds: 300),
+              child: FloatingActionButton(
+                onPressed: () {
+                  scrollToTop();
+                },
+                child: const Icon(Icons.arrow_upward),
+              ),
             ),
       endDrawer: CustomDrawer(
         scaffoldKey: scaffoldKey,
@@ -124,47 +139,85 @@ class _LandingPageState extends State<LandingPage> {
         },
         config: _config,
       ),
-      body: Column(
-        children: [
-          CustomNavigationBar(
-            scaffoldKey: scaffoldKey,
-            onScrollToHome: () {
-              scrollToTop();
-            },
-            onScrollToSpeakers: () {
-              scrollToKey(speakersKey);
-            },
-            onScollToAgenda: () {
-              scrollToKey(agendaKey);
-            },
-            onScrollToSponsors: () {
-              scrollToKey(sponsorsKey);
-            },
-            onScrollToTeam: () {
-              scrollToKey(teamKey);
-            },
-            config: _config,
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              controller: scrollController,
-              child: Column(
-                children: [
-                  BannerWidget(config: _config!),
-                  _LandingContent(
-                    speakersKey: speakersKey,
-                    agendaKey: agendaKey,
-                    sponsorsKey: sponsorsKey,
-                    teamKey: teamKey,
-                    config: _config!,
+      body: size.width > kBreakPoint
+          ? Column(
+              children: [
+                // Sticky Navigation Bar for Desktop
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  decoration: BoxDecoration(
+                    boxShadow: _isScrolled
+                        ? [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              blurRadius: 8,
+                              offset: const Offset(0, 2),
+                            ),
+                          ]
+                        : [],
                   ),
-                ],
-              ),
+                  child: CustomNavigationBar(
+                    scaffoldKey: scaffoldKey,
+                    onScrollToHome: scrollToTop,
+                    onScrollToSpeakers: () => scrollToKey(speakersKey),
+                    onScollToAgenda: () => scrollToKey(agendaKey),
+                    onScrollToSponsors: () => scrollToKey(sponsorsKey),
+                    onScrollToTeam: () => scrollToKey(teamKey),
+                    config: _config,
+                  ),
+                ),
+                // Scrollable content
+                Expanded(
+                  child: SingleChildScrollView(
+                    controller: scrollController,
+                    child: Column(
+                      children: [
+                        BannerWidget(config: _config!),
+                        _LandingContent(
+                          speakersKey: speakersKey,
+                          agendaKey: agendaKey,
+                          sponsorsKey: sponsorsKey,
+                          teamKey: teamKey,
+                          config: _config!,
+                        ),
+                        Footer(config: _config!),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            )
+          : Column(
+              children: [
+                CustomNavigationBar(
+                  scaffoldKey: scaffoldKey,
+                  onScrollToHome: scrollToTop,
+                  onScrollToSpeakers: () => scrollToKey(speakersKey),
+                  onScollToAgenda: () => scrollToKey(agendaKey),
+                  onScrollToSponsors: () => scrollToKey(sponsorsKey),
+                  onScrollToTeam: () => scrollToKey(teamKey),
+                  config: _config,
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    controller: scrollController,
+                    child: Column(
+                      children: [
+                        BannerWidget(config: _config!),
+                        _LandingContent(
+                          speakersKey: speakersKey,
+                          agendaKey: agendaKey,
+                          sponsorsKey: sponsorsKey,
+                          teamKey: teamKey,
+                          config: _config!,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Footer(config: _config!),
+              ],
             ),
-          ),
-          Footer(config: _config!),
-        ],
-      ),
     );
   }
 }

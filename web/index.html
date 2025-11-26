@@ -50,32 +50,62 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #1a1d3a;
+    background: linear-gradient(180deg, #1a1d3a 0%, #0B1929 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 9999;
   ">
-    <div style="
-      width: 60px;
-      height: 60px;
-      border: 6px solid rgba(255, 255, 255, 0.3);
-      border-top-color: white;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    "></div>
+    <!-- FlutterConf Paraguay Logo -->
+    <svg width="120" height="150" viewBox="0 0 605 749" fill="none" xmlns="http://www.w3.org/2000/svg" style="animation: pulse 1.5s ease-in-out infinite;">
+      <g clip-path="url(#clip0)">
+        <mask id="mask0" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="605" height="749">
+          <path d="M604.878 345.652L403.253 547.278L604.878 748.903H374.46L288.044 662.487L172.814 547.257L374.44 345.632L604.878 345.652ZM374.46 0.00476074L0.000976562 374.464L115.23 489.693L604.878 0.00476074H374.46Z" fill="white"/>
+        </mask>
+        <g mask="url(#mask0)">
+          <path d="M604.878 345.651H374.46L172.854 547.297L288.023 662.486L604.878 345.651Z" fill="white"/>
+        </g>
+        <g mask="url(#mask0)">
+          <path d="M115.23 489.693L0.000976562 374.464L374.46 0.00476074H604.878L115.23 489.693Z" fill="#EA4335"/>
+        </g>
+        <g mask="url(#mask0)">
+          <path d="M288.019 662.488L374.456 748.925H604.873L403.268 547.299L288.019 662.488Z" fill="#4285F4"/>
+        </g>
+        <g mask="url(#mask0)">
+          <path d="M288.019 662.488L458.917 603.351L403.268 547.299L288.019 662.488Z" fill="url(#paint0)"/>
+        </g>
+        <g mask="url(#mask0)">
+          <path d="M288.037 432.084L172.825 547.296L288.037 662.507L403.248 547.296L288.037 432.084Z" fill="white"/>
+        </g>
+      </g>
+      <defs>
+        <linearGradient id="paint0" x1="321.64" y1="684.747" x2="407.452" y2="598.931" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#4285F4"/>
+          <stop offset="1" stop-color="#1A237E" stop-opacity="0"/>
+        </linearGradient>
+        <clipPath id="clip0">
+          <rect width="604.877" height="748.898" fill="white"/>
+        </clipPath>
+      </defs>
+    </svg>
+
+    <!-- Loading Text -->
     <p style="
       color: white;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       font-size: 18px;
-      margin-top: 20px;
-    " aria-live="polite">Cargando FlutterConf Paraguay...</p>
+      font-weight: 400;
+      margin-top: 40px;
+      opacity: 0.9;
+      animation: pulse 1.5s ease-in-out infinite;
+    " aria-live="polite">Loading FlutterConf Paraguay...</p>
   </div>
 
   <style>
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
     }
   </style>
 
