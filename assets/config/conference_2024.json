@@ -16,7 +16,7 @@
   "speakers": [
     {
       "id": 0,
-      "imagePath": "images/speakers/2024/speaker_1.jpeg",
+      "imagePath": "assets/images/speakers/2024/speaker_1.jpeg",
       "name": "David Rios",
       "profession": "Senior Mobile Developer",
       "talkTitleEs": "Performance Best Practices: Estrategias y Mejoras Prácticas en Flutter",
@@ -29,7 +29,7 @@
     },
     {
       "id": 1,
-      "imagePath": "images/speakers/2024/speaker_2.png",
+      "imagePath": "assets/images/speakers/2024/speaker_2.png",
       "name": "Diego Velasquez",
       "gdeCategory": "Flutter",
       "profession": "Software Engineer",
@@ -43,7 +43,7 @@
     },
     {
       "id": 2,
-      "imagePath": "images/speakers/2024/speaker_3.jpg",
+      "imagePath": "assets/images/speakers/2024/speaker_3.jpg",
       "name": "María Teresa Samudio González",
       "profession": "Software Engineer | Very Good Ventures",
       "talkTitleEs": "Rumbo a lo Very Good: Trabajando remoto desde Paraguay",
@@ -56,7 +56,7 @@
     },
     {
       "id": 3,
-      "imagePath": "images/speakers/2024/speaker_4.jpg",
+      "imagePath": "assets/images/speakers/2024/speaker_4.jpg",
       "name": "Hansy Schmitt",
       "profession": "Senior Mobile/Backend Developer",
       "talkTitleEs": "Game Development Desde Cero: Mi primer videojuego con Flutter",
@@ -69,7 +69,7 @@
     },
     {
       "id": 4,
-      "imagePath": "images/speakers/2024/speaker_5.jpg",
+      "imagePath": "assets/images/speakers/2024/speaker_5.jpg",
       "name": "Carlitos Vargas",
       "profession": "Senior Flutter Developer | Banco Basa",
       "talkTitleEs": "Del Inicio al Éxito: El roadmap para convertirte de Junior a Senior con Flutter",

@@ -16,7 +16,7 @@
   "speakers": [
     {
       "id": 0,
-      "imagePath": "images/speakers/2025/speaker_1.png",
+      "imagePath": "assets/images/speakers/2025/speaker_1.png",
       "name": "Fausto Blanco",
       "profession": "Senior Flutter Developer",
       "talkTitleEs": "Haciendo las Apps Flutter más Seguras",
@@ -29,7 +29,7 @@
     },
     {
       "id": 1,
-      "imagePath": "images/speakers/2025/speaker_2.jpg",
+      "imagePath": "assets/images/speakers/2025/speaker_2.jpg",
       "name": "Tomas Piaggio",
       "gdeCategory": "Firebase",
       "profession": "Director of Engineering",
@@ -43,7 +43,7 @@
     },
     {
       "id": 2,
-      "imagePath": "images/speakers/2025/speaker_3.jpg",
+      "imagePath": "assets/images/speakers/2025/speaker_3.jpg",
       "name": "Juan Manuel Alonso",
       "profession": "Chief Technology Officer",
       "talkTitleEs": "Proceso de desarrollo Full Low Code",
@@ -56,7 +56,7 @@
     },
     {
       "id": 3,
-      "imagePath": "images/speakers/2025/speaker_4.jpg",
+      "imagePath": "assets/images/speakers/2025/speaker_4.jpg",
       "name": "Carlos Spaini",
       "profession": "Lead Mobile Engineer",
       "talkTitleEs": "Descubriendo MicroFrontends",
@@ -69,7 +69,7 @@
     },
     {
       "id": 4,
-      "imagePath": "images/speakers/2025/speaker_5.jpg",
+      "imagePath": "assets/images/speakers/2025/speaker_5.jpg",
       "name": "Alexander Barragan",
       "profession": "Senior Software Developer",
       "talkTitleEs": "Monetizá tu app mediante suscripciones con RevenueCat",
@@ -82,7 +82,7 @@
     },
     {
       "id": 5,
-      "imagePath": "images/speakers/2025/speaker_6.jpg",
+      "imagePath": "assets/images/speakers/2025/speaker_6.jpg",
       "name": "Gabriel Sampaio",
       "gdeCategory": "Flutter",
       "profession": "Senior Software Engineer",
@@ -96,7 +96,7 @@
     },
     {
       "id": 6,
-      "imagePath": "images/speakers/2025/speaker_7.jpg",
+      "imagePath": "assets/images/speakers/2025/speaker_7.jpg",
       "name": "Ruben Lopez y Simon Lin",
       "profession": "Mobile Developer",
       "talkTitleEs": "Flutter + Server Driven UI: Interfaces personalizadas para tus clientes",
@@ -109,7 +109,7 @@
     },
     {
       "id": 6,
-      "imagePath": "images/speakers/2025/speaker_8.jpg",
+      "imagePath": "assets/images/speakers/2025/speaker_8.jpg",
       "name": "Simon Lin",
       "profession": "Mobile Developer",
       "talkTitleEs": "Flutter + Server Driven UI: Interfaces personalizadas para tus clientes",

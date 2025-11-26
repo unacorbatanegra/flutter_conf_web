@@ -1,43 +1,54 @@
 {
-  "year": 2026,
-  "eventDate": "2026-02-07",
+  "year": 2025,
+  "eventDate": "2025-02-01",
   "location": "Asunción, Paraguay",
   "venue": "Campus UCOM",
   "registrationUrl": "https://gdg.community.dev/events/details/google-gdg-encarnacion-presents-flutterconf-paraguay-2025/",
   "description": "FlutterConf Paraguay es una conferencia de tecnología que se realiza en Paraguay, con el objetivo de compartir conocimientos y experiencias sobre Flutter, el framework de Google para crear aplicaciones multiplataforma.",
-  "speakers": [ 
+  "bannerDescriptionEs": "Te esperamos para un día lleno de aprendizaje y conexiones. Descubre charlas inspiradoras, participa en talleres prácticos y conoce a líderes de la industria que están marcando el futuro del desarrollo con Flutter.",
+  "bannerDescriptionEn": "Join us for a day full of learning and connections. Discover inspiring talks, participate in hands-on workshops, and meet industry leaders shaping the future of Flutter development.",
+  "socialMedia": {
+    "githubUrl": "https://github.com/unacorbatanegra/flutter_conf_web",
+    "twitterUrl": "https://twitter.com/flutter_py",
+    "linkedinUrl": "https://www.linkedin.com/company/flutter-conf-paraguay-2024/",
+    "instagramUrl": "https://www.instagram.com/flutterconfpy/"
+  },
+  "speakers": [
     {
       "id": 0,
-      "imagePath": "assets/images/speakers/speaker_5.jpeg",
-      "name": "David Rios",
-      "profession": "Senior Mobile Developer",
-      "talkTitle": "Performance Best Practices: Estrategias y Mejores Prácticas en Flutter",
-      "linkedinUrl": "https://www.linkedin.com/in/david-rios-dev/",
+      "imagePath": "assets/images/speakers/2025/speaker_1.png",
+      "name": "Fausto Blanco",
+      "profession": "Senior Flutter Developer",
+      "talkTitleEs": "Haciendo las Apps Flutter más Seguras",
+      "talkTitleEn": "Making Flutter Apps More Secure",
+      "linkedinUrl": "https://www.linkedin.com/in/faustobdls/",
       "twitterUrl": null,
       "youtubeUrl": null,
-      "facebookUrl": "https://www.facebook.com/davidriosdev",
-      "countryEmoji": "🇧🇴"
+      "facebookUrl": null,
+      "countryEmoji": "🇧🇷"
     },
     {
       "id": 1,
-      "imagePath": "assets/images/speakers/speaker_1.png",
-      "name": "Diego Velasquez",
-      "profession": "Software Engineer",
-      "gdeCategory": "Flutter",
-      "talkTitle": "¿Por qué uso Flutter en lugar de nativo? Tomando decisiones que impactan el negocio",
-      "linkedinUrl": "https://www.linkedin.com/in/diegoveloper/",
-      "twitterUrl": "https://twitter.com/diegoveloper",
-      "youtubeUrl": "https://www.youtube.com/diegoveloper",
+      "imagePath": "assets/images/speakers/2025/speaker_2.jpg",
+      "name": "Tomas Piaggio",
+      "gdeCategory": "Firebase",
+      "profession": "Director of Engineering",
+      "talkTitleEs": "Google y VGV: A todo flutter",
+      "talkTitleEn": "Google and VGV: All in on Flutter",
+      "linkedinUrl": "https://www.linkedin.com/in/tomas-piaggio/",
+      "twitterUrl": null,
+      "youtubeUrl": null,
       "facebookUrl": null,
-      "countryEmoji": "🇵🇪"
+      "countryEmoji": "🇺🇾"
     },
     {
       "id": 2,
-      "imagePath": "assets/images/speakers/speaker_4.jpg",
-      "name": "María Teresa Samudio González",
-      "profession": "Software Engineer | Very Good Ventures",
-      "talkTitle": "Rumbo a lo Very Good: Trabajando remoto desde Paraguay",
-      "linkedinUrl": "https://www.linkedin.com/in/maria-teresa-samudio/",
+      "imagePath": "assets/images/speakers/2025/speaker_3.jpg",
+      "name": "Juan Manuel Alonso",
+      "profession": "Chief Technology Officer",
+      "talkTitleEs": "Proceso de desarrollo Full Low Code",
+      "talkTitleEn": "Full Low Code Development Process",
+      "linkedinUrl": "https://www.linkedin.com/in/juan-manuel-alonso-558b3024/",
       "twitterUrl": null,
       "youtubeUrl": null,
       "facebookUrl": null,
@@ -45,23 +56,65 @@
     },
     {
       "id": 3,
-      "imagePath": "assets/images/speakers/speaker_2.jpg",
-      "name": "Hansy Schmitt",
-      "profession": "Senior Mobile/Backend Developer",
-      "talkTitle": "Game Development Desde Cero: Mi primer videojuego con Flutter",
+      "imagePath": "assets/images/speakers/2025/speaker_4.jpg",
+      "name": "Carlos Spaini",
+      "profession": "Lead Mobile Engineer",
+      "talkTitleEs": "Descubriendo MicroFrontends",
+      "talkTitleEn": "Discovering MicroFrontends",
+      "linkedinUrl": "https://www.linkedin.com/in/carlos-spaini-martinez/",
+      "twitterUrl": null,
+      "youtubeUrl": null,
+      "facebookUrl": null,
+      "countryEmoji": "🇵🇾"
+    },
+    {
+      "id": 4,
+      "imagePath": "assets/images/speakers/2025/speaker_5.jpg",
+      "name": "Alexander Barragan",
+      "profession": "Senior Software Developer",
+      "talkTitleEs": "Monetizá tu app mediante suscripciones con RevenueCat",
+      "talkTitleEn": "Monetize Your App with Subscriptions Using RevenueCat",
+      "linkedinUrl": "https://www.linkedin.com/in/iabarragan/",
+      "twitterUrl": null,
+      "youtubeUrl": null,
+      "facebookUrl": null,
+      "countryEmoji": "🇵🇾"
+    },
+    {
+      "id": 5,
+      "imagePath": "assets/images/speakers/2025/speaker_6.jpg",
+      "name": "Gabriel Sampaio",
+      "gdeCategory": "Flutter",
+      "profession": "Senior Software Engineer",
+      "talkTitleEs": "¿Cómo las grandes apps prueban sus apps en Flutter?",
+      "talkTitleEn": "How do big apps test their apps on Flutter?",
       "linkedinUrl": null,
       "twitterUrl": null,
       "youtubeUrl": null,
       "facebookUrl": null,
-      "countryEmoji": "🇵🇪"
+      "countryEmoji": "🇧🇷"
     },
     {
-      "id": 4,
-      "imagePath": "assets/images/speakers/speaker_3.jpg",
-      "name": "Carlitos Vargas",
-      "profession": "Senior Flutter Developer | Banco Basa",
-      "talkTitle": "Del Inicio al Éxito: El roadmap para convertirte de Junior a Senior con Flutter",
-      "linkedinUrl": "https://www.linkedin.com/in/kalitodev",
+      "id": 6,
+      "imagePath": "assets/images/speakers/2025/speaker_7.jpg",
+      "name": "Ruben Lopez y Simon Lin",
+      "profession": "Mobile Developer",
+      "talkTitleEs": "Flutter + Server Driven UI: Interfaces personalizadas para tus clientes",
+      "talkTitleEn": "Flutter + Server Driven UI: Custom Interfaces for Your Clients",
+      "linkedinUrl": null,
+      "twitterUrl": null,
+      "youtubeUrl": null,
+      "facebookUrl": null,
+      "countryEmoji": "🇵🇾"
+    },
+    {
+      "id": 6,
+      "imagePath": "assets/images/speakers/2025/speaker_8.jpg",
+      "name": "Simon Lin",
+      "profession": "Mobile Developer",
+      "talkTitleEs": "Flutter + Server Driven UI: Interfaces personalizadas para tus clientes",
+      "talkTitleEn": "Flutter + Server Driven UI: Custom Interfaces for Your Clients",
+      "linkedinUrl": null,
       "twitterUrl": null,
       "youtubeUrl": null,
       "facebookUrl": null,
@@ -70,104 +123,102 @@
   ],
   "agenda": [
     {
-      "time": "8:00 AM - 10:00 AM",
-      "title": "Performance Best Practices",
-      "speaker": "David Rios",
-      "description": "Estrategias y Mejoras Prácticas en Flutter para optimizar el rendimiento de tus aplicaciones.",
-      "period": "morning",
-      "isHighlighted": true
+      "time": "9:00 AM - 9:30 AM",
+      "title": "Ingreso y acreditaciones",
+      "period": "morning"
     },
     {
-      "time": "10:00 AM - 11:00 AM",
-      "title": "¿Por qué Flutter en lugar de nativo?",
-      "speaker": "Diego Velasquez",
-      "description": "Tomando decisiones que impactan el negocio y el desarrollo de aplicaciones móviles.",
-      "period": "morning",
-      "isHighlighted": false
+      "time": "9:30 AM - 9:45 AM",
+      "title": "Palabras de apertura",
+      "period": "morning"
     },
     {
-      "time": "11:00 AM - 12:00 PM",
-      "title": "Workshop de Flutter",
-      "speaker": null,
-      "description": "Sesión práctica para aprender las bases de Flutter y crear tu primera aplicación.",
-      "period": "morning",
-      "isHighlighted": false
+      "time": "9:45 AM - 10:30 AM",
+      "title": "Making Flutter Apps More Secure",
+      "speaker": "Fausto Blanco",
+      "description": "Explorando las mejores prácticas y estrategias para mejorar la seguridad en aplicaciones Flutter.",
+      "period": "morning"
     },
     {
-      "time": "12:00 PM - 1:00 PM",
-      "title": "Almuerzo",
-      "speaker": null,
-      "description": "Tiempo para almorzar y networking con los asistentes y speakers.",
-      "period": "morning",
-      "isHighlighted": false
+      "time": "10:30 AM - 11:15 AM",
+      "title": "Google y VGV: A todo flutter",
+      "speaker": "Tomas Piaggio",
+      "description": "Cómo Google y Very Good Ventures están impulsando el ecosistema Flutter y qué significa esto para los desarrolladores.",
+      "period": "morning"
     },
     {
-      "time": "2:00 PM - 3:00 PM",
-      "title": "Rumbo a lo Very Good",
-      "speaker": "María Teresa Samudio González",
-      "description": "Trabajando remoto desde Paraguay y las oportunidades en el desarrollo de software.",
-      "period": "afternoon",
-      "isHighlighted": false
+      "time": "11:15 AM - 12:00 PM",
+      "title": "Desarrollo Full Low Code(FlutterFlow + Hasura + Database.build)",
+      "speaker": "Juan Manuel Alonso",
+      "description": "Explorando un proceso de desarrollo ágil utilizando herramientas Low Code para acelerar la creación de aplicaciones con Flutter.",
+      "period": "morning"
     },
     {
-      "time": "3:00 PM - 4:00 PM",
-      "title": "Game Development con Flutter",
-      "speaker": "Hansy Schmitt",
-      "description": "Mi primer videojuego con Flutter: desde cero hasta el lanzamiento.",
-      "period": "afternoon",
-      "isHighlighted": false
+      "time": "12:00 PM - 1:30 PM",
+      "title": "Almuerzo Break",
+      "period": "afternoon"
     },
     {
-      "time": "4:00 PM - 5:00 PM",
-      "title": "Del Junior al Senior",
-      "speaker": "Carlitos Vargas",
-      "description": "El roadmap para convertirte de Junior a Senior con Flutter y crecer profesionalmente.",
-      "period": "afternoon",
-      "isHighlighted": false
+      "time": "1:30 PM - 2:30 PM",
+      "title": "Lighting Talks",
+      "speaker": "Carlos Spaini, Alexander Barragan",
+      "description": "Discovering MicroFrontends, Monetizá tu app mediante suscripciones con RevenueCat",
+      "period": "afternoon"
     },
     {
-      "time": "5:00 PM - 6:00 PM",
-      "title": "Panel de Cierre",
-      "speaker": null,
-      "description": "Sesión de Q&A con todos los speakers y cierre del evento.",
-      "period": "afternoon",
-      "isHighlighted": false
+      "time": "2:30 PM - 3:15 PM",
+      "title": "How do big apps test their apps on Flutter?",
+      "speaker": "Gabriel Sampaio",
+      "description": "Exploring testing strategies and best practices used by large-scale applications built with Flutter.",
+      "period": "afternoon"
+    },
+    {
+      "time": "3:15 PM - 3:35 PM",
+      "title": "Break",
+      "period": "afternoon"
+    },
+    {
+      "time": "3:35 PM - 4:30 PM",
+      "title": "Flutter + Server Driven UI: Custom Interfaces for Your Clients",
+      "speaker": "Ruben Lopez y Simon Lin",
+      "description": "Cómo implementar Server Driven UI en Flutter para crear interfaces personalizadas y dinámicas que se adapten a las necesidades de los clientes.",
+      "period": "afternoon"
     }
   ],
   "sponsors": [
     {
-      "name": "FortyAU",
-      "logoPath": "assets/images/sponsors/fortyau_logo.jpg",
-      "tier": "gold",
-      "description": "FortyAU - Empresa de desarrollo de software con experiencia.",
-      "websiteUrl": "https://fortyau.com/"
-    },
-    {
-      "name": "UCOM",
+      "name": "Universidad Comunera (UCOM)",
       "logoPath": "assets/images/sponsors/ucom_logo.png",
       "tier": "gold",
-      "description": "Universidad Comunera - Institución educativa líder en Paraguay, formando profesionales en tecnología y otras áreas del conocimiento.",
+      "description": "Institución de educación superior en Paraguay enfocada en carreras de Negocios y Tecnología, con fuerte apuesta por la educación moderna y flexible.",
       "websiteUrl": "https://www.ucom.edu.py"
     },
     {
-      "name": "Plub",
-      "logoPath": "assets/images/sponsors/plub_logo.png",
-      "tier": "silver",
-      "description": "Plub - Empresa de desarrollo de software especializada en soluciones móviles y web con Flutter.",
-      "websiteUrl": null
+      "name": "Cuballama",
+      "logoPath": "assets/images/sponsors/cuballama_logo.png",
+      "tier": "gold",
+      "description": "Plataforma de servicios para la comunidad cubana: recargas móviles, llamadas internacionales, envíos y un marketplace (Cuballama Mercado) para comprar y enviar productos a Cuba.",
+      "websiteUrl": "https://www.cuballama.com/"
     },
     {
-      "name": "MentorMate",
-      "logoPath": "assets/images/sponsors/mentormate_logo.png",
-      "tier": "silver",
-      "description": "MentorMate - Compañía global de tecnología que ofrece servicios de desarrollo de software y consultoría.",
-      "websiteUrl": "https://www.mentormate.com"
+      "name": "ITTI SAECA",
+      "logoPath": "assets/images/sponsors/itti_logo.png",
+      "tier": "gold",
+      "description": "Empresa paraguaya de tecnología especializada en soluciones fintech, destacada por su core bancario y plataformas para instituciones financieras.",
+      "websiteUrl": "https://www.itti.digital"
+    },
+    {
+      "name": "Cashea",
+      "logoPath": "assets/images/sponsors/cashea_logo.png",
+      "tier": "gold",
+      "description": "Fintech tipo “compra ahora, paga después” que permite a usuarios obtener una línea de compra y pagar en cuotas sin interés a través de su app, en una red de comercios aliados.",
+      "websiteUrl": "https://www.cashea.app/"
     }
   ],
   "team": [
     {
       "name": "Miguel Belotto",
-      "role": "Frontend Engineer",
+      "role": "Flutter Developer",
       "image": "assets/images/team/team_1.jpeg",
       "twitterUrl": "https://twitter.com/MiguelBelotto00",
       "linkedinUrl": null,
@@ -175,7 +226,7 @@
     },
     {
       "name": "Jose Martinez",
-      "role": "Frontend Engineer",
+      "role": "Flutter Developer",
       "image": "assets/images/team/team_2.png",
       "twitterUrl": "https://twitter.com/JoseMLegal1",
       "linkedinUrl": null,
@@ -192,7 +243,6 @@
     {
       "name": "Nicolas Lopez",
       "role": "Software Engineer",
-      "organizerRole": "GDG Organizer",
       "image": "assets/images/team/team_4.jpeg",
       "twitterUrl": "https://twitter.com/unacorbatanegra",
       "linkedinUrl": null,
@@ -200,7 +250,7 @@
     },
     {
       "name": "Matias Ramirez",
-      "role": "Software Engineer",
+      "role": "Software Developer",
       "image": "assets/images/team/team_5.jpeg",
       "twitterUrl": "https://twitter.com/RamirezMatias03",
       "linkedinUrl": "https://www.linkedin.com/in/matias-sebastian-ramirez-brizuela-75b62a199/",
@@ -208,7 +258,7 @@
     },
     {
       "name": "Doriham Russo",
-      "role": "Frontend Engineer",
+      "role": "Flutter Developer",
       "image": "assets/images/team/team_6.jpeg",
       "twitterUrl": "https://twitter.com/dorihamR",
       "linkedinUrl": "https://www.linkedin.com/in/doriham-russo-340a40242/",
@@ -224,8 +274,7 @@
     },
     {
       "name": "Leonardo Paredes",
-      "role": "UX Designer",
-      "organizerRole": "GDG Organizer",
+      "role": "Product Designer",
       "image": "assets/images/team/team_8.jpeg",
       "twitterUrl": null,
       "linkedinUrl": "https://www.linkedin.com/in/leo-paredest/",
