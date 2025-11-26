@@ -22,10 +22,10 @@ class SpeakerModel extends Equatable {
     this.gdeCategory,
     this.talkTitleEs,
     this.talkTitleEn,
-    required this.linkedinUrl,
-    required this.twitterUrl,
-    required this.youtubeUrl,
-    required this.facebookUrl,
+    this.linkedinUrl,
+    this.twitterUrl,
+    this.youtubeUrl,
+    this.facebookUrl,
     required this.countryEmoji,
   });
 

@@ -1,6 +1,6 @@
 {
-  "year": 2025,
-  "eventDate": "2025-02-01",
+  "year": 2026,
+  "eventDate": "2026-02-07",
   "location": "Asunción, Paraguay",
   "venue": "Campus UCOM",
   "registrationUrl": "https://gdg.community.dev/events/details/google-gdg-encarnacion-presents-flutterconf-paraguay-2025/",
@@ -97,7 +97,7 @@
     {
       "id": 6,
       "imagePath": "assets/images/speakers/2025/speaker_7.jpg",
-      "name": "Ruben Lopez y Simon Lin",
+      "name": "Ruben Lopez",
       "profession": "Mobile Developer",
       "talkTitleEs": "Flutter + Server Driven UI: Interfaces personalizadas para tus clientes",
       "talkTitleEn": "Flutter + Server Driven UI: Custom Interfaces for Your Clients",
@@ -108,7 +108,7 @@
       "countryEmoji": "🇵🇾"
     },
     {
-      "id": 6,
+      "id": 7,
       "imagePath": "assets/images/speakers/2025/speaker_8.jpg",
       "name": "Simon Lin",
       "profession": "Mobile Developer",

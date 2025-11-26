@@ -14,14 +14,18 @@ class ConferenceConfigService {
   /// Load conference configuration from JSON file
   Future<void> loadConfig({int year = 2025}) async {
     try {
-      final String jsonString = await rootBundle.loadString(
-        'assets/config/conference_$year.json',
-      );
+      final String configPath = 'assets/config/conference_$year.json';
+      debugPrint('Loading conference config from: $configPath');
+
+      final String jsonString = await rootBundle.loadString(configPath);
       final Map<String, dynamic> jsonData = json.decode(jsonString);
       _config = ConferenceConfig.fromJson(jsonData);
       _isLoaded = true;
-    } catch (e) {
-      debugPrint('Error loading conference config: $e');
+
+      debugPrint('Conference config loaded successfully for year $year');
+    } catch (e, stackTrace) {
+      debugPrint('Error loading conference config for year $year: $e');
+      debugPrint('Stack trace: $stackTrace');
       _isLoaded = false;
       rethrow;
     }
