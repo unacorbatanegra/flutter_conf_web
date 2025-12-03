@@ -41,5 +41,9 @@
   "goldTier": "Gold",
   "silverTier": "Silver",
   "eventConcluded": "The event has concluded!",
-  "eventConcludedMessage": "Thank you for being part of FlutterConf Paraguay"
+  "eventConcludedMessage": "Thank you for being part of FlutterConf Paraguay",
+  "comingSoon": "Coming Soon",
+  "agendaComingSoonDescription": "We'll announce the full schedule soon. Stay tuned!",
+  "speakersComingSoonDescription": "We'll announce our amazing speakers soon!",
+  "sponsorsComingSoonDescription": "We're working to bring you great sponsors!"
 }

@@ -135,44 +135,47 @@ class _SpeakersSectionState extends State<SpeakersSection> {
                         : _MobileSpeakerLayout(
                             speaker: widget.speakers[_currentPage.clamp(0, widget.speakers.length - 1)],
                           ),
-                  ),
+                  )
+                else
+                  _EmptySpeakersState(isDesktop: isDesktop),
 
                 const SizedBox(height: 40),
 
                 // Navigation Controls
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      onPressed: _currentPage > 0 ? _onPrevious : null,
-                      tooltip: 'Previous speakers',
-                      icon: Icon(
-                        Icons.arrow_back_ios,
-                        color: _currentPage > 0
-                            ? Colors.white
-                            : Colors.white.withOpacity(0.3),
+                if (widget.speakers.isNotEmpty)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        onPressed: _currentPage > 0 ? _onPrevious : null,
+                        tooltip: 'Previous speakers',
+                        icon: Icon(
+                          Icons.arrow_back_ios,
+                          color: _currentPage > 0
+                              ? Colors.white
+                              : Colors.white.withOpacity(0.3),
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 20),
-                    _CarouselIndicators(
-                      currentPage: _currentPage,
-                      itemCount: isDesktop ? _getPageCount() : widget.speakers.length,
-                    ),
-                    const SizedBox(width: 20),
-                    IconButton(
-                      onPressed: _currentPage < (isDesktop ? _getPageCount() - 1 : widget.speakers.length - 1)
-                          ? _onNext
-                          : null,
-                      tooltip: 'Next speakers',
-                      icon: Icon(
-                        Icons.arrow_forward_ios,
-                        color: _currentPage < (isDesktop ? _getPageCount() - 1 : widget.speakers.length - 1)
-                            ? Colors.white
-                            : Colors.white.withOpacity(0.3),
+                      const SizedBox(width: 20),
+                      _CarouselIndicators(
+                        currentPage: _currentPage,
+                        itemCount: isDesktop ? _getPageCount() : widget.speakers.length,
                       ),
-                    ),
-                  ],
-                ),
+                      const SizedBox(width: 20),
+                      IconButton(
+                        onPressed: _currentPage < (isDesktop ? _getPageCount() - 1 : widget.speakers.length - 1)
+                            ? _onNext
+                            : null,
+                        tooltip: 'Next speakers',
+                        icon: Icon(
+                          Icons.arrow_forward_ios,
+                          color: _currentPage < (isDesktop ? _getPageCount() - 1 : widget.speakers.length - 1)
+                              ? Colors.white
+                              : Colors.white.withOpacity(0.3),
+                        ),
+                      ),
+                    ],
+                  ),
               ],
             ),
           ),
@@ -459,6 +462,58 @@ class _CarouselIndicators extends StatelessWidget {
             color: currentPage == index
                 ? const Color(0xFF5983F8)
                 : Colors.white.withOpacity(0.4),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _EmptySpeakersState extends StatelessWidget {
+  final bool isDesktop;
+
+  const _EmptySpeakersState({required this.isDesktop});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
+    return SizedBox(
+      height: isDesktop ? 400 : 300,
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.mic_outlined,
+                size: isDesktop ? 80 : 60,
+                color: Colors.white.withOpacity(0.3),
+              ),
+              const SizedBox(height: 24),
+              Text(
+                l10n.comingSoon,
+                style: GoogleFonts.lato(
+                  fontSize: isDesktop ? 32 : 24,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 16),
+              Text(
+                l10n.speakersComingSoonDescription,
+                style: GoogleFonts.lato(
+                  fontSize: isDesktop ? 16 : 14,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white.withOpacity(0.7),
+                  height: 1.5,
+                ),
+                textAlign: TextAlign.center,
+                maxLines: 2,
+              ),
+            ],
           ),
         ),
       ),

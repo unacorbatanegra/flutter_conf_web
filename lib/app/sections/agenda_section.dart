@@ -127,6 +127,11 @@ class _DesktopSchedule extends StatelessWidget {
     final morningItems = config.morningAgenda;
     final afternoonItems = config.afternoonAgenda;
 
+    // Show "Coming Soon" if both are empty
+    if (morningItems.isEmpty && afternoonItems.isEmpty) {
+      return const _EmptyAgendaState();
+    }
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -210,6 +215,11 @@ class _MobileSchedule extends StatelessWidget {
     final l10n = context.l10n;
     final morningItems = config.morningAgenda;
     final afternoonItems = config.afternoonAgenda;
+
+    // Show "Coming Soon" if both are empty
+    if (morningItems.isEmpty && afternoonItems.isEmpty) {
+      return const _EmptyAgendaState();
+    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -346,6 +356,58 @@ class _AgendaItem extends StatelessWidget {
           ),
         ],
       ],
+    );
+  }
+}
+
+class _EmptyAgendaState extends StatelessWidget {
+  const _EmptyAgendaState();
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final isDesktop = size.width > kBreakPoint;
+    final l10n = context.l10n;
+
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          vertical: isDesktop ? 80 : 60,
+          horizontal: 20,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.calendar_month_outlined,
+              size: isDesktop ? 80 : 60,
+              color: const Color(0xFF5983F8).withOpacity(0.3),
+            ),
+            const SizedBox(height: 24),
+            Text(
+              l10n.comingSoon,
+              style: GoogleFonts.lato(
+                fontSize: isDesktop ? 32 : 24,
+                fontWeight: FontWeight.w700,
+                color: const Color(0xFF1a1d3a),
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 16),
+            Text(
+              l10n.agendaComingSoonDescription,
+              style: GoogleFonts.lato(
+                fontSize: isDesktop ? 16 : 14,
+                fontWeight: FontWeight.w400,
+                color: const Color(0xFF666666),
+                height: 1.5,
+              ),
+              textAlign: TextAlign.center,
+              maxLines: 2,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
