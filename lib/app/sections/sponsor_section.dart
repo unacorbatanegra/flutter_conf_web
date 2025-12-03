@@ -162,7 +162,9 @@ class _SponsorSectionState extends State<SponsorSection> {
           const SizedBox(height: 60),
 
           // Sponsor Tiers
-          if (size.width > kBreakPoint)
+          if (widget.config.goldSponsors.isEmpty && widget.config.silverSponsors.isEmpty)
+            _EmptySponsorsState(isDesktop: size.width > kBreakPoint)
+          else if (size.width > kBreakPoint)
             _DesktopLayout(
               config: widget.config,
               goldSponsorIndex: _goldSponsorIndex,
@@ -561,6 +563,58 @@ class _CarouselDots extends StatelessWidget {
             color: index == currentIndex
                 ? const Color(0xFF5983F8)
                 : Colors.white.withOpacity(0.3),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _EmptySponsorsState extends StatelessWidget {
+  final bool isDesktop;
+
+  const _EmptySponsorsState({required this.isDesktop});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
+    return SizedBox(
+      height: isDesktop ? 400 : 300,
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.business_outlined,
+                size: isDesktop ? 80 : 60,
+                color: Colors.white.withOpacity(0.3),
+              ),
+              const SizedBox(height: 24),
+              Text(
+                l10n.comingSoon,
+                style: GoogleFonts.lato(
+                  fontSize: isDesktop ? 32 : 24,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 16),
+              Text(
+                l10n.sponsorsComingSoonDescription,
+                style: GoogleFonts.lato(
+                  fontSize: isDesktop ? 16 : 14,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white.withOpacity(0.7),
+                  height: 1.5,
+                ),
+                textAlign: TextAlign.center,
+                maxLines: 2,
+              ),
+            ],
           ),
         ),
       ),
