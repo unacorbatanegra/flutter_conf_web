@@ -29,7 +29,15 @@
     }
   ],
   "agenda": [],
-  "sponsors": [],
+  "sponsors": [
+    {
+      "name": "40AU",
+      "logoPath": "assets/images/sponsors/fortyau_logo.jpg",
+      "tier": "gold",
+      "description": "Innovative Software Services At scale",
+      "websiteUrl": "https://fortyau.com/"
+    }
+  ],
   "team": [
     {
       "name": "Miguel Belotto",
