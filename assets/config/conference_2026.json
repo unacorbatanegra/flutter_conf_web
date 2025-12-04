@@ -13,7 +13,21 @@
     "linkedinUrl": "https://www.linkedin.com/company/flutter-conf-paraguay-2024/",
     "instagramUrl": "https://www.instagram.com/flutterconfpy/"
   },
-  "speakers": [],
+  "speakers": [
+    {
+      "id": 0,
+      "imagePath": "assets/images/speakers/2026/speaker_1.jpg",
+      "name": "Guille Heizen",
+      "profession": "Tech Lead - Brosco",
+      "talkTitleEs": "Gestionando 30 cooperativas en producción sin morir en el intento",
+      "talkTitleEn": "Managing 30 cooperatives in production without dying while trying",
+      "linkedinUrl": "https://www.linkedin.com/in/guilleheizen/",
+      "twitterUrl": null,
+      "youtubeUrl": null,
+      "facebookUrl": null,
+      "countryEmoji": "🇵🇾"
+    }
+  ],
   "agenda": [],
   "sponsors": [],
   "team": [
