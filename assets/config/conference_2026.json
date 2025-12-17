@@ -26,6 +26,19 @@
       "youtubeUrl": null,
       "facebookUrl": null,
       "countryEmoji": "🇵🇾"
+    },
+    {
+      "id": 1,
+      "imagePath": "assets/images/speakers/2026/speaker_2.jpg",
+      "name": "Fabián Varela Bonett",
+      "profession": "Freelancer - Software Developer",
+      "talkTitleEs": "Flutter + Firebase + SQL = DataConnect con Flutter",
+      "talkTitleEn": "Flutter + Firebase + SQL = DataConnect with Flutter",
+      "linkedinUrl": "https://www.linkedin.com/in/fabianvarelabonett/",
+      "twitterUrl": null,
+      "youtubeUrl": null,
+      "facebookUrl": null,
+      "countryEmoji": "🇨🇴"
     }
   ],
   "agenda": [],
