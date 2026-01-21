@@ -162,7 +162,8 @@ class _SponsorSectionState extends State<SponsorSection> {
           const SizedBox(height: 60),
 
           // Sponsor Tiers
-          if (widget.config.goldSponsors.isEmpty && widget.config.silverSponsors.isEmpty)
+          if (widget.config.goldSponsors.isEmpty &&
+              widget.config.silverSponsors.isEmpty)
             _EmptySponsorsState(isDesktop: size.width > kBreakPoint)
           else if (size.width > kBreakPoint)
             _DesktopLayout(
@@ -372,6 +373,7 @@ class _GoldTier extends StatelessWidget {
                 color: Colors.white.withOpacity(0.8),
                 height: 1.6,
               ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
           ],
@@ -397,8 +399,8 @@ class _GoldTier extends StatelessWidget {
                     onPressed:
                         currentIndex < goldSponsors.length - 1 ? onNext : null,
                     tooltip: 'Next gold sponsor',
-                    icon:
-                        const Icon(Icons.arrow_forward_ios, color: Colors.white),
+                    icon: const Icon(Icons.arrow_forward_ios,
+                        color: Colors.white),
                   ),
                 ],
               ),
@@ -527,8 +529,8 @@ class _SilverTier extends StatelessWidget {
                         ? onNext
                         : null,
                     tooltip: 'Next silver sponsor',
-                    icon:
-                        const Icon(Icons.arrow_forward_ios, color: Colors.white),
+                    icon: const Icon(Icons.arrow_forward_ios,
+                        color: Colors.white),
                   ),
                 ],
               ),

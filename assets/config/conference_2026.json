@@ -39,6 +39,32 @@
       "youtubeUrl": null,
       "facebookUrl": null,
       "countryEmoji": "🇨🇴"
+    },
+    {
+      "id": 2,
+      "imagePath": "assets/images/speakers/2026/speaker_3.png",
+      "name": "Williams Bobadilla",
+      "profession": "Amp LLC - Mobile Dev",
+      "talkTitleEs": "Un paseo por Google maps en flutter",
+      "talkTitleEn": "A walk through Google maps in flutter",
+      "linkedinUrl": "https://www.linkedin.com/in/williams-ismael-bobadilla-torres/",
+      "twitterUrl": null,
+      "youtubeUrl": null,
+      "facebookUrl": null,
+      "countryEmoji": "🇵🇾"
+    },
+    {
+      "id": 3,
+      "imagePath": "assets/images/speakers/2026/speaker_4.png",
+      "name": "Ruben Lopez",
+      "profession": "Cuballama - Mobile Team Leader",
+      "talkTitleEs": "Buenas practicas de ingenieria de software en flutter",
+      "talkTitleEn": "Good software engineering practices in flutter",
+      "linkedinUrl": "https://www.linkedin.com/in/rubenlop88/",
+      "twitterUrl": "https://x.com/rubenlop88",
+      "youtubeUrl": null,
+      "facebookUrl": null,
+      "countryEmoji": "🇵🇾"
     }
   ],
   "agenda": [],
@@ -49,6 +75,20 @@
       "tier": "gold",
       "description": "Innovative Software Services At scale",
       "websiteUrl": "https://fortyau.com/"
+    },
+    {
+      "name": "Cashea",
+      "logoPath": "assets/images/sponsors/cashea_logo.png",
+      "tier": "gold",
+      "description": "Compra ahora y paga después en cuotas sin interés",
+      "websiteUrl": "https://www.cashea.app/"
+    },
+    {
+      "name": "cuballama",
+      "logoPath": "assets/images/sponsors/cuballama_logo.png",
+      "tier": "gold",
+      "description": "Cuballama es la compañía número 1 de servicios a Cuba, con más de un millón y medio de clientes alrededor del mundo.",
+      "websiteUrl": "https://www.cuballama.com/?srsltid=AfmBOopN6DZUwYpFX8pAcXOXKEqD8pZzIMC1VYStgi6JVCgeA3tnwvOx"
     }
   ],
   "team": [
