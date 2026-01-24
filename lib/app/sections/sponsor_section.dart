@@ -276,42 +276,45 @@ class _DesktopLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Gold Sponsors
-            Expanded(
-              child: _GoldTier(
-                config: config,
-                currentIndex: goldSponsorIndex,
-                onPrevious: onGoldPrevious,
-                onNext: onGoldNext,
-              ),
+        // Gold Sponsors
+        if (config.goldSponsors.isNotEmpty)
+          Expanded(
+            child: _GoldTier(
+              config: config,
+              currentIndex: goldSponsorIndex,
+              onPrevious: onGoldPrevious,
+              onNext: onGoldNext,
             ),
-            const SizedBox(width: 60),
-
-            // Silver Sponsors
-            Expanded(
-              child: _SilverTier(
-                config: config,
-                currentIndex: silverSponsorIndex,
-                onPrevious: onSilverPrevious,
-                onNext: onSilverNext,
-              ),
-            ),
-          ],
-        ),
-        if (config.bronzeSponsors.isNotEmpty) ...[
-          const SizedBox(height: 60),
-          _BronzeTier(
-            config: config,
-            currentIndex: bronzeSponsorIndex,
-            onPrevious: onBronzePrevious,
-            onNext: onBronzeNext,
           ),
-        ],
+        if (config.goldSponsors.isNotEmpty && config.silverSponsors.isNotEmpty)
+          const SizedBox(width: 40),
+
+        // Silver Sponsors
+        if (config.silverSponsors.isNotEmpty)
+          Expanded(
+            child: _SilverTier(
+              config: config,
+              currentIndex: silverSponsorIndex,
+              onPrevious: onSilverPrevious,
+              onNext: onSilverNext,
+            ),
+          ),
+        if (config.silverSponsors.isNotEmpty && config.bronzeSponsors.isNotEmpty)
+          const SizedBox(width: 40),
+
+        // Bronze Sponsors
+        if (config.bronzeSponsors.isNotEmpty)
+          Expanded(
+            child: _BronzeTier(
+              config: config,
+              currentIndex: bronzeSponsorIndex,
+              onPrevious: onBronzePrevious,
+              onNext: onBronzeNext,
+            ),
+          ),
       ],
     );
   }
@@ -397,7 +400,7 @@ class _GoldTier extends StatelessWidget {
     final currentSponsor = goldSponsors[currentIndex];
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         // Tier Title
         Text(
@@ -423,7 +426,8 @@ class _GoldTier extends StatelessWidget {
                     ? () => urlService.openUrl(currentSponsor.websiteUrl!)
                     : null,
                 child: Container(
-                  height: 200,
+                  width: 180,
+                  height: 180,
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
                     color: const Color(0xFFFFFFFF),
@@ -444,9 +448,14 @@ class _GoldTier extends StatelessWidget {
                     child: Semantics(
                       label: '${currentSponsor.name} logo',
                       image: true,
-                      child: _SponsorLogo(
-                        logoPath: currentSponsor.logoPath,
-                        height: 80,
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          maxWidth: 120,
+                          maxHeight: 120,
+                        ),
+                        child: _SponsorLogo(
+                          logoPath: currentSponsor.logoPath,
+                        ),
                       ),
                     ),
                   ),
@@ -526,7 +535,7 @@ class _SilverTier extends StatelessWidget {
     final currentSponsor = silverSponsors[currentIndex];
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         // Tier Title
         Text(
@@ -552,7 +561,8 @@ class _SilverTier extends StatelessWidget {
                     ? () => urlService.openUrl(currentSponsor.websiteUrl!)
                     : null,
                 child: Container(
-                  height: 200,
+                  width: 180,
+                  height: 180,
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
                     color: const Color(0xFFFFFFFF),
@@ -573,9 +583,14 @@ class _SilverTier extends StatelessWidget {
                     child: Semantics(
                       label: '${currentSponsor.name} logo',
                       image: true,
-                      child: _SponsorLogo(
-                        logoPath: currentSponsor.logoPath,
-                        height: 80,
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          maxWidth: 120,
+                          maxHeight: 120,
+                        ),
+                        child: _SponsorLogo(
+                          logoPath: currentSponsor.logoPath,
+                        ),
                       ),
                     ),
                   ),
@@ -655,7 +670,7 @@ class _BronzeTier extends StatelessWidget {
     final currentSponsor = bronzeSponsors[currentIndex];
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         // Tier Title
         Text(
@@ -681,7 +696,8 @@ class _BronzeTier extends StatelessWidget {
                     ? () => urlService.openUrl(currentSponsor.websiteUrl!)
                     : null,
                 child: Container(
-                  height: 200,
+                  width: 180,
+                  height: 180,
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
                     color: const Color(0xFFFFFFFF),
@@ -702,9 +718,14 @@ class _BronzeTier extends StatelessWidget {
                     child: Semantics(
                       label: '${currentSponsor.name} logo',
                       image: true,
-                      child: _SponsorLogo(
-                        logoPath: currentSponsor.logoPath,
-                        height: 80,
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          maxWidth: 120,
+                          maxHeight: 120,
+                        ),
+                        child: _SponsorLogo(
+                          logoPath: currentSponsor.logoPath,
+                        ),
                       ),
                     ),
                   ),
@@ -763,11 +784,9 @@ class _BronzeTier extends StatelessWidget {
 
 class _SponsorLogo extends StatelessWidget {
   final String logoPath;
-  final double height;
 
   const _SponsorLogo({
     required this.logoPath,
-    required this.height,
   });
 
   @override
@@ -777,13 +796,11 @@ class _SponsorLogo extends StatelessWidget {
     if (isSvg) {
       return SvgPicture.asset(
         logoPath,
-        height: height,
         fit: BoxFit.contain,
       );
     } else {
       return Image.asset(
         logoPath,
-        height: height,
         fit: BoxFit.contain,
       );
     }
