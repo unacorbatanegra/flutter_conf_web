@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 
 final _router = GoRouter(
   routes: [
@@ -52,17 +53,20 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       minTextAdapt: true,
-      child: MaterialApp.router(
-        routerConfig: _router,
-        title: 'FlutterConf Paraguay 2026 - Conferencia de Flutter y Dart',
-        debugShowCheckedModeBanner: false,
-        theme: _buildTheme(Brightness.light),
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: const [
-          Locale('en'),
-          Locale('es'),
-        ],
-        locale: context.watch<LanguageChangeNotifier>().locale,
+      child: RobotDetector(
+        debug: false,
+        child: MaterialApp.router(
+          routerConfig: _router,
+          title: 'FlutterConf Paraguay 2026 - Conferencia de Flutter y Dart',
+          debugShowCheckedModeBanner: false,
+          theme: _buildTheme(Brightness.light),
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: const [
+            Locale('en'),
+            Locale('es'),
+          ],
+          locale: context.watch<LanguageChangeNotifier>().locale,
+        ),
       ),
     );
   }

@@ -8,6 +8,7 @@ import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 
 class SpeakersSection extends StatefulWidget {
   final List<SpeakerModel> speakers;
@@ -113,14 +114,16 @@ class _SpeakersSectionState extends State<SpeakersSection> {
             child: Column(
               children: [
                 // Title
-                Text(
-                  l10n.ourSpeakers,
-                  style: GoogleFonts.lato(
-                    fontSize: isDesktop ? 48 : 32,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white,
+                TextRenderer(
+                  child: Text(
+                    l10n.ourSpeakers,
+                    style: GoogleFonts.lato(
+                      fontSize: isDesktop ? 48 : 32,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 60),
 
@@ -273,14 +276,16 @@ class _SpeakerCard extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              speaker.name,
-              style: GoogleFonts.lato(
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
-                color: Colors.white,
+            TextRenderer(
+              child: Text(
+                speaker.name,
+                style: GoogleFonts.lato(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
             const SizedBox(width: 8),
             Text(
@@ -312,17 +317,19 @@ class _SpeakerCard extends StatelessWidget {
         ],
 
         // Talk Description
-        Text(
-          talkTitle,
-          style: GoogleFonts.lato(
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-            color: Colors.white.withOpacity(0.8),
-            height: 1.5,
+        TextRenderer(
+          child: Text(
+            talkTitle,
+            style: GoogleFonts.lato(
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              color: Colors.white.withOpacity(0.8),
+              height: 1.5,
+            ),
+            textAlign: TextAlign.center,
+            maxLines: 6,
+            overflow: TextOverflow.ellipsis,
           ),
-          textAlign: TextAlign.center,
-          maxLines: 6,
-          overflow: TextOverflow.ellipsis,
         ),
         const SizedBox(height: 16),
 

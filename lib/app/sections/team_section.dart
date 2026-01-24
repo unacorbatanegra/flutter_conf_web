@@ -7,6 +7,7 @@ import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:flutter_conf_web/l10n/l10n.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 
 class TeamSection extends StatelessWidget {
   final ConferenceConfig config;
@@ -42,14 +43,16 @@ class TeamSection extends StatelessWidget {
       child: Column(
         children: [
           // Title
-          Text(
-            l10n.team,
-            style: GoogleFonts.lato(
-              fontSize: size.width > kBreakPoint ? 48 : 36,
-              fontWeight: FontWeight.w700,
-              color: const Color(0xFF1a1d3a),
+          TextRenderer(
+            child: Text(
+              l10n.team,
+              style: GoogleFonts.lato(
+                fontSize: size.width > kBreakPoint ? 48 : 36,
+                fontWeight: FontWeight.w700,
+                color: const Color(0xFF1a1d3a),
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
           ),
           const SizedBox(height: 60),
 
@@ -125,38 +128,44 @@ class _TeamMemberCardState extends State<_TeamMemberCard> {
                   padding: const EdgeInsets.all(20),
                   child: Column(
                     children: [
-                      Text(
-                        widget.member.name,
-                        style: GoogleFonts.lato(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
+                      TextRenderer(
+                        child: Text(
+                          widget.member.name,
+                          style: GoogleFonts.lato(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        textAlign: TextAlign.center,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
                       ),
                       const SizedBox(height: 4),
                       if (widget.member.organizerRole != null) ...[
-                        Text(
-                          widget.member.organizerRole!,
-                          style: GoogleFonts.lato(
-                            color: Colors.white.withOpacity(0.9),
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
+                        TextRenderer(
+                          child: Text(
+                            widget.member.organizerRole!,
+                            style: GoogleFonts.lato(
+                              color: Colors.white.withOpacity(0.9),
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            textAlign: TextAlign.center,
                           ),
-                          textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 2),
                       ],
-                      Text(
-                        widget.member.role,
-                        style: GoogleFonts.lato(
-                          color: Colors.white.withOpacity(0.8),
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
+                      TextRenderer(
+                        child: Text(
+                          widget.member.role,
+                          style: GoogleFonts.lato(
+                            color: Colors.white.withOpacity(0.8),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ],
                   ),

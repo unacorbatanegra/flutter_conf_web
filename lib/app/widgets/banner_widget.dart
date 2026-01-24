@@ -5,6 +5,7 @@ import 'package:flutter_conf_web/core/constants/constants.dart';
 import 'package:flutter_conf_web/gen/assets.gen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 
 class BannerWidget extends StatefulWidget {
   final ConferenceConfig config;
@@ -120,15 +121,17 @@ class _EventInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return Text(
-      eventInfo,
-      style: GoogleFonts.lato(
-        fontSize: size.width > kBreakPoint ? 28 : 20,
-        fontWeight: FontWeight.w700,
-        color: Colors.white,
-        letterSpacing: 1.2,
+    return TextRenderer(
+      child: Text(
+        eventInfo,
+        style: GoogleFonts.lato(
+          fontSize: size.width > kBreakPoint ? 28 : 20,
+          fontWeight: FontWeight.w700,
+          color: Colors.white,
+          letterSpacing: 1.2,
+        ),
+        textAlign: TextAlign.center,
       ),
-      textAlign: TextAlign.center,
     );
   }
 }
@@ -154,15 +157,17 @@ class _Description extends StatelessWidget {
 
     return Container(
       constraints: const BoxConstraints(maxWidth: 900),
-      child: Text(
-        description,
-        style: GoogleFonts.lato(
-          fontSize: size.width > kBreakPoint ? 16 : 14,
-          fontWeight: FontWeight.w400,
-          color: Colors.white.withOpacity(0.9),
-          height: 1.6,
+      child: TextRenderer(
+        child: Text(
+          description,
+          style: GoogleFonts.lato(
+            fontSize: size.width > kBreakPoint ? 16 : 14,
+            fontWeight: FontWeight.w400,
+            color: Colors.white.withOpacity(0.9),
+            height: 1.6,
+          ),
+          textAlign: TextAlign.center,
         ),
-        textAlign: TextAlign.center,
       ),
     );
   }

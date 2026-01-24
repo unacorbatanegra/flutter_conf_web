@@ -7,6 +7,7 @@ import 'package:flutter_conf_web/l10n/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 
 class SponsorSection extends StatelessWidget {
   final ConferenceConfig config;
@@ -51,14 +52,16 @@ class SponsorSection extends StatelessWidget {
       child: Column(
         children: [
           // Title
-          Text(
-            l10n.sponsors,
-            style: GoogleFonts.lato(
-              fontSize: isDesktop ? 48 : 36,
-              fontWeight: FontWeight.w700,
-              color: Colors.white,
+          TextRenderer(
+            child: Text(
+              l10n.sponsors,
+              style: GoogleFonts.lato(
+                fontSize: isDesktop ? 48 : 36,
+                fontWeight: FontWeight.w700,
+                color: Colors.white,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
           ),
           const SizedBox(height: 60),
 
@@ -204,12 +207,14 @@ class _SponsorCard extends StatelessWidget {
                 ),
               ],
             ),
-            child: Text(
-              tierLabel,
-              style: GoogleFonts.lato(
-                fontSize: 12,
-                fontWeight: FontWeight.w700,
-                color: Colors.white,
+            child: TextRenderer(
+              child: Text(
+                tierLabel,
+                style: GoogleFonts.lato(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
