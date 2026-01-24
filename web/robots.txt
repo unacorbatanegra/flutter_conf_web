@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://flutterconf-py.web.app/sitemap.xml
