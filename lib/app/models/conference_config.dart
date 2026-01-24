@@ -27,6 +27,7 @@ class ConferenceConfig extends Equatable {
   final List<AgendaInfo> afternoonAgenda;
   final List<SponsorModel> goldSponsors;
   final List<SponsorModel> silverSponsors;
+  final List<SponsorModel> bronzeSponsors;
 
   const ConferenceConfig({
     required this.year,
@@ -49,6 +50,7 @@ class ConferenceConfig extends Equatable {
     required this.afternoonAgenda,
     required this.goldSponsors,
     required this.silverSponsors,
+    required this.bronzeSponsors,
   });
 
   /// Get DateTime object for countdown timer
@@ -91,6 +93,8 @@ class ConferenceConfig extends Equatable {
         sponsors.where((sponsor) => sponsor.tier == 'gold').toList();
     final silverSponsors =
         sponsors.where((sponsor) => sponsor.tier == 'silver').toList();
+    final bronzeSponsors =
+        sponsors.where((sponsor) => sponsor.tier == 'bronze').toList();
 
     return ConferenceConfig(
       year: json['year'] as int,
@@ -117,6 +121,7 @@ class ConferenceConfig extends Equatable {
       afternoonAgenda: afternoonAgenda,
       goldSponsors: goldSponsors,
       silverSponsors: silverSponsors,
+      bronzeSponsors: bronzeSponsors,
     );
   }
 

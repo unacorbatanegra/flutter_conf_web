@@ -65,6 +65,19 @@
       "youtubeUrl": null,
       "facebookUrl": null,
       "countryEmoji": "🇵🇾"
+    },
+    {
+      "id": 4,
+      "imagePath": "assets/images/speakers/2026/speaker_5.jpeg",
+      "name": "Brian Castillo",
+      "profession": "CEO & Founder at Taya",
+      "talkTitleEs": "Flutter más allá del móvil",
+      "talkTitleEn": "Flutter beyond Mobile",
+      "linkedinUrl": "https://www.linkedin.com/in/briansalvattore/",
+      "twitterUrl": null,
+      "youtubeUrl": null,
+      "facebookUrl": null,
+      "countryEmoji": "🇵🇪"
     }
   ],
   "agenda": [],
@@ -89,6 +102,13 @@
       "tier": "gold",
       "description": "Cuballama es la compañía número 1 de servicios a Cuba, con más de un millón y medio de clientes alrededor del mundo.",
       "websiteUrl": "https://www.cuballama.com/?srsltid=AfmBOopN6DZUwYpFX8pAcXOXKEqD8pZzIMC1VYStgi6JVCgeA3tnwvOx"
+    },
+    {
+      "name": "BrosCo",
+      "logoPath": "assets/images/sponsors/brosco_logo.svg",
+      "tier": "bronze",
+      "description": "En BrosCo desarrollamos soluciones tecnológicas diseñadas especialmente para entidades financieras. Acompañamos su transformación digital con plataformas seguras, escalables y adaptadas a la realidad del mercado.",
+      "websiteUrl": "https://www.brosco.com.py/"
     }
   ],
   "team": [
