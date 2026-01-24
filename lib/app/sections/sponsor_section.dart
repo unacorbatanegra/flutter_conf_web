@@ -268,25 +268,7 @@ class _UnifiedSponsorCarousel extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 24),
-
-        // Description
-        ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 400),
-          child: Text(
-            currentSponsor.description,
-            style: GoogleFonts.lato(
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-              color: Colors.white.withOpacity(0.8),
-              height: 1.6,
-            ),
-            textAlign: TextAlign.center,
-            maxLines: 4,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-        const SizedBox(height: 32),
+        const SizedBox(height: 40),
 
         // Carousel Controls
         Row(
