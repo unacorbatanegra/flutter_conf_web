@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       child: MaterialApp.router(
         routerConfig: _router,
-        title: 'FlutterConf Paraguay',
+        title: 'FlutterConf Paraguay 2026 - Conferencia de Flutter y Dart',
         debugShowCheckedModeBanner: false,
         theme: _buildTheme(Brightness.light),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
