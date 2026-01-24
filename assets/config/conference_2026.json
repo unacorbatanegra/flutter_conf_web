@@ -3,7 +3,7 @@
   "eventDate": "2026-02-07",
   "location": "Asunción, Paraguay",
   "venue": "Campus UCOM",
-  "registrationUrl": null,
+  "registrationUrl": "https://gdg.community.dev/events/details/google-gdg-encarnacion-presents-flutterconf-paraguay-2026-1/",
   "description": "FlutterConf Paraguay es una conferencia de tecnología que se realiza en Paraguay, con el objetivo de compartir conocimientos y experiencias sobre Flutter, el framework de Google para crear aplicaciones multiplataforma.",
   "bannerDescriptionEs": "Prepárate para una nueva edición de FlutterConf Paraguay. Pronto anunciaremos speakers, agenda y más detalles sobre este evento imperdible.",
   "bannerDescriptionEn": "Get ready for a new edition of FlutterConf Paraguay. We'll soon announce speakers, agenda, and more details about this unmissable event.",
