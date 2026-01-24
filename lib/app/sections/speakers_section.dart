@@ -39,15 +39,18 @@ class _SpeakersSectionState extends State<SpeakersSection> {
   }
 
   void _startAutoPlay() {
-    if (widget.speakers.length > 3) {
-      _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
-        if (mounted) {
+    _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
+      if (mounted) {
+        final isDesktop = MediaQuery.of(context).size.width > kBreakPoint;
+        final pageCount = _getPageCount(isDesktop);
+
+        if (pageCount > 1) {
           setState(() {
-            _currentPage = (_currentPage + 1) % _getPageCount();
+            _currentPage = (_currentPage + 1) % pageCount;
           });
         }
-      });
-    }
+      }
+    });
   }
 
   void _resetTimer() {
@@ -55,8 +58,9 @@ class _SpeakersSectionState extends State<SpeakersSection> {
     _startAutoPlay();
   }
 
-  int _getPageCount() {
-    return (widget.speakers.length / 3).ceil();
+  int _getPageCount(bool isDesktop) {
+    if (widget.speakers.isEmpty) return 0;
+    return isDesktop ? (widget.speakers.length / 3).ceil() : widget.speakers.length;
   }
 
   void _onPrevious() {
@@ -68,8 +72,8 @@ class _SpeakersSectionState extends State<SpeakersSection> {
     }
   }
 
-  void _onNext() {
-    if (_currentPage < _getPageCount() - 1) {
+  void _onNext(bool isDesktop) {
+    if (_currentPage < _getPageCount(isDesktop) - 1) {
       setState(() {
         _currentPage++;
       });
@@ -88,6 +92,11 @@ class _SpeakersSectionState extends State<SpeakersSection> {
     final size = MediaQuery.of(context).size;
     final isDesktop = size.width > kBreakPoint;
     final l10n = context.l10n;
+
+    final pageCount = _getPageCount(isDesktop);
+    if (_currentPage >= pageCount && pageCount > 0) {
+      _currentPage = pageCount - 1;
+    }
 
     return Container(
       width: double.infinity,
@@ -162,17 +171,17 @@ class _SpeakersSectionState extends State<SpeakersSection> {
                       const SizedBox(width: 20),
                       _CarouselIndicators(
                         currentPage: _currentPage,
-                        itemCount: isDesktop ? _getPageCount() : widget.speakers.length,
+                        itemCount: pageCount,
                       ),
                       const SizedBox(width: 20),
                       IconButton(
-                        onPressed: _currentPage < (isDesktop ? _getPageCount() - 1 : widget.speakers.length - 1)
-                            ? _onNext
+                        onPressed: _currentPage < pageCount - 1
+                            ? () => _onNext(isDesktop)
                             : null,
                         tooltip: 'Next speakers',
                         icon: Icon(
                           Icons.arrow_forward_ios,
-                          color: _currentPage < (isDesktop ? _getPageCount() - 1 : widget.speakers.length - 1)
+                          color: _currentPage < pageCount - 1
                               ? Colors.white
                               : Colors.white.withOpacity(0.3),
                         ),
