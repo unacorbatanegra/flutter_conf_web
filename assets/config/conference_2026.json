@@ -78,6 +78,45 @@
       "youtubeUrl": null,
       "facebookUrl": null,
       "countryEmoji": "🇵🇪"
+    },
+    {
+      "id": 5,
+      "imagePath": "assets/images/speakers/2026/speaker_6.png",
+      "name": "Juan Manuel Alonso",
+      "profession": "Parasoft - CTO",
+      "talkTitleEs": "Evolucionando más allá de la línea de código",
+      "talkTitleEn": "Evolving beyond the line of code",
+      "linkedinUrl": "https://www.linkedin.com/in/juan-manuel-alonso-558b3024/",
+      "twitterUrl": null,
+      "youtubeUrl": null,
+      "facebookUrl": null,
+      "countryEmoji": "🇵🇾"
+    },
+    {
+      "id": 6,
+      "imagePath": "assets/images/speakers/2026/speaker_8.png",
+      "name": "Gabriela Bergmann",
+      "profession": "QA Manager - Cashea",
+      "talkTitleEs": "Del caos al control: Cómo ganar velocidad sin perder calidad",
+      "talkTitleEn": "From chaos to control: How to gain speed without losing quality",
+      "linkedinUrl": null,
+      "twitterUrl": null,
+      "youtubeUrl": null,
+      "facebookUrl": null,
+      "countryEmoji": "🇺🇾"
+    },
+    {
+      "id": 7,
+      "imagePath": "assets/images/speakers/2026/speaker_7.png",
+      "name": "Paolo Pinto Perez",
+      "profession": "Albatros - Mobile software Engineer",
+      "talkTitleEs": "Domina el Render Pipeline en Flutter y optimiza tu UI al máximo",
+      "talkTitleEn": "Master the Render Pipeline in Flutter and optimize your UI to the fullest",
+      "linkedinUrl": "https://www.linkedin.com/in/paolojoaquinp/",
+      "twitterUrl": "https://x.com/paolojoaquinp",
+      "youtubeUrl": null,
+      "facebookUrl": null,
+      "countryEmoji": "🇧🇴"
     }
   ],
   "agenda": [],
@@ -109,6 +148,13 @@
       "tier": "bronze",
       "description": "En BrosCo desarrollamos soluciones tecnológicas diseñadas especialmente para entidades financieras. Acompañamos su transformación digital con plataformas seguras, escalables y adaptadas a la realidad del mercado.",
       "websiteUrl": "https://www.brosco.com.py/"
+    },
+    {
+      "name": "EDGE",
+      "logoPath": "assets/images/sponsors/edge_logo.png",
+      "tier": "bronze",
+      "description": "We work hard to make it simple for you",
+      "websiteUrl": "https://edge.com.py/"
     }
   ],
   "team": [
